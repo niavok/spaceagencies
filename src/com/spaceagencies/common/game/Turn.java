@@ -6,6 +6,7 @@ public class Turn {
     private int buyCount = 1;
     private int moneyCount = 0;
     private CardPile mHand = new NormalCardPile();
+    private CardPile mPlayedCards = new NormalCardPile();
     private TurnState mTurnState; 
     
     public enum TurnState {
@@ -29,7 +30,7 @@ public class Turn {
         }
     }
 
-    private Card draw() {
+    public Card draw() {
         
         if(player.getDeck().getNbCards() == 0) {
             // Discard pile as deck
@@ -48,6 +49,10 @@ public class Turn {
 
     public final void addActions(int nb) {
         actionCount += nb;
+    }
+    
+    public final void addMoney(int nb) {
+        moneyCount += nb;
     }
     
     public final Player getPlayer() {
@@ -69,13 +74,22 @@ public class Turn {
     public final CardPile getHand() {
         return mHand;
     }
-
+    
+    public CardPile getPlayedCards() {
+        return mPlayedCards;
+    }
+    
     public void doEnd() {
         
         // Discard hand
         while(mHand.getNbCards() > 0) {
             player.getDiscardPile().addTop(mHand.takeTop());    
         }
+        // Discard played cards
+        while(mPlayedCards.getNbCards() > 0) {
+            player.getDiscardPile().addTop(mPlayedCards.takeTop());    
+        }
+        
         mTurnState = TurnState.WAITING_BEGIN;
     }
     
@@ -90,6 +104,20 @@ public class Turn {
     public void doSkipActions() {
         actionCount = 0;
         mTurnState = TurnState.BUY_PHASE;
+    }
+
+    public void doPlayCard(Card card) {
+        mTurnState = TurnState.PROCESSING_ACTION;
+        
+        mHand.remove(card);
+        
+        for(CardFeature feature : card.features) {
+            feature.resolve(this);
+        }
+        
+        mPlayedCards.addBottom(card);
+        
+        mTurnState = TurnState.ACTION_PHASE;
     }
 
 }

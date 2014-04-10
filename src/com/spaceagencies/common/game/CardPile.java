@@ -24,4 +24,6 @@ public interface CardPile {
 
     public abstract List<Card> getCards();
 
+    public abstract void remove(Card card);
+
 }

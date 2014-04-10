@@ -1,7 +1,10 @@
-package com.spaceagencies.common.game;
+package com.spaceagencies.common.game.features;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.spaceagencies.common.game.CardFeature;
+import com.spaceagencies.common.game.Turn;
 
 @XmlRootElement(name="moreActions")
 public class FeatureMoreActions extends CardFeature {

@@ -16,6 +16,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import com.spaceagencies.common.game.features.FeatureMoreActions;
+import com.spaceagencies.common.game.features.FeatureMoreMoney;
+import com.spaceagencies.common.game.features.FeatureDrawCards;
+
 @XmlRootElement
 @XmlSeeAlso({CardFeature.class, FeatureMoreActions.class})
 public class Card {
@@ -44,7 +48,7 @@ public class Card {
     @XmlElement
     protected String featureDescription;
     @XmlAttribute
-    protected int type;
+    protected long type;
     @XmlAttribute
     protected int cost;
     
@@ -63,7 +67,7 @@ public class Card {
                 String longDescription,
                 String filename,
                 String action,
-                int type,
+                long type,
                 int cost,
                 int victoryPoints) {
         super();
@@ -101,7 +105,7 @@ public class Card {
         return featureDescription;
     }
 
-    public final int getType() {
+    public final long getType() {
         return type;
     }
 
@@ -142,17 +146,16 @@ public class Card {
 
     }
     
-    public static Card getTestCard1() {
-        Card c = new Card("title1", "shortDescription", "longdescription1", "filename1", "action1", 2, 12, 0);
-        c.features.add(new FeatureMoreActions(12));
-        c.features.add(new FeatureMoreActions(13));
+    public static Card getTestCardCuivre() {
+        Card c = new Card("Cuivre", "shortDescription", "longdescription1", "filename1", "action1", Type.RESSOURCES.getFlag(), 0, 0);
+        c.features.add(new FeatureMoreMoney(1));
         return c;
     }
     
-    public static Card getTestCard2() {
-        Card c = new Card("title2", "shortDescription2", "longdescription2", "filename2", "action2", 0, 3, 2);
-        c.features.add(new FeatureMoreActions(1));
-        c.features.add(new FeatureMoreActions(3));
+    public static Card getTestCardVillage() {
+        Card c = new Card("Village", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 3, 2);
+        c.features.add(new FeatureDrawCards(1));
+        c.features.add(new FeatureMoreActions(2));
         return c;
     }
     

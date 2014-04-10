@@ -13,21 +13,12 @@
         i3d:text="Played cards"
         i3d:layout_marginBottom="5px" />
 
-<LinearLayout
-i3d:layout_width="wrap_content"
-    i3d:layout_height="wrap_content"
-i3d:orientation="horizontal"
->
-
-	<View
-            i3d:id="card"
-            i3d:layout_marginLeft="5px"
-            i3d:layout_marginRight="5px"
-            i3d:ref="main@layout/card" />
-            <View
-            i3d:id="card"
-            i3d:layout_marginLeft="5px"
-            i3d:layout_marginRight="5px"
-            i3d:ref="main@layout/card" />
-</LinearLayout>
+	<LinearLayout
+	i3d:id="playedCardsLinearLayout"
+	i3d:layout_width="wrap_content"
+	    i3d:layout_height="wrap_content"
+	i3d:orientation="horizontal"
+	>
+	
+	</LinearLayout>
 </LinearLayout>

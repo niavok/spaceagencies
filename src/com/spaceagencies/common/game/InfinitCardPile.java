@@ -61,4 +61,9 @@ public class InfinitCardPile implements CardPile {
         throw new RuntimeException("Don't call getCards on infinite card pile ! It's dangerous !");
     }
 
+    @Override
+    public void remove(Card card) {
+        throw new RuntimeException("Don't call remove on infinite card pile !");
+    }
+
 }

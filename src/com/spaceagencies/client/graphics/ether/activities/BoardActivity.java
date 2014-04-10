@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spaceagencies.client.LoginManager;
 import com.spaceagencies.common.game.Card;
+import com.spaceagencies.common.game.Card.Type;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
 import com.spaceagencies.common.game.Turn.TurnState;
@@ -39,6 +40,7 @@ public class BoardActivity extends Activity {
     private Button turnPhaseButton;
     private GameEngine mGameEngine;
     private TextView todoTextView;
+    private LinearLayout playedCardsLinearLayout;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -58,6 +60,7 @@ public class BoardActivity extends Activity {
         todoTextView = (TextView) findViewById("todoTextView@layout/turn_zone");
         
         handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
+        playedCardsLinearLayout = (LinearLayout) findViewById("playedCardsLinearLayout@layout/played_cards_zone");
         detailZone = (LinearLayout) findViewById("detailZone@layout/board");
         
         turnPhaseButton = (Button) findViewById("turnPhaseButton@layout/turn_zone");
@@ -147,11 +150,34 @@ public class BoardActivity extends Activity {
         //Display hand
         handLinearLayout.removeAllView();
         
-        for(Card card : mTurn.getHand().getCards()) {
+        for(final Card card : mTurn.getHand().getCards()) {
             CardView cardView = new CardView(card, cardSelectionManager);
             cardView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
             cardView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
             handLinearLayout.addViewInLayout(cardView);
+            
+            cardView.setOnClickListener(new OnClickListener() {
+                
+                @Override
+                public void onClick(I3dMouseEvent mouseEvent, View view) {
+                    if(mTurn.getTurnState().equals(TurnState.ACTION_PHASE) && (card.getType() & Type.TECHNOLOGIES.getFlag()) != 0) {
+                        mGameEngine.playActionCard(mTurn, card);
+                    } else if(mTurn.getTurnState().equals(TurnState.BUY_PHASE) && (card.getType() & Type.RESSOURCES.getFlag()) != 0) {
+                        mGameEngine.playRessourceCard(mTurn, card);
+                    }
+                }
+            });
+            
+        }
+        
+        //Display played cards
+        playedCardsLinearLayout.removeAllView();
+        
+        for(final Card card : mTurn.getPlayedCards().getCards()) {
+            CardView cardView = new CardView(card, cardSelectionManager);
+            cardView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
+            cardView.getLayoutParams().setMarginRightMeasure(new Measure(-100, false, Axis.HORIZONTAL));
+            playedCardsLinearLayout.addViewInLayout(cardView);
         }
         
         TurnState turnState = mTurn.getTurnState();

@@ -79,4 +79,9 @@ public class NormalCardPile implements CardPile {
         return cards;
     }
 
+    @Override
+    public void remove(Card card) {
+        cards.remove(card);
+    }
+
 }

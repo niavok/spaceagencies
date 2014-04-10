@@ -4,11 +4,12 @@ import com.spaceagencies.common.engine.Engine;
 import com.spaceagencies.common.engine.Observable;
 import com.spaceagencies.common.game.Card;
 import com.spaceagencies.common.game.CardPile;
-import com.spaceagencies.common.game.FeatureMoreActions;
 import com.spaceagencies.common.game.Game;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
+import com.spaceagencies.common.game.Card.Type;
 import com.spaceagencies.common.game.Turn.TurnState;
+import com.spaceagencies.common.game.features.FeatureMoreActions;
 import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.server.GameServer;
 import com.spaceagencies.server.Time.Timestamp;
@@ -57,10 +58,10 @@ public class GameEngine implements Engine {
         
         CardPile deck = newPlayer.getDeck();
         for(int i = 0; i < 3 ;i++) {
-            deck.addBottom(Card.getTestCard1());
+            deck.addBottom(Card.getTestCardVillage());
         }
         for(int i = 0; i < 7 ;i++) {
-            deck.addBottom(Card.getTestCard2());
+            deck.addBottom(Card.getTestCardCuivre());
         }
         
         deck.shuffle();
@@ -111,6 +112,75 @@ public class GameEngine implements Engine {
             return;
         }
         turn.doSkipActions();
+        
+        checkAutoSkip(turn);
+    }
+
+
+    private void checkAutoSkip(Turn turn) {
+      //Check auto end turn
+        switch (turn.getTurnState()) {
+            case ACTION_PHASE:
+            {
+                boolean possibleAction = false;
+                
+                if(turn.getActionCount() > 0) {
+                    for(Card handCard : turn.getHand().getCards()) {
+                        if((handCard.getType() & Type.TECHNOLOGIES.getFlag()) != 0) {
+                            possibleAction = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if(!possibleAction) {
+                    skipActions(turn);
+                }
+            }
+                break;
+            case BUY_PHASE:
+            {
+                if(turn.getBuyCount() == 0) {
+                    endTurn(turn);
+                }
+            }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void playActionCard(Turn turn, Card card) {
+        if(turn.getTurnState() != TurnState.ACTION_PHASE) {
+            Log.warn("Try to play action card in "+ turn.getTurnState() + " state" );
+            return;
+        }
+        
+        if((card.getType() & Type.TECHNOLOGIES.getFlag()) == 0) {
+            Log.warn("Try to play a not action card" );
+            return;
+        }
+        
+        turn.doPlayCard(card);
+        
+        checkAutoSkip(turn);
+    }
+    
+    public void playRessourceCard(Turn turn, Card card) {
+        if(turn.getTurnState() != TurnState.BUY_PHASE) {
+            Log.warn("Try to play ressource card in "+ turn.getTurnState() + " state" );
+            return;
+        }
+        
+        if((card.getType() & Type.RESSOURCES.getFlag()) == 0) {
+            Log.warn("Try to play a not ressource card" );
+            return;
+        }
+        
+        turn.doPlayCard(card);
+        
+        checkAutoSkip(turn);
     }
 
 }
