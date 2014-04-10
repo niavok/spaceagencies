@@ -128,6 +128,10 @@ public abstract class View {
     public abstract void onDraw(Graphics g);
 
     public void measure(float widthMeasureSpec, float heightMeasureSpec) {
+        
+        mLayoutParams.mMeasuredContentWidth = 0;
+        mLayoutParams.mMeasuredContentHeight = 0;
+        
         if (mLayoutParams.getLayoutWidthMeasure() == LayoutMeasure.FIXED) {
             if (!mLayoutParams.getMeasurePoint().getX().isRelative()) {
                 mLayoutParams.mMeasuredContentWidth = mLayoutParams.computeMesure(mLayoutParams.getMeasurePoint().getX());

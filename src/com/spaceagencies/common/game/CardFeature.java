@@ -7,4 +7,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType
 public abstract class CardFeature {
     public abstract void resolve(Turn t);
+
+    public abstract String getDescription();
 }

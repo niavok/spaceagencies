@@ -6,13 +6,22 @@ public class Turn {
     private int buyCount = 1;
     private int moneyCount = 0;
     private CardPile mHand = new NormalCardPile();
+    private TurnState mTurnState; 
+    
+    public enum TurnState {
+        WAITING_BEGIN,
+        ACTION_PHASE,
+        PROCESSING_ACTION,
+        BUY_PHASE,
+        END_PHASE,
+    }
     
     public Turn(Player player, CardPile deck) {
         super();
         this.player = player;
+        mTurnState = TurnState.WAITING_BEGIN;
+        
         for (int i = 0; i < 5; i++) {
-            //TODO check if enought cards
-            
             Card card = draw();
             if(card !=null) {
                 mHand.addTop(card);
@@ -67,6 +76,20 @@ public class Turn {
         while(mHand.getNbCards() > 0) {
             player.getDiscardPile().addTop(mHand.takeTop());    
         }
+        mTurnState = TurnState.WAITING_BEGIN;
+    }
+    
+    public void doBeginTurn() {
+        mTurnState = TurnState.ACTION_PHASE;
+    }
+    
+    public TurnState getTurnState() {
+        return mTurnState;
+    }
+
+    public void doSkipActions() {
+        actionCount = 0;
+        mTurnState = TurnState.BUY_PHASE;
     }
 
 }

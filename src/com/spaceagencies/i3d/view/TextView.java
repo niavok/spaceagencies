@@ -38,7 +38,6 @@ public class TextView extends View {
 
     @Override
     public void onDraw(Graphics g) {
-
         // int localX = x + g.getTranslation().getX();
         // int localXbase = localX;
         // int localY = y + g.getTranslation().getY() - getLineHeight();
@@ -208,7 +207,7 @@ public class TextView extends View {
         while(remainingText.length() > 0) { 
             Line line = getLimitedText(remainingText, width);
             wrappedText.add(line);
-            remainingText = remainingText.substring(line.getText().length());
+            remainingText = remainingText.substring(line.getBaseText().length());
             
             
             // Horizontal gravity
@@ -324,6 +323,7 @@ public class TextView extends View {
         }
         Line line = new Line();
         line.setText(text.substring(0, bestIndex - stripCount));
+        line.setBaseText(text.substring(0, bestIndex));
         line.setWidth(bestMeasuredWidth);
         line.setHeight(bestMeasuredHeight);
         
@@ -386,10 +386,6 @@ public class TextView extends View {
         
 //        Point textMeasure = getTextMeasure(mText);
 //    
-        
-        if(mText.length() > 40) {
-            Log.log("plop");
-        }
 
 //        float innerHeight = measuredHeight;
 //        float innerWidth = textMeasure.y;
@@ -432,7 +428,7 @@ public class TextView extends View {
         
         while(remainingText.length() > 0) { 
             Line line = getLimitedText(remainingText, widthMeasureSpec);
-            remainingText = remainingText.substring(line.getText().length());
+            remainingText = remainingText.substring(line.getBaseText().length());
             
             innerHeight += line.getHeight();
             if(innerWidth < line.getWidth()) {
@@ -462,11 +458,20 @@ public class TextView extends View {
         float mYoffset;
         float mWidth;
         float mHeight;
+        private String mBaseText;
         
         public String getText() {
             return mText;
         }
         
+        public void setBaseText(String baseText) {
+            mBaseText = baseText;
+        }
+        
+        public String getBaseText() {
+            return mBaseText;
+        }
+
         public float getWidth() {
             return mWidth;
         }

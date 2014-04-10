@@ -23,7 +23,7 @@ public class CardView extends ProxyView {
         TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
         
         titleTextView.setText(card.getTitle());
-        descriptionTextView.setText(card.getShortDescription());
+        descriptionTextView.setText(card.getFullDescription());
         
         
         this.setOnClickListener(new OnClickListener() {

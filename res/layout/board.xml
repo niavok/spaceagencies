@@ -58,7 +58,7 @@
             
             <View
             i3d:id="turnZone"
-            i3d:layout_width="wrap_content"
+            i3d:layout_width="500px"
                 i3d:layout_height="wrap_content"
             i3d:ref="main@layout/turn_zone" />
             

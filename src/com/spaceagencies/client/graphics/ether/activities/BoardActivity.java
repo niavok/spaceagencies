@@ -6,6 +6,7 @@ import com.spaceagencies.client.LoginManager;
 import com.spaceagencies.common.game.Card;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
+import com.spaceagencies.common.game.Turn.TurnState;
 import com.spaceagencies.i3d.Bundle;
 import com.spaceagencies.i3d.Measure;
 import com.spaceagencies.i3d.Measure.Axis;
@@ -35,8 +36,9 @@ public class BoardActivity extends Activity {
     private LinearLayout handLinearLayout;
     private SelectionManager<Card> cardSelectionManager;
     private LinearLayout detailZone;
-    private Button endTurnButton;
+    private Button turnPhaseButton;
     private GameEngine mGameEngine;
+    private TextView todoTextView;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -53,18 +55,31 @@ public class BoardActivity extends Activity {
         turnActionCounterTextView = (TextView) findViewById("turnActionCounterTextView@layout/turn_zone");
         turnBuyCounterTextView = (TextView) findViewById("turnBuyCounterTextView@layout/turn_zone");
         
+        todoTextView = (TextView) findViewById("todoTextView@layout/turn_zone");
         
         handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
         detailZone = (LinearLayout) findViewById("detailZone@layout/board");
         
-        endTurnButton = (Button) findViewById("endTurnButton@layout/turn_zone");
+        turnPhaseButton = (Button) findViewById("turnPhaseButton@layout/turn_zone");
         
         
-        endTurnButton.setOnClickListener(new OnClickListener() {
+        turnPhaseButton.setOnClickListener(new OnClickListener() {
             
             @Override
             public void onClick(I3dMouseEvent mouseEvent, View view) {
-                mGameEngine.endTurn(mTurn);
+                switch (mTurn.getTurnState()) {
+                    case ACTION_PHASE:
+                        mGameEngine.skipActions(mTurn);
+                        break;
+                    case BUY_PHASE:
+                        mGameEngine.endTurn(mTurn);                        
+                        break;
+                    case WAITING_BEGIN:
+                    case END_PHASE:
+                    case PROCESSING_ACTION:
+                    default:
+                        break;
+                }
             }
         });
         
@@ -106,10 +121,10 @@ public class BoardActivity extends Activity {
 
     @Override
     protected void onUpdate(Timestamp time) {
-        if(mTurn != mPlayer.getTurn()) {
+//        if(mTurn != mPlayer.getTurn()) {
             mTurn = mPlayer.getTurn();
             updateUi();    
-        }
+//        }
     }
     
     private void updateUi() {
@@ -138,6 +153,38 @@ public class BoardActivity extends Activity {
             cardView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
             handLinearLayout.addViewInLayout(cardView);
         }
+        
+        TurnState turnState = mTurn.getTurnState();
+        switch (turnState) {
+            case WAITING_BEGIN:
+                todoTextView.setText("Wait for turn begining");
+                turnPhaseButton.setVisible(false);
+                break;
+            case ACTION_PHASE:
+                todoTextView.setText("Make actions");
+                turnPhaseButton.setText("Skip actions");
+                turnPhaseButton.setVisible(true);
+                break;
+            case BUY_PHASE:
+                todoTextView.setText("Buy some card");
+                turnPhaseButton.setText("End turn");
+                turnPhaseButton.setVisible(true);
+                break;
+            case END_PHASE:
+                todoTextView.setText("Ending turn ...");
+                turnPhaseButton.setVisible(false);
+                break;
+            case PROCESSING_ACTION:
+                todoTextView.setText("!!TODO !!");
+                turnPhaseButton.setVisible(false);
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+        
         
 //        <View
 //        i3d:id="card"

@@ -52,7 +52,7 @@ public class Card {
     protected int victoryPoints;
 
     @XmlAnyElement
-    protected List<CardFeature> feature = new ArrayList<CardFeature>();
+    protected List<CardFeature> features = new ArrayList<CardFeature>();
     
     
     public Card() {
@@ -126,8 +126,8 @@ public class Card {
                 m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
                 Card c = new Card("title", "shortDescription", "longdescription", "filename", "action", 2, 12, 0);
-                c.feature.add(new FeatureMoreActions(12));
-                c.feature.add(new FeatureMoreActions(13));
+                c.features.add(new FeatureMoreActions(12));
+                c.features.add(new FeatureMoreActions(13));
                 File f = new File("card.xml");
                 m.marshal(c, f);
             }
@@ -144,16 +144,31 @@ public class Card {
     
     public static Card getTestCard1() {
         Card c = new Card("title1", "shortDescription", "longdescription1", "filename1", "action1", 2, 12, 0);
-        c.feature.add(new FeatureMoreActions(12));
-        c.feature.add(new FeatureMoreActions(13));
+        c.features.add(new FeatureMoreActions(12));
+        c.features.add(new FeatureMoreActions(13));
         return c;
     }
     
     public static Card getTestCard2() {
         Card c = new Card("title2", "shortDescription2", "longdescription2", "filename2", "action2", 0, 3, 2);
-        c.feature.add(new FeatureMoreActions(12));
-        c.feature.add(new FeatureMoreActions(13));
+        c.features.add(new FeatureMoreActions(1));
+        c.features.add(new FeatureMoreActions(3));
         return c;
     }
+    
+    public String getFullDescription() {
+        StringBuilder fullDescription = new StringBuilder();
+        
+        for(CardFeature feature: features) {
+            fullDescription.append(feature.getDescription());
+            fullDescription.append("\n");
+        }
+        fullDescription.append("\n");
+        
+        fullDescription.append(shortDescription);
+        
+        return fullDescription.toString();
+    }
+    
     
 }

@@ -8,6 +8,8 @@ import com.spaceagencies.common.game.FeatureMoreActions;
 import com.spaceagencies.common.game.Game;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
+import com.spaceagencies.common.game.Turn.TurnState;
+import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.server.GameServer;
 import com.spaceagencies.server.Time.Timestamp;
 
@@ -65,6 +67,7 @@ public class GameEngine implements Engine {
 
         // Ready to play
         newTurn(newPlayer);
+        newPlayer.getTurn().doBeginTurn();
     }
     
     
@@ -83,14 +86,31 @@ public class GameEngine implements Engine {
 
 
     public void endTurn(Turn turn) {
+        if(turn.getTurnState() != TurnState.BUY_PHASE) {
+            Log.warn("Try to end turn in "+ turn.getTurnState() + " state" );
+            return;
+        }
         turn.doEnd();
-        newTurn(turn.getPlayer());
+        Player player = turn.getPlayer();
+        newTurn(player);
+        
+        // One player : begin new turn
+        player.getTurn().doBeginTurn();
     }
 
 
     private void newTurn(Player player) {
         Turn turn = new Turn(player, player.getDeck());
         player.setTurn(turn);
+    }
+
+
+    public void skipActions(Turn turn) {
+        if(turn.getTurnState() != TurnState.ACTION_PHASE) {
+            Log.warn("Try to skip action in "+ turn.getTurnState() + " state" );
+            return;
+        }
+        turn.doSkipActions();
     }
 
 }

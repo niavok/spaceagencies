@@ -23,5 +23,10 @@ public class FeatureMoreActions extends CardFeature {
     public void resolve(Turn t) {
         t.addActions(count);
     }
+    
+    @Override
+    public String getDescription() {
+        return "+ "+count+" Action"+(count > 1?"s":"");
+    }
 
 }

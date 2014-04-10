@@ -20,5 +20,10 @@ public class DetailedCardView extends ProxyView {
         descriptionTextView.setText(card.getLongDescription());
     }
     
+    
+    @Override
+    public void onLayout(float l, float t, float r, float b) {
+        super.onLayout(l, t, r, b);
+    }
 
 }

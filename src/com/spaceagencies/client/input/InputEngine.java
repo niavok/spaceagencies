@@ -121,7 +121,7 @@ public class InputEngine implements Engine {
                     dragging = false;
                     I3dMouseEvent mouseEvent = new I3dMouseEvent(Action.MOUSE_RELEASED, Mouse.getEventX(), Mouse.getEventY(), Mouse.getEventButton()+1, 0);
                     notifyMouseEvent(mouseEvent);
-                    if( Mouse.getEventNanoseconds()  - pressTime[Mouse.getEventButton()] < CLICK_TIME && new Point(Mouse.getX(), Mouse.getY()).distanceTo(pressLocation[Mouse.getEventButton()])  < 10) {
+                    if( Mouse.getEventNanoseconds()  - pressTime[Mouse.getEventButton()] < CLICK_TIME && new Point(Mouse.getX(), Mouse.getY()).distanceTo(pressLocation[Mouse.getEventButton()])  < 30) {
                         
                         if( Mouse.getEventNanoseconds()  - clickTime[Mouse.getEventButton()] > DOUBLE_CLICK_TIME ) {
                             clickCount[Mouse.getEventButton()] = 0;
