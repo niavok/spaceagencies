@@ -1,24 +1,23 @@
 package com.spaceagencies.common.game;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class InfinitCardPile implements CardPile {
     
     private Card card;
+    private CardFactory mCardFactory;
 
-    public InfinitCardPile(Card card) {
-        this.card = card;
+    public InfinitCardPile(CardFactory cardFactory) {
+        mCardFactory = cardFactory;
+        this.card = cardFactory.createCard();
     }
 
     @Override
     public void addTop(Card c) {
-        this.card = c;
     }
 
     @Override
     public void addBottom(Card c) {
-        this.card = c;
     }
 
     @Override
@@ -37,13 +36,16 @@ public class InfinitCardPile implements CardPile {
 
     @Override
     public Card takeTop() {
-        // TODO Duplicate ?
-        return this.card;
+        Card returnCard = card;
+        card = mCardFactory.createCard();
+        return returnCard;
     }
 
     @Override
     public Card takeBottom() {
-        return this.card;
+        Card returnCard = card;
+        card = mCardFactory.createCard();
+        return returnCard;
     }
 
     @Override
@@ -66,4 +68,8 @@ public class InfinitCardPile implements CardPile {
         throw new RuntimeException("Don't call remove on infinite card pile !");
     }
 
+    public interface CardFactory {
+        Card createCard();
+    }
+    
 }

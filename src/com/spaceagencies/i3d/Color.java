@@ -22,7 +22,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.spaceagencies.common.tools.Log;
-import com.spaceagencies.i3d.utils.I3dColor;
 
 
 /**

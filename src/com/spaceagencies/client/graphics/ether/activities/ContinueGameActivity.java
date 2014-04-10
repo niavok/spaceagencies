@@ -48,6 +48,10 @@ public class ContinueGameActivity extends Activity {
                     LoginManager.localPlayer = player;
                     getHandler().obtainMessage(NEW_GAME_CREATED_WHAT).send();
                 }
+                
+                @Override
+                public void onSomeThingChanged() {
+                }
             });
             
             worldEngine.connectPlayerAction("fredb219", true);
@@ -71,7 +75,7 @@ public class ContinueGameActivity extends Activity {
     protected void onMessage(Message message) {
         switch(message.what) {
             case NEW_GAME_CREATED_WHAT:
-//                startActivity(new Intent(BoardActivity.class));
+                startActivity(new Intent(BoardActivity.class));
                 break;
         }
     }

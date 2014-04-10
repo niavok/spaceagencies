@@ -66,7 +66,7 @@ public abstract class View {
 
         GL11.glPushMatrix();
         // GL11.glTranslatef(layout.offset.x, layout.offset.y, 0);
-        g.setColor(Color.randomLightOpaqueColor());
+//        g.setColor(Color.randomLightOpaqueColor());
         
         
 //        if(isMouseOver(g.getUiTranslation())) {
@@ -78,7 +78,7 @@ public abstract class View {
         float tranlationYIncludingMargin = mLayoutParams.mTop + mLayoutParams.computeMesure(mLayoutParams.getLayoutMarginTop());
         GL11.glTranslatef(tranlationXIncludingMargin, tranlationYIncludingMargin, 0);
         g.pushUiTranslation(new Point(tranlationXIncludingMargin, tranlationYIncludingMargin));
-        g.setColor(Color.randomDarkOpaqueColor());
+//        g.setColor(Color.randomDarkOpaqueColor());
 //        g.drawFilledRectangle(0, 0, mLayoutParams.getBorderWidth(), mLayoutParams.getBorderHeight());
         styleRenderer.draw(g);
         
@@ -92,7 +92,7 @@ public abstract class View {
         g.pushUiTranslation(new Point(tranlationXPadding, tranlationYPadding));
         
         
-        g.setColor(Color.randomLightOpaqueColor());
+//        g.setColor(Color.randomLightOpaqueColor());
 //        g.drawFilledRectangle(0, 0, mLayoutParams.getContentWidth(), mLayoutParams.getContentHeight());
         onDraw(g);
         

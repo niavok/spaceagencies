@@ -45,6 +45,10 @@ public class NewGameActivity extends Activity {
                 getHandler().obtainMessage(NEW_GAME_CREATED_WHAT).send();
             }
             
+            @Override
+            public void onSomeThingChanged() {
+            }
+            
         });
         
         worldEngine.connectPlayerAction("fredb219", true);

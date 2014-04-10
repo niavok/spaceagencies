@@ -5,11 +5,14 @@ import java.util.List;
 import com.spaceagencies.client.LoginManager;
 import com.spaceagencies.common.game.Card;
 import com.spaceagencies.common.game.Card.Type;
+import com.spaceagencies.common.game.CardPile;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
 import com.spaceagencies.common.game.Turn.TurnState;
 import com.spaceagencies.i3d.Bundle;
+import com.spaceagencies.i3d.Intent;
 import com.spaceagencies.i3d.Measure;
+import com.spaceagencies.i3d.Message;
 import com.spaceagencies.i3d.Measure.Axis;
 import com.spaceagencies.i3d.SelectionManager;
 import com.spaceagencies.i3d.SelectionManager.OnSelectionChangeListener;
@@ -23,6 +26,7 @@ import com.spaceagencies.i3d.view.View.OnClickListener;
 import com.spaceagencies.server.GameServer;
 import com.spaceagencies.server.Time.Timestamp;
 import com.spaceagencies.server.engine.game.GameEngine;
+import com.spaceagencies.server.engine.game.GameEngineObserver;
 
 public class BoardActivity extends Activity {
 
@@ -41,7 +45,10 @@ public class BoardActivity extends Activity {
     private GameEngine mGameEngine;
     private TextView todoTextView;
     private LinearLayout playedCardsLinearLayout;
+    private LinearLayout mainSupplyLinearLayout;
 
+    private static final int UPDATE_UI_WHAT = 1;
+    
     @Override
     public void onCreate(Bundle bundle) {
         setContentView("main@layout/board");
@@ -61,6 +68,8 @@ public class BoardActivity extends Activity {
         
         handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
         playedCardsLinearLayout = (LinearLayout) findViewById("playedCardsLinearLayout@layout/played_cards_zone");
+        mainSupplyLinearLayout = (LinearLayout) findViewById("mainSupplyLinearLayout@layout/supply_zone");
+        
         detailZone = (LinearLayout) findViewById("detailZone@layout/board");
         
         turnPhaseButton = (Button) findViewById("turnPhaseButton@layout/turn_zone");
@@ -105,6 +114,19 @@ public class BoardActivity extends Activity {
             public boolean mustClear(Object clearKey) {
                 return false;
             }});
+        
+        mGameEngine.getWorldEnginObservable().register(this, new GameEngineObserver() {
+            
+            @Override
+            public void onPlayerConnected(Player player) {
+            }
+            
+            @Override
+            public void onSomeThingChanged() {
+                getHandler().removeMessages(UPDATE_UI_WHAT);
+                getHandler().obtainMessage(UPDATE_UI_WHAT).send();
+            }
+        });
     }
 
     @Override
@@ -124,10 +146,19 @@ public class BoardActivity extends Activity {
 
     @Override
     protected void onUpdate(Timestamp time) {
-//        if(mTurn != mPlayer.getTurn()) {
+        if(mTurn != mPlayer.getTurn()) {
             mTurn = mPlayer.getTurn();
             updateUi();    
-//        }
+        }
+    }
+    
+    @Override
+    protected void onMessage(Message message) {
+        switch(message.what) {
+            case UPDATE_UI_WHAT:
+                updateUi();
+                break;
+        }
     }
     
     private void updateUi() {
@@ -160,10 +191,13 @@ public class BoardActivity extends Activity {
                 
                 @Override
                 public void onClick(I3dMouseEvent mouseEvent, View view) {
-                    if(mTurn.getTurnState().equals(TurnState.ACTION_PHASE) && (card.getType() & Type.TECHNOLOGIES.getFlag()) != 0) {
-                        mGameEngine.playActionCard(mTurn, card);
-                    } else if(mTurn.getTurnState().equals(TurnState.BUY_PHASE) && (card.getType() & Type.RESSOURCES.getFlag()) != 0) {
-                        mGameEngine.playRessourceCard(mTurn, card);
+                    
+                    if(mouseEvent.getClickCount() == 2) {
+                        if(mTurn.getTurnState().equals(TurnState.ACTION_PHASE) && (card.getType() & Type.TECHNOLOGIES.getFlag()) != 0) {
+                            mGameEngine.playActionCard(mTurn, card);
+                        } else if(mTurn.getTurnState().equals(TurnState.BUY_PHASE) && (card.getType() & Type.RESSOURCES.getFlag()) != 0) {
+                            mGameEngine.playRessourceCard(mTurn, card);
+                        }
                     }
                 }
             });
@@ -178,6 +212,32 @@ public class BoardActivity extends Activity {
             cardView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
             cardView.getLayoutParams().setMarginRightMeasure(new Measure(-100, false, Axis.HORIZONTAL));
             playedCardsLinearLayout.addViewInLayout(cardView);
+        }
+        
+        // Supply
+        mainSupplyLinearLayout.removeAllView();
+        
+        for(final CardPile cardPile : mPlayer.getWorld().getSupply()) {
+            if(cardPile.getNbCards() > 0) {
+                CardPileView cardPileView = new CardPileView(cardPile, cardSelectionManager);
+                cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
+                cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
+                mainSupplyLinearLayout.addViewInLayout(cardPileView);
+                
+                cardPileView.setOnClickListener(new OnClickListener() {
+                    
+                    @Override
+                    public void onClick(I3dMouseEvent mouseEvent, View view) {
+                        
+                        if(mouseEvent.getClickCount() == 2) {
+                            if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
+                                mGameEngine.buyCard(mTurn, cardPile);
+                            }
+                        }
+                    }
+                });
+            }
+            
         }
         
         TurnState turnState = mTurn.getTurnState();

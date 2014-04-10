@@ -120,4 +120,12 @@ public class Turn {
         mTurnState = TurnState.ACTION_PHASE;
     }
 
+    public void doBuyCard(CardPile cardPile) {
+        
+        Card card = cardPile.takeTop();
+        moneyCount -= card.getCost();
+        buyCount -= 1;
+        player.getDiscardPile().addTop(card);
+    }
+
 }

@@ -3,13 +3,15 @@ package com.spaceagencies.server.engine.game;
 import com.spaceagencies.common.engine.Engine;
 import com.spaceagencies.common.engine.Observable;
 import com.spaceagencies.common.game.Card;
+import com.spaceagencies.common.game.Card.Type;
 import com.spaceagencies.common.game.CardPile;
 import com.spaceagencies.common.game.Game;
+import com.spaceagencies.common.game.InfinitCardPile;
+import com.spaceagencies.common.game.NormalCardPile;
+import com.spaceagencies.common.game.InfinitCardPile.CardFactory;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
-import com.spaceagencies.common.game.Card.Type;
 import com.spaceagencies.common.game.Turn.TurnState;
-import com.spaceagencies.common.game.features.FeatureMoreActions;
 import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.server.GameServer;
 import com.spaceagencies.server.Time.Timestamp;
@@ -26,6 +28,26 @@ public class GameEngine implements Engine {
     
     @Override
     public void init() {
+        
+        // Add Cuivre pile
+        InfinitCardPile cuivrePile = new InfinitCardPile(new CardFactory() {
+            
+            @Override
+            public Card createCard() {
+                return Card.getTestCardCuivre();
+            }
+        });
+        mGame.getSupply().add(cuivrePile);
+        
+        // Add village pile
+        
+        CardPile villagePile = new NormalCardPile();
+        for(int i = 0; i < 12 ; i++) {
+            villagePile.addTop(Card.getTestCardVillage());
+        }
+        
+        mGame.getSupply().add(villagePile);
+        
     }
 
     @Override
@@ -72,20 +94,6 @@ public class GameEngine implements Engine {
     }
     
     
-	// Observers
-    private Observable<GameEngineObserver> mWorldEngineObservable = new Observable<GameEngineObserver>();
-    
-    public Observable<GameEngineObserver> getWorldEnginObservable() {
-        return mWorldEngineObservable;
-    }
-    
-    private void notifyPlayerConnected(Player player) {
-        for(GameEngineObserver observer : mWorldEngineObservable.getObservers()) {
-            observer.onPlayerConnected(player);
-        }
-    }
-
-
     public void endTurn(Turn turn) {
         if(turn.getTurnState() != TurnState.BUY_PHASE) {
             Log.warn("Try to end turn in "+ turn.getTurnState() + " state" );
@@ -103,6 +111,7 @@ public class GameEngine implements Engine {
     private void newTurn(Player player) {
         Turn turn = new Turn(player, player.getDeck());
         player.setTurn(turn);
+        notifySomethingChanged();
     }
 
 
@@ -114,6 +123,7 @@ public class GameEngine implements Engine {
         turn.doSkipActions();
         
         checkAutoSkip(turn);
+        notifySomethingChanged();
     }
 
 
@@ -165,6 +175,8 @@ public class GameEngine implements Engine {
         turn.doPlayCard(card);
         
         checkAutoSkip(turn);
+        
+        notifySomethingChanged();
     }
     
     public void playRessourceCard(Turn turn, Card card) {
@@ -181,6 +193,57 @@ public class GameEngine implements Engine {
         turn.doPlayCard(card);
         
         checkAutoSkip(turn);
+        
+        notifySomethingChanged();
     }
+
+
+    public void buyCard(Turn turn, CardPile cardPile) {
+        if(turn.getTurnState() != TurnState.BUY_PHASE) {
+            Log.warn("Try to buy card in "+ turn.getTurnState() + " state" );
+            return;
+        }
+        
+        if(cardPile.getNbCards() == 0) {
+            Log.warn("Try to buy card in an empty pile" );
+            return;
+        }
+        
+        if(cardPile.getNbCards() == 0) {
+            Log.warn("Try to buy card in an empty pile" );
+            return;
+        }
+        
+        if(cardPile.peekTop().getCost() > turn.getMoneyCount()) {
+            Log.warn("Try to buy a too expensive card" );
+            return;
+        }
+        
+        turn.doBuyCard(cardPile);
+        
+        checkAutoSkip(turn);
+        
+        notifySomethingChanged();
+    }
+    
+ // Observers
+    private Observable<GameEngineObserver> mWorldEngineObservable = new Observable<GameEngineObserver>();
+    
+    public Observable<GameEngineObserver> getWorldEnginObservable() {
+        return mWorldEngineObservable;
+    }
+    
+    private void notifyPlayerConnected(Player player) {
+        for(GameEngineObserver observer : mWorldEngineObservable.getObservers()) {
+            observer.onPlayerConnected(player);
+        }
+    }
+    
+    private void notifySomethingChanged() {
+        for(GameEngineObserver observer : mWorldEngineObservable.getObservers()) {
+            observer.onSomeThingChanged();
+        }
+    }
+
 
 }

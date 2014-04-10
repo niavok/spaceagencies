@@ -23,16 +23,16 @@
 		i3d:layout_height="match_parent"
 		i3d:orientation="horizontal"
 		>
-	        <View
-	            i3d:id="card"
-	            i3d:layout_marginLeft="5px"
-	            i3d:layout_marginRight="5px"
-	            i3d:ref="main@layout/card" />
-	            <View
-	            i3d:id="card"
-	            i3d:layout_marginLeft="5px"
-	            i3d:layout_marginRight="5px"
-	            i3d:ref="main@layout/card" />
+<!-- 	        <View -->
+<!-- 	            i3d:id="card" -->
+<!-- 	            i3d:layout_marginLeft="5px" -->
+<!-- 	            i3d:layout_marginRight="5px" -->
+<!-- 	            i3d:ref="main@layout/card" /> -->
+<!-- 	            <View -->
+<!-- 	            i3d:id="card" -->
+<!-- 	            i3d:layout_marginLeft="5px" -->
+<!-- 	            i3d:layout_marginRight="5px" -->
+<!-- 	            i3d:ref="main@layout/card" /> -->
 	        
 		</LinearLayout>
 		
@@ -43,16 +43,16 @@
 		i3d:layout_marginTop="20px"
 		i3d:orientation="horizontal"
 		>
-<View
-	            i3d:id="card"
-	            i3d:layout_marginLeft="5px"
-	            i3d:layout_marginRight="5px"
-	            i3d:ref="main@layout/card" />
-	            <View
-	            i3d:id="card"
-	            i3d:layout_marginLeft="5px"
-	            i3d:layout_marginRight="5px"
-	            i3d:ref="main@layout/card" />		
+<!-- <View -->
+<!-- 	            i3d:id="card" -->
+<!-- 	            i3d:layout_marginLeft="5px" -->
+<!-- 	            i3d:layout_marginRight="5px" -->
+<!-- 	            i3d:ref="main@layout/card" /> -->
+<!-- 	            <View -->
+<!-- 	            i3d:id="card" -->
+<!-- 	            i3d:layout_marginLeft="5px" -->
+<!-- 	            i3d:layout_marginRight="5px" -->
+<!-- 	            i3d:ref="main@layout/card" />		 -->
 		</LinearLayout>
 	
 	
@@ -61,21 +61,21 @@
 	</LinearLayout>
 	
 	<LinearLayout
-	i3d:id="mainSupply"
+	i3d:id="mainSupplyLinearLayout"
 	i3d:layout_width="match_parent"
 	    i3d:layout_height="match_parent"
 	i3d:orientation="horizontal"
 	>
 	
-				<View
-	            i3d:id="card"
-	            i3d:layout_marginLeft="5px"
-	            i3d:layout_marginRight="5px"
-	            i3d:ref="main@layout/card" />
-	            <View
-	            i3d:id="card"
-	            i3d:layout_marginLeft="5px"
-	            i3d:layout_marginRight="5px"
-	            i3d:ref="main@layout/card" />
+<!-- 				<View -->
+<!-- 	            i3d:id="card" -->
+<!-- 	            i3d:layout_marginLeft="5px" -->
+<!-- 	            i3d:layout_marginRight="5px" -->
+<!-- 	            i3d:ref="main@layout/card" /> -->
+<!-- 	            <View -->
+<!-- 	            i3d:id="card" -->
+<!-- 	            i3d:layout_marginLeft="5px" -->
+<!-- 	            i3d:layout_marginRight="5px" -->
+<!-- 	            i3d:ref="main@layout/card" /> -->
 	</LinearLayout>
 </LinearLayout>
