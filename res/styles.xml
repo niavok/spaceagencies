@@ -133,8 +133,10 @@
 	    <item name="i3d:background">cardFrontBackground@backgrounds</item>
     </style>
     
-    
-    
+     <style name="tips" >
+        <item name="i3d:font">small@fonts</item>
+        <item name="i3d:color">disabledDarkText@color</item>
+    </style>
     
     
 </resources>

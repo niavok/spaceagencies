@@ -77,6 +77,15 @@
 		                i3d:text="End turn"
 		                i3d:help="newGameButtonHelp@help/mainmenu"
 		                 />
+		                 <TextView
+		        i3d:text="Shortcut : SPACE"
+		        i3d:layout_width="match_parent"
+                i3d:layout_height="wrap_content"
+                i3d:gravity="center"
+                i3d:style="tips@styles"
+		        i3d:layout_marginBottom="5px"
+		        i3d:layout_marginTop="0px"
+		         />
 				</LinearLayout>
 	
 		  </LinearLayout>
