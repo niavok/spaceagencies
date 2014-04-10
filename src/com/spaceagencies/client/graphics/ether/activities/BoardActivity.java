@@ -9,6 +9,7 @@ import com.spaceagencies.common.game.CardPile;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
 import com.spaceagencies.common.game.Turn.TurnState;
+import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.i3d.Bundle;
 import com.spaceagencies.i3d.Intent;
 import com.spaceagencies.i3d.Measure;
@@ -218,8 +219,8 @@ public class BoardActivity extends Activity {
                 
                 @Override
                 public void onClick(I3dMouseEvent mouseEvent, View view) {
-                    
-                    if(mouseEvent.getClickCount() == 2) {
+                    Log.log("Click count "+ mouseEvent.getClickCount());
+                    if(mouseEvent.getClickCount() % 2 == 0) {
                         if(mTurn.getTurnState().equals(TurnState.ACTION_PHASE) && (card.getType() & Type.TECHNOLOGIES.getFlag()) != 0) {
                             mGameEngine.playActionCard(mTurn, card);
                         } else if(mTurn.getTurnState().equals(TurnState.BUY_PHASE) && (card.getType() & Type.RESSOURCES.getFlag()) != 0) {
@@ -255,8 +256,8 @@ public class BoardActivity extends Activity {
                     
                     @Override
                     public void onClick(I3dMouseEvent mouseEvent, View view) {
-                        
-                        if(mouseEvent.getClickCount() == 2) {
+                        Log.log("Click count "+ mouseEvent.getClickCount());
+                        if(mouseEvent.getClickCount() % 2 == 0) {
                             if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
                                 mGameEngine.buyCard(mTurn, cardPile);
                             }

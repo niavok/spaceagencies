@@ -125,7 +125,7 @@ public class InputEngine implements Engine {
                         
                         if( Mouse.getEventNanoseconds()  - clickTime[Mouse.getEventButton()] > DOUBLE_CLICK_TIME ) {
                             clickCount[Mouse.getEventButton()] = 0;
-//                            Log.trace("Too long click");
+                            Log.trace("Too long click");
                         }
                         clickCount[Mouse.getEventButton()]++;
                         clickTime[Mouse.getEventButton()] = Mouse.getEventNanoseconds();
