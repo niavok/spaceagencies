@@ -29,6 +29,14 @@ public class GameEngine implements Engine {
     @Override
     public void init() {
         
+        //Add Domaine pile
+        CardPile domainePile = new NormalCardPile();
+        for(int i = 0; i < 12 ; i++) {
+            domainePile.addTop(Card.getTestCardDomaine());
+        }
+        mGame.getSupply().add(domainePile);
+        
+        
         // Add Cuivre pile
         InfinitCardPile cuivrePile = new InfinitCardPile(new CardFactory() {
             
@@ -38,15 +46,47 @@ public class GameEngine implements Engine {
             }
         });
         mGame.getSupply().add(cuivrePile);
+
+        // Add Argent pile
+        InfinitCardPile argentPile = new InfinitCardPile(new CardFactory() {
+            
+            @Override
+            public Card createCard() {
+                return Card.getTestCardArgent();
+            }
+        });
+        mGame.getSupply().add(argentPile);
+        
+        // Add Or pile
+        InfinitCardPile orPile = new InfinitCardPile(new CardFactory() {
+            
+            @Override
+            public Card createCard() {
+                return Card.getTestCardOr();
+            }
+        });
+        mGame.getSupply().add(orPile);
         
         // Add village pile
-        
         CardPile villagePile = new NormalCardPile();
         for(int i = 0; i < 12 ; i++) {
             villagePile.addTop(Card.getTestCardVillage());
         }
-        
         mGame.getSupply().add(villagePile);
+        
+        // Add bucheron pile
+        CardPile bucheronPile = new NormalCardPile();
+        for(int i = 0; i < 12 ; i++) {
+            bucheronPile.addTop(Card.getTestCardBucheron());
+        }
+        mGame.getSupply().add(bucheronPile);
+        
+        // Add forgeron pile
+        CardPile forgeronPile = new NormalCardPile();
+        for(int i = 0; i < 12 ; i++) {
+            forgeronPile.addTop(Card.getTestCardForgeron());
+        }
+        mGame.getSupply().add(forgeronPile);
         
     }
 
@@ -80,7 +120,7 @@ public class GameEngine implements Engine {
         
         CardPile deck = newPlayer.getDeck();
         for(int i = 0; i < 3 ;i++) {
-            deck.addBottom(Card.getTestCardVillage());
+            deck.addBottom(Card.getTestCardDomaine());
         }
         for(int i = 0; i < 7 ;i++) {
             deck.addBottom(Card.getTestCardCuivre());
@@ -91,6 +131,7 @@ public class GameEngine implements Engine {
         // Ready to play
         newTurn(newPlayer);
         newPlayer.getTurn().doBeginTurn();
+        checkAutoSkip(newPlayer.getTurn());
     }
     
     
@@ -105,12 +146,14 @@ public class GameEngine implements Engine {
         
         // One player : begin new turn
         player.getTurn().doBeginTurn();
+        checkAutoSkip(player.getTurn());
     }
 
 
     private void newTurn(Player player) {
         Turn turn = new Turn(player, player.getDeck());
         player.setTurn(turn);
+        
         notifySomethingChanged();
     }
 

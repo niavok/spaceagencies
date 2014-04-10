@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import com.spaceagencies.common.game.features.FeatureMoreActions;
+import com.spaceagencies.common.game.features.FeatureMoreBuy;
 import com.spaceagencies.common.game.features.FeatureMoreMoney;
 import com.spaceagencies.common.game.features.FeatureDrawCards;
 
@@ -152,10 +153,40 @@ public class Card {
         return c;
     }
     
+    public static Card getTestCardArgent() {
+        Card c = new Card("Argent", "shortDescription", "longdescription1", "filename1", "action1", Type.RESSOURCES.getFlag(), 3, 0);
+        c.features.add(new FeatureMoreMoney(2));
+        return c;
+    }
+    
+    public static Card getTestCardOr() {
+        Card c = new Card("Or", "shortDescription", "longdescription1", "filename1", "action1", Type.RESSOURCES.getFlag(), 6, 0);
+        c.features.add(new FeatureMoreMoney(3));
+        return c;
+    }
+    
     public static Card getTestCardVillage() {
-        Card c = new Card("Village", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 3, 2);
+        Card c = new Card("Village", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 3, 0);
         c.features.add(new FeatureDrawCards(1));
         c.features.add(new FeatureMoreActions(2));
+        return c;
+    }
+    
+    public static Card getTestCardBucheron() {
+        Card c = new Card("Bucheron", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 3, 0);
+        c.features.add(new FeatureMoreBuy(1));
+        c.features.add(new FeatureMoreMoney(2));
+        return c;
+    }
+    
+    public static Card getTestCardForgeron() {
+        Card c = new Card("Forgeron", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 4, 0);
+        c.features.add(new FeatureDrawCards(3));
+        return c;
+    }
+    
+    public static Card getTestCardDomaine() {
+        Card c = new Card("Domaine", "shortDescription2", "longdescription2", "filename2", "action2", Type.MISSIONS.getFlag(), 2, 1);
         return c;
     }
     
@@ -169,6 +200,23 @@ public class Card {
         fullDescription.append("\n");
         
         fullDescription.append(shortDescription);
+        
+       
+        
+        fullDescription.append("\n");
+        fullDescription.append("Cost: "+cost);
+        
+        if(victoryPoints > 0) {
+            fullDescription.append("\n");
+            fullDescription.append("Victory: "+victoryPoints);    
+        }
+        
+        for(Type typeValue : Type.values()) {
+            if((type & typeValue.getFlag()) != 0) {
+                fullDescription.append("\n");
+                fullDescription.append(typeValue.toString());
+            }
+        }
         
         return fullDescription.toString();
     }

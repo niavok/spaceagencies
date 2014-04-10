@@ -55,6 +55,10 @@ public class Turn {
         moneyCount += nb;
     }
     
+    public void addBuy(int nb) {
+        buyCount += nb;
+    }
+    
     public final Player getPlayer() {
         return player;
     }
@@ -110,7 +114,7 @@ public class Turn {
         mTurnState = TurnState.PROCESSING_ACTION;
         
         mHand.remove(card);
-        
+        actionCount -= 1;
         for(CardFeature feature : card.features) {
             feature.resolve(this);
         }

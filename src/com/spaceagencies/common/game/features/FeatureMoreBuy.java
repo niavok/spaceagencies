@@ -3,21 +3,20 @@ package com.spaceagencies.common.game.features;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.spaceagencies.common.game.Card;
 import com.spaceagencies.common.game.CardFeature;
 import com.spaceagencies.common.game.Turn;
 
-@XmlRootElement(name="moreCards")
-public class FeatureDrawCards extends CardFeature {
+@XmlRootElement(name="moreBuy")
+public class FeatureMoreBuy extends CardFeature {
     
     @XmlAttribute
     private int count;
 
-    public FeatureDrawCards() {
+    public FeatureMoreBuy() {
         super();
     }
     
-    public FeatureDrawCards(int count) {
+    public FeatureMoreBuy(int count) {
         super();
         this.count = count;
     }
@@ -25,17 +24,12 @@ public class FeatureDrawCards extends CardFeature {
 
     @Override
     public void resolve(Turn t) {
-        for(int i = 0; i<count;i++) {
-            Card card = t.draw();
-            if(card !=null) {
-                t.getHand().addBottom(card);
-            }
-        }
+        t.addBuy(count);
     }
     
     @Override
     public String getDescription() {
-        return "+ "+count+" Card"+(count > 1?"s":"");
+        return "+ "+count+" Buy";
     }
 
 }
