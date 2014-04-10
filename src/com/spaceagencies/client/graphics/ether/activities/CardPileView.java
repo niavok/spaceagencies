@@ -24,6 +24,7 @@ public class CardPileView extends ProxyView {
         TextView titleTextView = (TextView) findViewById("titleTextView@layout/card");
         TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
         
+        
         titleTextView.setText(cardPile.peekTop().getTitle());
         descriptionTextView.setText(cardPile.peekTop().getFullDescription());
         

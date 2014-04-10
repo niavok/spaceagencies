@@ -10,6 +10,7 @@ public class V3DKeyEvent extends V3DInputEvent {
     
     static public int KEY_RETURN =  Keyboard.KEY_RETURN;
     static public int KEY_ESCAPE =  Keyboard.KEY_ESCAPE;
+    static public int KEY_SPACE =  Keyboard.KEY_SPACE;
 
     private KeyAction action;
     private final String character;

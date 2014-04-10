@@ -143,9 +143,13 @@ public class InputEngine implements Engine {
         }
         
         while (Keyboard.next()) {
+            Log.log("Keyboard.getEventKeyState() "+ Keyboard.getEventKeyState());
             if(interceptSpecialKeys(time)) {
                 continue;
             }
+            
+            Log.log("Keyboard.getEventKeyState() 2"+ Keyboard.getEventKeyState());
+            
             
             if (Keyboard.getEventKeyState()) {
                 if (Keyboard.getEventCharacter() == 0) {
@@ -177,17 +181,6 @@ public class InputEngine implements Engine {
         if (Keyboard.getEventKeyState()) {
             if(Keyboard.getEventKey() == Keyboard.KEY_F4 && Keyboard.isKeyDown(Keyboard.KEY_LMENU)){
                 notifyQuitEvent();
-                return true;
-            }
-            
-            if(Keyboard.getEventKey() == Keyboard.KEY_SPACE){
-                // TODO : handle ui grab
-                if(Time.isPaused()) {
-                    Time.resumeGame(time.getTime());
-                } else {
-                    Time.pauseGame(time.getTime());
-                }
-                
                 return true;
             }
             

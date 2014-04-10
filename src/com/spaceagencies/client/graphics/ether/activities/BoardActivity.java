@@ -23,10 +23,14 @@ import com.spaceagencies.i3d.view.LinearLayout;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.View;
 import com.spaceagencies.i3d.view.View.OnClickListener;
+import com.spaceagencies.i3d.view.View.OnKeyEventListener;
 import com.spaceagencies.server.GameServer;
 import com.spaceagencies.server.Time.Timestamp;
 import com.spaceagencies.server.engine.game.GameEngine;
 import com.spaceagencies.server.engine.game.GameEngineObserver;
+
+import fr.def.iss.vd2.lib_v3d.V3DKeyEvent;
+import fr.def.iss.vd2.lib_v3d.V3DKeyEvent.KeyAction;
 
 public class BoardActivity extends Activity {
 
@@ -92,6 +96,29 @@ public class BoardActivity extends Activity {
                     default:
                         break;
                 }
+            }
+        });
+        
+        turnPhaseButton.setOnKeyListener(new OnKeyEventListener() {
+            
+            @Override
+            public boolean onKeyEvent(V3DKeyEvent keyEvent) {
+                if(keyEvent.getAction() == KeyAction.KEY_PRESSED && keyEvent.getKeyCode() == V3DKeyEvent.KEY_SPACE) {
+                    switch (mTurn.getTurnState()) {
+                        case ACTION_PHASE:
+                            mGameEngine.skipActions(mTurn);
+                            break;
+                        case BUY_PHASE:
+                            mGameEngine.endTurn(mTurn);                        
+                            break;
+                        case WAITING_BEGIN:
+                        case END_PHASE:
+                        case PROCESSING_ACTION:
+                        default:
+                            break;
+                    }
+                }
+                return false;
             }
         });
         
