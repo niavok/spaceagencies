@@ -103,11 +103,12 @@
 	        i3d:layout_marginBottom="5px"
 	        i3d:font="title-bold@fonts"
 	         />
-<!-- 	         <LinearLayout -->
-<!-- 	         i3d:orientation="horizontal" -->
-<!-- 	         i3d:layout_width="wrap_content" -->
-<!-- 	         i3d:layout_marginRight="20px" -->
-<!-- 				i3d:layout_height="wrap_content"> -->
+	         <LinearLayout
+	         i3d:id="dynamicButtonsZone"
+	         i3d:orientation="horizontal"
+	         i3d:layout_width="wrap_content"
+	         i3d:layout_marginRight="20px"
+				i3d:layout_height="wrap_content">
 <!-- 				<Button -->
 <!-- 		                i3d:id="keepButton" -->
 <!-- 		                i3d:style="bigButton@styles" -->
@@ -132,7 +133,7 @@
 <!-- 		                i3d:text="Discard" -->
 <!-- 		                i3d:help="newGameButtonHelp@help/mainmenu" -->
 <!-- 		                 /> -->
-<!-- 				</LinearLayout> -->
+				</LinearLayout>
 	 			
 	 		</LinearLayout>
 	</LinearLayout>

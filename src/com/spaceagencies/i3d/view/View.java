@@ -403,6 +403,7 @@ public abstract class View {
     
     public void setIdleStyle(Style style) {
         idleStyle = style;
+        idleStyle.apply(this);
     }
     
     public Style getIdleStyle() {

@@ -2,15 +2,19 @@ package com.spaceagencies.client.graphics.ether.activities;
 
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import com.spaceagencies.client.LoginManager;
 import com.spaceagencies.common.game.Card;
 import com.spaceagencies.common.game.Card.Type;
 import com.spaceagencies.common.game.CardPile;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
+import com.spaceagencies.common.game.TurnHelper;
 import com.spaceagencies.common.game.Turn.TurnState;
 import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.i3d.Bundle;
+import com.spaceagencies.i3d.I3dRessourceManager;
 import com.spaceagencies.i3d.Intent;
 import com.spaceagencies.i3d.Measure;
 import com.spaceagencies.i3d.Message;
@@ -51,6 +55,7 @@ public class BoardActivity extends Activity {
     private TextView todoTextView;
     private LinearLayout playedCardsLinearLayout;
     private LinearLayout mainSupplyLinearLayout;
+    private LinearLayout dynamicButtonsZone;
 
     private static final int UPDATE_UI_WHAT = 1;
     
@@ -78,7 +83,7 @@ public class BoardActivity extends Activity {
         detailZone = (LinearLayout) findViewById("detailZone@layout/board");
         
         turnPhaseButton = (Button) findViewById("turnPhaseButton@layout/turn_zone");
-        
+        dynamicButtonsZone = (LinearLayout) findViewById("dynamicButtonsZone@layout/turn_zone");
         
         turnPhaseButton.setOnClickListener(new OnClickListener() {
             
@@ -268,11 +273,13 @@ public class BoardActivity extends Activity {
             
         }
         
+        dynamicButtonsZone.removeAllView();
+        turnPhaseButton.setVisible(false);
+        
         TurnState turnState = mTurn.getTurnState();
         switch (turnState) {
             case WAITING_BEGIN:
                 todoTextView.setText("Wait for turn begining");
-                turnPhaseButton.setVisible(false);
                 break;
             case ACTION_PHASE:
                 todoTextView.setText("Make actions");
@@ -280,33 +287,65 @@ public class BoardActivity extends Activity {
                 turnPhaseButton.setVisible(true);
                 break;
             case BUY_PHASE:
-                todoTextView.setText("Buy some card");
-                turnPhaseButton.setText("End turn");
-                turnPhaseButton.setVisible(true);
+                {
+                    todoTextView.setText("Buy some card");
+                    turnPhaseButton.setText("End turn");
+                    turnPhaseButton.setVisible(true);
+                    Button button = new Button();
+                    button.setIdleStyle(I3dRessourceManager.getInstance().loadStyle("bigButton@styles"));
+                    
+                    button.setText("Play all ressources (A)");
+                    dynamicButtonsZone.addViewInLayout(button);
+                    if(TurnHelper.hasMoneyInHand(mTurn)) {
+                        button.setEnabled(true);
+                    } else {
+                        button.setEnabled(false);
+                    }
+                    
+                    button.setOnClickListener(new OnClickListener() {
+                        
+                        @Override
+                        public void onClick(I3dMouseEvent mouseEvent, View view) {
+                            playAllRessourceCard();
+                        }
+                    });
+                    
+                    button.setOnKeyListener(new OnKeyEventListener() {
+                        
+                        @Override
+                        public boolean onKeyEvent(V3DKeyEvent keyEvent) {
+                            if(keyEvent.getAction() == KeyAction.KEY_PRESSED && keyEvent.getKeyCode() == Keyboard.KEY_A) {
+                                playAllRessourceCard();
+                            }
+                            return false;
+                        }
+                    });
+                    
+                    
+                }
                 break;
             case END_PHASE:
                 todoTextView.setText("Ending turn ...");
-                turnPhaseButton.setVisible(false);
                 break;
             case PROCESSING_ACTION:
                 todoTextView.setText("!!TODO !!");
-                turnPhaseButton.setVisible(false);
                 break;
                 
             default:
                 break;
         }
+    }
+    
+    private void playAllRessourceCard() {
         
-        
-        
-        
-//        <View
-//        i3d:id="card"
-//        i3d:layout_marginLeft="5px"
-//        i3d:layout_marginRight="5px"
-//        i3d:ref="main@layout/card" />
-//       
-        
+        while(TurnHelper.hasMoneyInHand(mTurn)) {
+            for(Card card : mTurn.getHand().getCards()) {
+                if(TurnHelper.isMoneyCard(card)) {
+                    mGameEngine.playRessourceCard(mTurn, card);
+                    break;
+                }
+            }
+        }
     }
 
     

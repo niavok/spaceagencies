@@ -1202,7 +1202,7 @@ public class I3dRessourceManager {
         return font;
     }
 
-    Style loadStyle(String styleId) {
+    public Style loadStyle(String styleId) {
 
         if (styleId == null || styleId.isEmpty()) {
             return new Style();

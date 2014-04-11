@@ -86,14 +86,6 @@ public class LinearLayout extends ViewGroup {
         if(mLayoutParams.getLayoutHeightMeasure() != LayoutMeasure.FIXED || mLayoutParams.getMeasurePoint().getY().isRelative()) {
             mLayoutParams.mMeasuredContentHeight = measuredHeight;
         }
-        
-        if(mLayoutParams.getLayoutWidthMeasure() == LayoutMeasure.FIXED && !mLayoutParams.getMeasurePoint().getX().isRelative()) {
-            mLayoutParams.mMeasuredContentWidth = mLayoutParams.computeMesure(mLayoutParams.getMeasurePoint().getX());
-        }
-        
-        if(mLayoutParams.getLayoutHeightMeasure() == LayoutMeasure.FIXED && !mLayoutParams.getMeasurePoint().getY().isRelative()) {
-            mLayoutParams.mMeasuredContentHeight = mLayoutParams.computeMesure(mLayoutParams.getMeasurePoint().getY());
-        }
     }
     
     @Override
