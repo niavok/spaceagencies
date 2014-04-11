@@ -9,6 +9,11 @@
     i3d:layout_marginRight="10px"
     i3d:orientation="vertical" >
 
+	<TextView
+		i3d:id="missionsTextView"
+        i3d:text="Left missions : ??"
+        i3d:layout_marginBottom="5px" />
+
 	<LinearLayout
 	i3d:id="objectiveAndGold"
 	i3d:layout_width="match_parent"
@@ -18,7 +23,7 @@
 	>
 	
 		<LinearLayout
-		i3d:id="objectiveZone"
+		i3d:id="missionZoneLinearLayout"
 		i3d:layout_width="100%"
 		i3d:layout_height="match_parent"
 		i3d:orientation="horizontal"

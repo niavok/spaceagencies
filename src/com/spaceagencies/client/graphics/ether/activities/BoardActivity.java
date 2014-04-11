@@ -56,6 +56,8 @@ public class BoardActivity extends Activity {
     private LinearLayout playedCardsLinearLayout;
     private LinearLayout mainSupplyLinearLayout;
     private LinearLayout dynamicButtonsZone;
+    private TextView missionsTextView;
+    private LinearLayout missionZoneLinearLayout;
 
     private static final int UPDATE_UI_WHAT = 1;
     
@@ -79,6 +81,9 @@ public class BoardActivity extends Activity {
         handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
         playedCardsLinearLayout = (LinearLayout) findViewById("playedCardsLinearLayout@layout/played_cards_zone");
         mainSupplyLinearLayout = (LinearLayout) findViewById("mainSupplyLinearLayout@layout/supply_zone");
+        
+        missionZoneLinearLayout = (LinearLayout) findViewById("missionZoneLinearLayout@layout/supply_zone");
+        missionsTextView = (TextView) findViewById("missionsTextView@layout/supply_zone");
         
         detailZone = (LinearLayout) findViewById("detailZone@layout/board");
         
@@ -334,6 +339,42 @@ public class BoardActivity extends Activity {
             default:
                 break;
         }
+        
+        //Mission
+        int missionPileSize = mGameEngine.getGame().getMissions().getNbCards();
+        missionsTextView.setText("Missions: "+missionPileSize+ " card"+(missionPileSize > 1 ? "s" : ""));
+        
+        missionZoneLinearLayout.removeAllView();
+        
+        int index = mPlayer.getWorld().getVisibleMissions().getNbCards();
+        
+        for(final Card card : mPlayer.getWorld().getVisibleMissions().getCards()) {
+            CardView cardView = new CardView(card, cardSelectionManager);
+            cardView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
+            cardView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
+            missionZoneLinearLayout.addViewInLayout(cardView);
+            
+            // 3 mission card to buy
+            if(index <=3) {
+                cardView.setOnClickListener(new OnClickListener() {
+                    
+                    @Override
+                    public void onClick(I3dMouseEvent mouseEvent, View view) {
+                        Log.log("Click count "+ mouseEvent.getClickCount());
+                        if(mouseEvent.getClickCount() % 2 == 0) {
+                            if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
+                                mGameEngine.buyMissionCard(mTurn, card);
+                            }
+                        }
+                    }
+                });
+            }
+            
+            index--;
+            
+        }
+        
+        
     }
     
     private void playAllRessourceCard() {

@@ -10,6 +10,10 @@ public class Game {
     
     private final List<CardPile> supply = new ArrayList<CardPile>();
     
+    private final CardPile missions = new NormalCardPile();
+    
+    private final CardPile visibleMissions = new NormalCardPile();
+    
     private final Map<Long, Player> playerIdMap = new HashMap<Long, Player>();
     
     public void addPlayer(Player player) {
@@ -19,5 +23,13 @@ public class Game {
     
     public List<CardPile> getSupply() {
         return supply;
+    }
+    
+    public CardPile getVisibleMissions() {
+        return visibleMissions;
+    }
+    
+    public CardPile getMissions() {
+        return missions;
     }
 }

@@ -1,5 +1,6 @@
 package com.spaceagencies.common.game;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class InfinitCardPile implements CardPile {
@@ -70,6 +71,11 @@ public class InfinitCardPile implements CardPile {
 
     public interface CardFactory {
         Card createCard();
+    }
+
+    @Override
+    public void sort(Comparator<Card> comparator) {
+       throw new RuntimeException("Sort on infinite card pile  will be quick ... or long !");
     }
     
 }

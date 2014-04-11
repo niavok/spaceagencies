@@ -32,7 +32,9 @@ public class CardView extends ProxyView {
             @Override
             public void onClick(I3dMouseEvent mouseEvent, View view) {
                 selectionManager.select(mCard);
-                localClickListener.onClick(mouseEvent, view);
+                if(localClickListener!= null) {
+                    localClickListener.onClick(mouseEvent, view);
+                }
             }
         });
         

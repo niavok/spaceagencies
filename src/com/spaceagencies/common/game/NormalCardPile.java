@@ -1,6 +1,7 @@
 package com.spaceagencies.common.game;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -84,4 +85,8 @@ public class NormalCardPile implements CardPile {
         cards.remove(card);
     }
 
+    @Override
+    public void sort(Comparator<Card> comparator) {
+        Collections.sort(cards, comparator);
+    }
 }

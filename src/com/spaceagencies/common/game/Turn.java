@@ -7,7 +7,8 @@ public class Turn {
     private int moneyCount = 0;
     private CardPile mHand = new NormalCardPile();
     private CardPile mPlayedCards = new NormalCardPile();
-    private TurnState mTurnState; 
+    private TurnState mTurnState;
+    private Game mGame; 
     
     public enum TurnState {
         WAITING_BEGIN,
@@ -17,8 +18,9 @@ public class Turn {
         END_PHASE,
     }
     
-    public Turn(Player player, CardPile deck) {
+    public Turn(Game game, Player player, CardPile deck) {
         super();
+        mGame = game;
         this.player = player;
         mTurnState = TurnState.WAITING_BEGIN;
         
@@ -127,6 +129,13 @@ public class Turn {
     public void doBuyCard(CardPile cardPile) {
         
         Card card = cardPile.takeTop();
+        moneyCount -= card.getCost();
+        buyCount -= 1;
+        player.getDiscardPile().addTop(card);
+    }
+
+    public void doBuyMisionCard(Card card) {
+        mGame.getVisibleMissions().remove(card);
         moneyCount -= card.getCost();
         buyCount -= 1;
         player.getDiscardPile().addTop(card);

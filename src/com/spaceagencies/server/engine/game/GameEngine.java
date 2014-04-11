@@ -1,5 +1,7 @@
 package com.spaceagencies.server.engine.game;
 
+import java.util.Comparator;
+
 import com.spaceagencies.common.engine.Engine;
 import com.spaceagencies.common.engine.Observable;
 import com.spaceagencies.common.game.Card;
@@ -29,12 +31,15 @@ public class GameEngine implements Engine {
     @Override
     public void init() {
         
-        //Add Domaine pile
-        CardPile domainePile = new NormalCardPile();
-        for(int i = 0; i < 12 ; i++) {
-            domainePile.addTop(Card.getTestCardDomaine());
+        // Init mission
+        for(int i = 1; i < 51 ; i++) {
+            mGame.getMissions().addTop(Card.getTestRandomMissionCard(i));
         }
-        mGame.getSupply().add(domainePile);
+        mGame.getMissions().shuffle();
+        
+        refillObjectives();
+        
+        
         
         
         // Add Cuivre pile
@@ -89,6 +94,25 @@ public class GameEngine implements Engine {
         mGame.getSupply().add(forgeronPile);
         
     }
+
+    private void refillObjectives() {
+        
+        while(mGame.getMissions().getNbCards() != 0 && mGame.getVisibleMissions().getNbCards() < 6) {
+            Card card = mGame.getMissions().takeTop();
+            mGame.getVisibleMissions().addBottom(card);
+        }
+        
+        mGame.getVisibleMissions().sort(new Comparator<Card>() {
+
+            @Override
+            public int compare(Card o1, Card o2) {
+                
+                return o2.getDate() - o1.getDate();
+        }});
+        
+        
+    }
+
 
     @Override
     public void start() {
@@ -151,7 +175,7 @@ public class GameEngine implements Engine {
 
 
     private void newTurn(Player player) {
-        Turn turn = new Turn(player, player.getDeck());
+        Turn turn = new Turn(mGame, player, player.getDeck());
         player.setTurn(turn);
         
         notifySomethingChanged();
@@ -252,11 +276,6 @@ public class GameEngine implements Engine {
             return;
         }
         
-        if(cardPile.getNbCards() == 0) {
-            Log.warn("Try to buy card in an empty pile" );
-            return;
-        }
-        
         if(cardPile.peekTop().getCost() > turn.getMoneyCount()) {
             Log.warn("Try to buy a too expensive card" );
             return;
@@ -268,6 +287,39 @@ public class GameEngine implements Engine {
         
         notifySomethingChanged();
     }
+    
+    
+    public Game getGame() {
+        return mGame;
+    }
+
+
+    public void buyMissionCard(Turn turn, Card card) {
+        if(turn.getTurnState() != TurnState.BUY_PHASE) {
+            Log.warn("Try to buy mission card in "+ turn.getTurnState() + " state" );
+            return;
+        }
+        
+        if(card.getCost() > turn.getMoneyCount()) {
+            Log.warn("Try to buy a too expensive card" );
+            return;
+        }
+        
+        turn.doBuyMisionCard(card);
+        
+        //Remove higther mission
+        Card bottom = mGame.getVisibleMissions().takeTop();
+        mGame.getMissions().addBottom(bottom);
+        
+        refillObjectives();
+        
+        checkAutoSkip(turn);
+        
+        notifySomethingChanged();
+    }
+
+
+    
     
  // Observers
     private Observable<GameEngineObserver> mWorldEngineObservable = new Observable<GameEngineObserver>();
@@ -287,6 +339,4 @@ public class GameEngine implements Engine {
             observer.onSomeThingChanged();
         }
     }
-
-
 }

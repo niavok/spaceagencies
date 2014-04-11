@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -58,7 +59,9 @@ public class Card {
 
     @XmlAnyElement
     protected List<CardFeature> features = new ArrayList<CardFeature>();
-    
+
+    @XmlAttribute
+    private int date;
     
     public Card() {
         super();
@@ -80,6 +83,7 @@ public class Card {
         this.type = type;
         this.cost = cost;
         this.victoryPoints = victoryPoints;
+        this.date = 0;
     }
 
     public final int getVictoryPoints() {
@@ -112,6 +116,10 @@ public class Card {
 
     public final int getCost() {
         return cost;
+    }
+    
+    public int getDate() {
+        return date;
     }
     
     @SuppressWarnings("unchecked")
@@ -190,6 +198,19 @@ public class Card {
         return c;
     }
     
+    private static Random random = new Random(42);
+    
+    public static Card getTestRandomMissionCard(int i) {
+        
+        int victory = random.nextInt(6)+1;
+        int cost =  (int) (victory * 1.5 + ((double) i  * (random.nextDouble() + 0.5) * 5 / 50 ));
+        
+        Card c = new Card("Mission "+i, "shortDescription2", "longdescription2", "filename2", "action2", Type.MISSIONS.getFlag(), cost, victory);
+        c.date = i;
+        return c;
+    }
+    
+    
     public String getFullDescription() {
         StringBuilder fullDescription = new StringBuilder();
         
@@ -220,6 +241,4 @@ public class Card {
         
         return fullDescription.toString();
     }
-    
-    
 }

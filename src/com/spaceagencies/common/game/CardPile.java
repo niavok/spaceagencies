@@ -1,5 +1,6 @@
 package com.spaceagencies.common.game;
 
+import java.util.Comparator;
 import java.util.List;
 
 public interface CardPile {
@@ -25,5 +26,7 @@ public interface CardPile {
     public abstract List<Card> getCards();
 
     public abstract void remove(Card card);
+
+    public abstract void sort(Comparator<Card> comparator);
 
 }
