@@ -8,13 +8,13 @@ import com.spaceagencies.i3d.Bundle;
 import com.spaceagencies.i3d.Intent;
 import com.spaceagencies.i3d.Message;
 import com.spaceagencies.i3d.view.Activity;
-import com.spaceagencies.server.engine.game.GameEngine;
+import com.spaceagencies.server.engine.game.ServerGameEngine;
 import com.spaceagencies.server.engine.game.GameEngineObserver;
 import com.spaceagencies.server.game.MetaGame;
 
 public class NewGameActivity extends Activity {
 
-    private GameEngine worldEngine = null;
+    private ServerGameEngine worldEngine = null;
     
     private static final int NEW_GAME_CREATED_WHAT = 1;
     private EngineManager engineManager;
@@ -32,7 +32,7 @@ public class NewGameActivity extends Activity {
         
         game.load();
         
-        worldEngine = new GameEngine(game.getGame());
+        worldEngine = new ServerGameEngine(game.getGame());
         engineManager.add(worldEngine);
         worldEngine.start();
         
@@ -71,7 +71,7 @@ public class NewGameActivity extends Activity {
     protected void onMessage(Message message) {
         switch(message.what) {
             case NEW_GAME_CREATED_WHAT:
-                startActivity(new Intent(BoardActivity.class));
+                startActivity(new Intent(LobbyActivity.class));
                 break;
         }
     }

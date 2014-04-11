@@ -18,11 +18,11 @@ import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.server.GameServer;
 import com.spaceagencies.server.Time.Timestamp;
 
-public class GameEngine implements Engine {
+public class ServerGameEngine implements Engine {
 
     private Game mGame;
 
-    public GameEngine(Game game) {
+    public ServerGameEngine(Game game) {
         this.mGame = game;
         GameServer.setWorldEngine(this);
     }

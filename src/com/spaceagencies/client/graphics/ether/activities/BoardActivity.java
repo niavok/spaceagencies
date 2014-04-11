@@ -31,7 +31,7 @@ import com.spaceagencies.i3d.view.View.OnClickListener;
 import com.spaceagencies.i3d.view.View.OnKeyEventListener;
 import com.spaceagencies.server.GameServer;
 import com.spaceagencies.server.Time.Timestamp;
-import com.spaceagencies.server.engine.game.GameEngine;
+import com.spaceagencies.server.engine.game.ServerGameEngine;
 import com.spaceagencies.server.engine.game.GameEngineObserver;
 
 import fr.def.iss.vd2.lib_v3d.V3DKeyEvent;
@@ -51,7 +51,7 @@ public class BoardActivity extends Activity {
     private SelectionManager<Card> cardSelectionManager;
     private LinearLayout detailZone;
     private Button turnPhaseButton;
-    private GameEngine mGameEngine;
+    private ServerGameEngine mGameEngine;
     private TextView todoTextView;
     private LinearLayout playedCardsLinearLayout;
     private LinearLayout mainSupplyLinearLayout;

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.spaceagencies.common.engine.Engine;
 import com.spaceagencies.common.game.Player;
-import com.spaceagencies.server.engine.game.GameEngine;
+import com.spaceagencies.server.engine.game.ServerGameEngine;
 
 public class GameServer {
     /*
@@ -33,7 +33,7 @@ public class GameServer {
 
 //    private PhysicEngine physicEngine;
 
-    private static GameEngine worldEngine;
+    private static ServerGameEngine worldEngine;
 
     public static synchronized long pickNewId() {
         return nextId++;
@@ -177,11 +177,11 @@ public class GameServer {
 //        
 //    }
 
-    public static void setWorldEngine(GameEngine worldEngine) {
+    public static void setWorldEngine(ServerGameEngine worldEngine) {
         GameServer.worldEngine = worldEngine;
     }
 
-    public static GameEngine getGameEngine() {
+    public static ServerGameEngine getGameEngine() {
         return worldEngine;
     }
     

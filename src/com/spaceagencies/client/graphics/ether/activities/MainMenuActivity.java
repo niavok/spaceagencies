@@ -21,8 +21,8 @@ public class MainMenuActivity extends Activity {
     //private Triangle mobileLogoPart;
     private Measure animationMesure;
     private Time startTime;
-    private Button newGameMenu;
-    private Button continueGameButton;
+    private Button createGameMenu;
+    private Button joinGameButton;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -31,10 +31,10 @@ public class MainMenuActivity extends Activity {
       //  mobileLogoPart = (Triangle) findViewById("logoRedPart@layout/logo");
         animationMesure = new Measure(0, true, Axis.VERTICAL);
 
-        newGameMenu = (Button) findViewById("newGameButton@layout/mainmenu");
-        continueGameButton = (Button) findViewById("continueGameButton@layout/mainmenu");
+        createGameMenu = (Button) findViewById("createGameButton@layout/mainmenu");
+        joinGameButton = (Button) findViewById("joinGameButton@layout/mainmenu");
         
-        newGameMenu.setOnClickListener(new OnClickListener() {
+        createGameMenu.setOnClickListener(new OnClickListener() {
             
             @Override
             public void onClick(I3dMouseEvent mouseEvent, View view) {
@@ -42,11 +42,11 @@ public class MainMenuActivity extends Activity {
             }
         });
         
-        continueGameButton.setOnClickListener(new OnClickListener() {
+        joinGameButton.setOnClickListener(new OnClickListener() {
             
             @Override
             public void onClick(I3dMouseEvent mouseEvent, View view) {
-                startActivity(new Intent(ContinueGameActivity.class));
+                startActivity(new Intent(JoinGameActivity.class));
             }
         });
         
@@ -72,12 +72,6 @@ public class MainMenuActivity extends Activity {
     @Override
     protected void onUpdate(Timestamp time) {
         
-        MetaGame activeGame = GameClient.getInstance().getGameManager().getPreviousGame();
-        if(activeGame == null) {
-            continueGameButton.setEnabled(false);
-        } else {
-            continueGameButton.setEnabled(true);
-        }
     }
 
 }
