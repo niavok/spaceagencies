@@ -54,10 +54,11 @@ public class BoardActivity extends Activity {
     private GameEngine mGameEngine;
     private TextView todoTextView;
     private LinearLayout playedCardsLinearLayout;
-    private LinearLayout mainSupplyLinearLayout;
     private LinearLayout dynamicButtonsZone;
     private TextView missionsTextView;
     private LinearLayout missionZoneLinearLayout;
+    private LinearLayout firstLineLinearLayout;
+    private LinearLayout secondLineLinearLayout;
 
     private static final int UPDATE_UI_WHAT = 1;
     
@@ -80,10 +81,12 @@ public class BoardActivity extends Activity {
         
         handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
         playedCardsLinearLayout = (LinearLayout) findViewById("playedCardsLinearLayout@layout/played_cards_zone");
-        mainSupplyLinearLayout = (LinearLayout) findViewById("mainSupplyLinearLayout@layout/supply_zone");
+        firstLineLinearLayout = (LinearLayout) findViewById("firstLineLinearLayout@layout/supply_zone");
+        secondLineLinearLayout = (LinearLayout) findViewById("secondLineLinearLayout@layout/supply_zone");
         
-        missionZoneLinearLayout = (LinearLayout) findViewById("missionZoneLinearLayout@layout/supply_zone");
-        missionsTextView = (TextView) findViewById("missionsTextView@layout/supply_zone");
+        
+        missionZoneLinearLayout = (LinearLayout) findViewById("missionZoneLinearLayout@layout/objective_zone");
+        missionsTextView = (TextView) findViewById("missionsTextView@layout/objective_zone");
         
         detailZone = (LinearLayout) findViewById("detailZone@layout/board");
         
@@ -253,14 +256,20 @@ public class BoardActivity extends Activity {
         }
         
         // Supply
-        mainSupplyLinearLayout.removeAllView();
+        firstLineLinearLayout.removeAllView();
+        secondLineLinearLayout.removeAllView();
         
+        int i = 0;
         for(final CardPile cardPile : mPlayer.getWorld().getSupply()) {
             if(cardPile.getNbCards() > 0) {
                 CardPileView cardPileView = new CardPileView(cardPile, cardSelectionManager);
                 cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
                 cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
-                mainSupplyLinearLayout.addViewInLayout(cardPileView);
+                if(i %2 == 0) {
+                    firstLineLinearLayout.addViewInLayout(cardPileView);
+                } else {
+                    secondLineLinearLayout.addViewInLayout(cardPileView);
+                }
                 
                 cardPileView.setOnClickListener(new OnClickListener() {
                     
@@ -275,6 +284,7 @@ public class BoardActivity extends Activity {
                     }
                 });
             }
+            i++;
             
         }
         

@@ -124,6 +124,7 @@ public class I3dRessourceManager {
         } catch (SAXException e) {
             throw new RessourceLoadingException("Failed to parse file '" + fileId, e);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new RessourceLoadingException("Failed to load file '" + fileId, e);
         }
 
