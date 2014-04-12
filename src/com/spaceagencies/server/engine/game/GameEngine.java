@@ -1,6 +1,8 @@
 package com.spaceagencies.server.engine.game;
 
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 import com.spaceagencies.common.engine.Engine;
 import com.spaceagencies.common.engine.Observable;
@@ -30,21 +32,8 @@ public class GameEngine implements Engine {
     
     @Override
     public void init() {
-        
-        // Init mission
-        for(int i = 1; i < 51 ; i++) {
-            mGame.getMissions().addTop(Card.getTestRandomMissionCard(i));
-        }
-        mGame.getMissions().shuffle();
-        
-        refillObjectives();
-        
-        
-        
-        
         // Add Cuivre pile
-        InfinitCardPile cuivrePile = new InfinitCardPile(new CardFactory() {
-            
+        InfinitCardPile cuivrePile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
             @Override
             public Card createCard() {
                 return Card.getTestCardCuivre();
@@ -53,8 +42,7 @@ public class GameEngine implements Engine {
         mGame.getSupply().add(cuivrePile);
 
         // Add Argent pile
-        InfinitCardPile argentPile = new InfinitCardPile(new CardFactory() {
-            
+        InfinitCardPile argentPile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
             @Override
             public Card createCard() {
                 return Card.getTestCardArgent();
@@ -63,8 +51,7 @@ public class GameEngine implements Engine {
         mGame.getSupply().add(argentPile);
         
         // Add Or pile
-        InfinitCardPile orPile = new InfinitCardPile(new CardFactory() {
-            
+        InfinitCardPile orPile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
             @Override
             public Card createCard() {
                 return Card.getTestCardOr();
@@ -72,27 +59,26 @@ public class GameEngine implements Engine {
         });
         mGame.getSupply().add(orPile);
         
-        // Add village pile
-        CardPile villagePile = new NormalCardPile();
-        for(int i = 0; i < 12 ; i++) {
-            villagePile.addTop(Card.getTestCardVillage());
+        List<Card> cards = Card.loadCards();
+        Collections.shuffle(cards);
+        int count = 0;
+        for (Card card : cards) {
+            if ((card.getType() & Card.Type.MISSIONS.getFlag()) == 0) {
+                if (count <= 10) {
+                    CardPile pile = new NormalCardPile(mGame, GameServer.pickNewId());
+                    for(int i = 0; i < 10 ; i++) {
+                        pile.addTop(card.duplicate());
+                    }
+                    mGame.getSupply().add(pile);
+                    count += 1;
+                }
+            } else {
+                mGame.getMissions().addTop(card.duplicate());
+            }
         }
-        mGame.getSupply().add(villagePile);
         
-        // Add bucheron pile
-        CardPile bucheronPile = new NormalCardPile();
-        for(int i = 0; i < 12 ; i++) {
-            bucheronPile.addTop(Card.getTestCardBucheron());
-        }
-        mGame.getSupply().add(bucheronPile);
-        
-        // Add forgeron pile
-        CardPile forgeronPile = new NormalCardPile();
-        for(int i = 0; i < 12 ; i++) {
-            forgeronPile.addTop(Card.getTestCardForgeron());
-        }
-        mGame.getSupply().add(forgeronPile);
-        
+        mGame.getMissions().shuffle();
+        refillObjectives();
     }
 
     private void refillObjectives() {
@@ -175,7 +161,7 @@ public class GameEngine implements Engine {
 
 
     private void newTurn(Player player) {
-        Turn turn = new Turn(mGame, player, player.getDeck());
+        Turn turn = new Turn(mGame, GameServer.pickNewId(), player, player.getDeck());
         player.setTurn(turn);
         
         notifySomethingChanged();

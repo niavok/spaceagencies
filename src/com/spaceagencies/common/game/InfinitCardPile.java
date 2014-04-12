@@ -3,12 +3,14 @@ package com.spaceagencies.common.game;
 import java.util.Comparator;
 import java.util.List;
 
-public class InfinitCardPile implements CardPile {
+public class InfinitCardPile extends GameEntity implements CardPile {
     
+    private static final long serialVersionUID = 5305119804635272517L;
     private Card card;
     private CardFactory mCardFactory;
 
-    public InfinitCardPile(CardFactory cardFactory) {
+    public InfinitCardPile(Game game, long id, CardFactory cardFactory) {
+    	super(game, id);
         mCardFactory = cardFactory;
         this.card = cardFactory.createCard();
     }
@@ -77,5 +79,6 @@ public class InfinitCardPile implements CardPile {
     public void sort(Comparator<Card> comparator) {
        throw new RuntimeException("Sort on infinite card pile  will be quick ... or long !");
     }
+
     
 }

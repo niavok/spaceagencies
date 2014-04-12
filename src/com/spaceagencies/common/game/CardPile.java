@@ -29,4 +29,6 @@ public interface CardPile {
 
     public abstract void sort(Comparator<Card> comparator);
 
+	public abstract long getId();
+
 }

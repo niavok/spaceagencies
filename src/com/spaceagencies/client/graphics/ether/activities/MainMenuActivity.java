@@ -46,7 +46,7 @@ public class MainMenuActivity extends Activity {
             
             @Override
             public void onClick(I3dMouseEvent mouseEvent, View view) {
-                startActivity(new Intent(ContinueGameActivity.class));
+                //startActivity(new Intent(ContinueGameActivity.class));
             }
         });
         

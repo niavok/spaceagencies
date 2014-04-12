@@ -1,7 +1,10 @@
 package com.spaceagencies.common.game;
 
+import java.io.Serializable;
 
-public class GameEntity {
+
+public class GameEntity implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private final long mId;
     private final Game mGame;
 	
