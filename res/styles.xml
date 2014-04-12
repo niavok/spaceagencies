@@ -99,32 +99,32 @@
     </style>
     
     <style name="cardShape">
-        <item name="i3d:layout_width">150px</item>
-        <item name="i3d:layout_height">130px</item>
-        <item name="i3d:borderSize">4px</item>
-        <item name="i3d:background">cardShapeBackground@backgrounds</item>
-        <item name="i3d:borderColor">cardShapeBorder@color</item>
+        <item name="i3d:layout_width">160px</item>
+        <item name="i3d:layout_height">140px</item>
+<!--         <item name="i3d:borderSize">4px</item> -->
+<!--         <item name="i3d:background">cardShapeBackground@backgrounds</item> -->
+<!--         <item name="i3d:borderColor">cardShapeBorder@color</item> -->
     </style>
     
     <style name="cardBase" parent="cardShape@styles">
-        <item name="i3d:borderSize">6px</item>
-        <item name="i3d:cornerLeftTopStyle">bevel</item>
-        <item name="i3d:cornerRightTopStyle">bevel</item>
-        <item name="i3d:cornerLeftBottomStyle">bevel</item>
-        <item name="i3d:cornerRightBottomStyle">bevel</item>
-        <item name="i3d:cornerLeftTopSize">6px</item>
-        <item name="i3d:cornerRightTopSize">6px</item>
-        <item name="i3d:cornerLeftBottomSize">6px</item>
-        <item name="i3d:cornerRightBottomSize">6px</item>
-        <item name="i3d:borderColor">cardBaseBorder@color</item>
+<!--         <item name="i3d:borderSize">6px</item> -->
+<!--         <item name="i3d:cornerLeftTopStyle">bevel</item> -->
+<!--         <item name="i3d:cornerRightTopStyle">bevel</item> -->
+<!--         <item name="i3d:cornerLeftBottomStyle">bevel</item> -->
+<!--         <item name="i3d:cornerRightBottomStyle">bevel</item> -->
+<!--         <item name="i3d:cornerLeftTopSize">6px</item> -->
+<!--         <item name="i3d:cornerRightTopSize">6px</item> -->
+<!--         <item name="i3d:cornerLeftBottomSize">6px</item> -->
+<!--         <item name="i3d:cornerRightBottomSize">6px</item> -->
+<!--         <item name="i3d:borderColor">cardBaseBorder@color</item> -->
     </style>
     
     <style name="cardFront" parent="cardBase@styles">
-    	<item name="i3d:background">cardFrontBackground@backgrounds</item>
+<!--     	<item name="i3d:background">cardFrontBackground@backgrounds</item> -->
     	<item state="selected" name="i3d:borderColor">selection@color</item>
     </style>
     <style name="cardBack" parent="cardBase@styles">
-    	<item name="i3d:background">cardBackBackground@backgrounds</item>
+<!--     	<item name="i3d:background">cardBackBackground@backgrounds</item> -->
     </style>
     
     

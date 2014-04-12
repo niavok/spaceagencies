@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     i3d:id="main"
     i3d:style="bigCardFront@styles"
-    i3d:orientation="vertical"
      >
+
+	<Drawable
+	   	i3d:ref="bigCardBackground@card"
+     	i3d:layout_width="160px"
+        i3d:layout_height="240px"
+	   	 />
+	   	 
+	   	  <Drawable
+         	i3d:layout_width="150px"
+         	i3d:layout_height="94px"
+         	i3d:layout_marginTop="9px"
+         	i3d:layout_marginLeft="5px"
+         	i3d:layout_marginRight="5px"
+         	i3d:ref="saturn5@photos" 
+         	/>
+	   	 
+   	 <Drawable
+	   	i3d:ref="bigCardMissionBorder@card"
+     	i3d:layout_width="165px"
+        i3d:layout_height="245px"
+        i3d:layout_marginTop="-8px"
+        i3d:layout_marginLeft="-9px"
+	   	 />
 
 	  <TextView
 		  i3d:id="titleTextView"
         i3d:text="Saturn V"
-        i3d:layout_marginTop="5px"
+        i3d:layout_marginTop="15px"
         i3d:layout_width = "match_parent"
         i3d:gravity="center"
         i3d:layout_marginBottom="5px"
          />
          
-         <Drawable
-         	i3d:layout_width="150px"
-         	i3d:layout_height="94px"
-         	i3d:layout_marginLeft="5px"
-         	i3d:layout_marginRight="5px"
-         	i3d:ref="saturn5@photos" 
-         	/>
-</LinearLayout>
+        
+</RelativeLayout>
