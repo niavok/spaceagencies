@@ -161,7 +161,7 @@ public class UiEngine implements Engine {
             float fps = (float) frameCount / 5.0f;
             float load = 100* usedDuration.getSeconds() / totalDuration.getSeconds();
             
-            Log.console("fps="+fps+" | load="+load+"%");
+//            Log.console("fps="+fps+" | load="+load+"%");
             
             
             int mb = 1024*1024;
@@ -169,21 +169,21 @@ public class UiEngine implements Engine {
             //Getting the runtime reference from system
             Runtime runtime = Runtime.getRuntime();
              
-            Log.console("##### Heap utilization statistics [MB] #####");
-             
-            //Print used memory
-            Log.console("Used Memory:"
-                + (runtime.totalMemory() - runtime.freeMemory()) / mb);
-     
-            //Print free memory
-            Log.console("Free Memory:"
-                + runtime.freeMemory() / mb);
-             
-            //Print total available memory
-            Log.console("Total Memory:" + runtime.totalMemory() / mb);
-     
-            //Print Maximum available memory
-            Log.console("Max Memory:" + runtime.maxMemory() / mb);
+//            Log.console("##### Heap utilization statistics [MB] #####");
+//             
+//            //Print used memory
+//            Log.console("Used Memory:"
+//                + (runtime.totalMemory() - runtime.freeMemory()) / mb);
+//     
+//            //Print free memory
+//            Log.console("Free Memory:"
+//                + runtime.freeMemory() / mb);
+//             
+//            //Print total available memory
+//            Log.console("Total Memory:" + runtime.totalMemory() / mb);
+//     
+//            //Print Maximum available memory
+//            Log.console("Max Memory:" + runtime.maxMemory() / mb);
             
             usedDuration  = new Duration(0);
             totalDuration  = new Duration(0);
