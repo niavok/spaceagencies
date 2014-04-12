@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="2" date="1915">
+    <title>NACA</title>
+    <shortDescription>Precursor to NASA</shortDescription>
+    <longDescription>Federal agency founded on March 3, 1915, to undertake, promote, and institutionalize aeronautical research.</longDescription>
+    <filename>NACA.bmp</filename>
+    <featureDescription></featureDescription>
+    <victoryPoints>1</victoryPoints>
+<!--     <moreActions count="12"/> -->
+<!--     <moreActions count="13"/> -->
+</card>
