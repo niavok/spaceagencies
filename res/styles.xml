@@ -99,8 +99,8 @@
     </style>
     
     <style name="cardShape">
-        <item name="i3d:layout_width">160px</item>
-        <item name="i3d:layout_height">240px</item>
+        <item name="i3d:layout_width">150px</item>
+        <item name="i3d:layout_height">130px</item>
         <item name="i3d:borderSize">4px</item>
         <item name="i3d:background">cardShapeBackground@backgrounds</item>
         <item name="i3d:borderColor">cardShapeBorder@color</item>
@@ -128,6 +128,10 @@
     </style>
     
     
+    <style name="bigCardFront" parent="cardFront@styles">
+    	<item name="i3d:layout_height">240px</item>
+    </style>
+
     <style name="detailZone" parent="cardBase@styles">
     	<item name="i3d:borderSize">0px</item>
 	    <item name="i3d:background">cardFrontBackground@backgrounds</item>

@@ -22,19 +22,27 @@ public class CardPileView extends ProxyView {
         mCardPile = cardPile;
         
         TextView titleTextView = (TextView) findViewById("titleTextView@layout/card");
-        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
+//        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
         
         
         titleTextView.setText(cardPile.peekTop().getTitle());
-        descriptionTextView.setText(cardPile.peekTop().getFullDescription());
+//        descriptionTextView.setText(cardPile.peekTop().getFullDescription());
         
+        
+        super.setOnMouseListener(new OnMouseEventListener() {
+			
+			@Override
+			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
+				selectionManager.select(mCardPile.peekTop());
+				return false;
+			}
+		});
         
         super.setOnClickListener(new OnClickListener() {
             
             @Override
             public void onClick(I3dMouseEvent mouseEvent, View view) {
-                selectionManager.select(mCardPile.peekTop());
-                if(localClickListener != null) {
+            	if(localClickListener != null) {
                     localClickListener.onClick(mouseEvent, view);
                 }
             }

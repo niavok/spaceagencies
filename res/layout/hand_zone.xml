@@ -30,8 +30,23 @@
 		i3d:id="handLinearLayout"
 		i3d:layout_width="wrap_content"
 		    i3d:layout_height="wrap_content"
+		i3d:orientation="vertical"
+		>
+		
+		<LinearLayout
+		i3d:id="firstLineHandLinearLayout"
+		i3d:layout_width="wrap_content"
+	    i3d:layout_height="wrap_content"
 		i3d:orientation="horizontal"
 		>
+		</LinearLayout>
+		<LinearLayout
+		i3d:id="secondLineHandLinearLayout"
+		i3d:layout_width="wrap_content"
+	    i3d:layout_height="wrap_content"
+		i3d:orientation="horizontal"
+		>
+		</LinearLayout>
 	
 		</LinearLayout>
 	</ScrollView>

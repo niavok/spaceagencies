@@ -1,8 +1,14 @@
 package com.spaceagencies.client.graphics.ether.activities;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.lwjgl.input.Keyboard;
+
+import sun.swing.MenuItemLayoutHelper.ColumnAlignment;
 
 import com.spaceagencies.client.LoginManager;
 import com.spaceagencies.common.game.Card;
@@ -47,7 +53,6 @@ public class BoardActivity extends Activity {
     private TextView turnMoneyCounterTextView;
     private TextView turnActionCounterTextView;
     private TextView turnBuyCounterTextView;
-    private LinearLayout handLinearLayout;
     private SelectionManager<Card> cardSelectionManager;
     private LinearLayout detailZone;
     private Button turnPhaseButton;
@@ -56,9 +61,13 @@ public class BoardActivity extends Activity {
     private LinearLayout playedCardsLinearLayout;
     private LinearLayout dynamicButtonsZone;
     private TextView missionsTextView;
-    private LinearLayout missionZoneLinearLayout;
     private LinearLayout firstLineLinearLayout;
     private LinearLayout secondLineLinearLayout;
+	private LinearLayout firstLineHandLinearLayout;
+	private LinearLayout secondLineHandLinearLayout;
+	private LinearLayout firstColumnLinearLayout;
+	private LinearLayout secondColumnLinearLayout;
+	
 
     private static final int UPDATE_UI_WHAT = 1;
     
@@ -79,14 +88,17 @@ public class BoardActivity extends Activity {
         
         todoTextView = (TextView) findViewById("todoTextView@layout/turn_zone");
         
-        handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
+        firstLineHandLinearLayout = (LinearLayout) findViewById("firstLineHandLinearLayout@layout/hand_zone");
+        secondLineHandLinearLayout = (LinearLayout) findViewById("secondLineHandLinearLayout@layout/hand_zone");
+        
         playedCardsLinearLayout = (LinearLayout) findViewById("playedCardsLinearLayout@layout/played_cards_zone");
         firstLineLinearLayout = (LinearLayout) findViewById("firstLineLinearLayout@layout/supply_zone");
         secondLineLinearLayout = (LinearLayout) findViewById("secondLineLinearLayout@layout/supply_zone");
         
         
-        missionZoneLinearLayout = (LinearLayout) findViewById("missionZoneLinearLayout@layout/objective_zone");
-        missionsTextView = (TextView) findViewById("missionsTextView@layout/objective_zone");
+        firstColumnLinearLayout = (LinearLayout) findViewById("firstColumnLinearLayout@layout/objective_zone");
+        secondColumnLinearLayout = (LinearLayout) findViewById("secondColumnLinearLayout@layout/objective_zone");
+//        missionsTextView = (TextView) findViewById("missionsTextView@layout/objective_zone");
         
         detailZone = (LinearLayout) findViewById("detailZone@layout/board");
         
@@ -220,29 +232,32 @@ public class BoardActivity extends Activity {
         turnBuyCounterTextView.setText("Buy count: "+mTurn.getBuyCount());
         
         //Display hand
-        handLinearLayout.removeAllView();
-        
+        firstLineHandLinearLayout.removeAllView();
+        secondLineHandLinearLayout.removeAllView();
+        int i = 0;
         for(final Card card : mTurn.getHand().getCards()) {
             CardView cardView = new CardView(card, cardSelectionManager);
             cardView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
             cardView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
-            handLinearLayout.addViewInLayout(cardView);
             
+            if(i % 2 == 0) {
+            	firstLineHandLinearLayout.addViewInLayout(cardView);
+            } else {
+            	secondLineHandLinearLayout.addViewInLayout(cardView);
+            }
             cardView.setOnClickListener(new OnClickListener() {
                 
                 @Override
                 public void onClick(I3dMouseEvent mouseEvent, View view) {
                     Log.log("Click count "+ mouseEvent.getClickCount());
-                    if(mouseEvent.getClickCount() % 2 == 0) {
-                        if(mTurn.getTurnState().equals(TurnState.ACTION_PHASE) && (card.getType() & Type.TECHNOLOGIES.getFlag()) != 0) {
-                            mGameEngine.playActionCard(mTurn, card);
-                        } else if(mTurn.getTurnState().equals(TurnState.BUY_PHASE) && (card.getType() & Type.RESSOURCES.getFlag()) != 0) {
-                            mGameEngine.playRessourceCard(mTurn, card);
+                    if(mTurn.getTurnState().equals(TurnState.ACTION_PHASE) && (card.getType() & Type.TECHNOLOGIES.getFlag()) != 0) {
+                        mGameEngine.playActionCard(mTurn, card);
+                    } else if(mTurn.getTurnState().equals(TurnState.BUY_PHASE) && (card.getType() & Type.RESSOURCES.getFlag()) != 0) {
+                        mGameEngine.playRessourceCard(mTurn, card);
                         }
-                    }
                 }
             });
-            
+            i++;
         }
         
         //Display played cards
@@ -259,7 +274,7 @@ public class BoardActivity extends Activity {
         firstLineLinearLayout.removeAllView();
         secondLineLinearLayout.removeAllView();
         
-        int i = 0;
+        i = 0;
         for(final CardPile cardPile : mPlayer.getWorld().getSupply()) {
             if(cardPile.getNbCards() > 0) {
                 CardPileView cardPileView = new CardPileView(cardPile, cardSelectionManager);
@@ -276,10 +291,8 @@ public class BoardActivity extends Activity {
                     @Override
                     public void onClick(I3dMouseEvent mouseEvent, View view) {
                         Log.log("Click count "+ mouseEvent.getClickCount());
-                        if(mouseEvent.getClickCount() % 2 == 0) {
-                            if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
-                                mGameEngine.buyCard(mTurn, cardPile);
-                            }
+                        if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
+                            mGameEngine.buyCard(mTurn, cardPile);
                         }
                     }
                 });
@@ -352,39 +365,84 @@ public class BoardActivity extends Activity {
         
         //Mission
         int missionPileSize = mGameEngine.getGame().getMissions().getNbCards();
-        missionsTextView.setText("Missions: "+missionPileSize+ " card"+(missionPileSize > 1 ? "s" : ""));
+//        missionsTextView.setText("Missions: "+missionPileSize+ " card"+(missionPileSize > 1 ? "s" : ""));
         
-        missionZoneLinearLayout.removeAllView();
+        firstColumnLinearLayout.removeAllView();
+        secondColumnLinearLayout.removeAllView();
         
         int index = mPlayer.getWorld().getVisibleMissions().getNbCards();
         
-        for(final Card card : mPlayer.getWorld().getVisibleMissions().getCards()) {
-            CardView cardView = new CardView(card, cardSelectionManager);
-            cardView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
-            cardView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
-            missionZoneLinearLayout.addViewInLayout(cardView);
-            
-            // 3 mission card to buy
-            if(index <=3) {
-                cardView.setOnClickListener(new OnClickListener() {
-                    
-                    @Override
-                    public void onClick(I3dMouseEvent mouseEvent, View view) {
-                        Log.log("Click count "+ mouseEvent.getClickCount());
-                        if(mouseEvent.getClickCount() % 2 == 0) {
-                            if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
-                                mGameEngine.buyMissionCard(mTurn, card);
-                            }
-                        }
-                    }
-                });
-            }
-            
-            index--;
-            
+        List<Card> cards = mPlayer.getWorld().getVisibleMissions().getCards();
+        List<Card> inverseCards = new ArrayList<Card>();
+        for(int j =cards.size()-1 ; j >=0 ; j--) {
+        	inverseCards.add(cards.get(j));
         }
         
+        //first Column
+        if (cards.size() > 1) {
+        	placeObjectiveCard( firstColumnLinearLayout, inverseCards.get(1), true);
+        } else {
+        	firstColumnLinearLayout.addViewInLayout(I3dRessourceManager.loadView("main@layout/bigCardPlaceHolder"));
+        }
+        if (cards.size() > 0) {
+        	placeObjectiveCard( firstColumnLinearLayout, inverseCards.get(0), true);
+        } else {
+        	firstColumnLinearLayout.addViewInLayout(I3dRessourceManager.loadView("main@layout/bigCardPlaceHolder"));
+        }
+        if (cards.size() > 5) {
+        	placeObjectiveCard( firstColumnLinearLayout, inverseCards.get(5), false);
+        } else {
+        	firstColumnLinearLayout.addViewInLayout(I3dRessourceManager.loadView("main@layout/cardPlaceHolder"));
+        }
         
+        //second Column
+        if (cards.size() > 2) {
+        	placeObjectiveCard( secondColumnLinearLayout, inverseCards.get(2), true);
+        } else {
+        	secondColumnLinearLayout.addViewInLayout(I3dRessourceManager.loadView("main@layout/bigCardPlaceHolder"));
+        }
+        if (cards.size() > 3) {
+        	placeObjectiveCard( secondColumnLinearLayout, inverseCards.get(3), false);
+        } else {
+        	secondColumnLinearLayout.addViewInLayout(I3dRessourceManager.loadView("main@layout/cardPlaceHolder"));
+        }
+        if (cards.size() > 4) {
+        	placeObjectiveCard( secondColumnLinearLayout, inverseCards.get(4), false);
+        } else {
+        	secondColumnLinearLayout.addViewInLayout(I3dRessourceManager.loadView("main@layout/cardPlaceHolder"));
+        }
+    }
+    
+    private void placeObjectiveCard(LinearLayout columnLinearLayout, final Card card, boolean bigCard) {
+		// TODO Auto-generated method stub
+    	CardView cardView = addObjectiveCard(card, bigCard);
+    	columnLinearLayout.addViewInLayout(cardView);
+    	if (bigCard) { // add Listener for buyable objective
+    		cardView.setOnClickListener(new OnClickListener() {
+                
+                @Override
+                public void onClick(I3dMouseEvent mouseEvent, View view) {
+                    Log.log("Click count "+ mouseEvent.getClickCount());
+                    if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
+                        mGameEngine.buyMissionCard(mTurn, card);
+                    }
+                }
+            });
+    	}
+	}
+
+	private CardView addObjectiveCard(Card card,boolean BigCard) {
+		CardView cardView = null;
+		if (BigCard) { 
+	    	cardView = new CardView(card, cardSelectionManager,"bigCard");
+	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(5, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(5, false, Axis.HORIZONTAL));
+		} else {
+	    	cardView = new CardView(card, cardSelectionManager);
+	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(5, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(5, false, Axis.HORIZONTAL));
+		}
+        return cardView;
     }
     
     private void playAllRessourceCard() {

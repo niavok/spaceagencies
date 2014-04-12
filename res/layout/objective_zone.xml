@@ -5,78 +5,28 @@
     i3d:layout_height="wrap_content"
     i3d:orientation="horizontal" >
 
+	<LinearLayout
+	i3d:id="firstColumnLinearLayout"
+	i3d:layout_width="wrap_content"
+	i3d:layout_height="match_parent"
+	i3d:orientation="vertical"
+	>
+	</LinearLayout>
+	
+	<LinearLayout
+	i3d:id="secondColumnLinearLayout"
+	i3d:layout_width="wrap_content"
+	i3d:layout_height="match_parent"
+	i3d:orientation="vertical"
+	>
+	</LinearLayout>
+
+<!-- 
 	<TextView
 		i3d:id="missionsTextView"
         i3d:text="Left missions : ??"
         i3d:layout_marginBottom="5px" />
-
-	<LinearLayout
-	i3d:id="objectiveAndGold"
-	i3d:layout_width="match_parent"
-	i3d:layout_height="wrap_content"
-	i3d:orientation="horizontal"
-	i3d:layout_marginRight="10px"
-	>
-	
-		<LinearLayout
-		i3d:id="missionZoneLinearLayout"
-		i3d:layout_width="100%"
-		i3d:layout_height="match_parent"
-		i3d:orientation="horizontal"
-		>
-<!-- 	        <View -->
-<!-- 	            i3d:id="card" -->
-<!-- 	            i3d:layout_marginLeft="5px" -->
-<!-- 	            i3d:layout_marginRight="5px" -->
-<!-- 	            i3d:ref="main@layout/card" /> -->
-<!-- 	            <View -->
-<!-- 	            i3d:id="card" -->
-<!-- 	            i3d:layout_marginLeft="5px" -->
-<!-- 	            i3d:layout_marginRight="5px" -->
-<!-- 	            i3d:ref="main@layout/card" /> -->
+	 -->
 	        
-		</LinearLayout>
-		
-		<LinearLayout
-		i3d:id="goldZone"
-		i3d:layout_width="wrap_content"
-		i3d:layout_height="100%"
-		i3d:layout_marginTop="20px"
-		i3d:orientation="horizontal"
-		>
-<!-- <View -->
-<!-- 	            i3d:id="card" -->
-<!-- 	            i3d:layout_marginLeft="5px" -->
-<!-- 	            i3d:layout_marginRight="5px" -->
-<!-- 	            i3d:ref="main@layout/card" /> -->
-<!-- 	            <View -->
-<!-- 	            i3d:id="card" -->
-<!-- 	            i3d:layout_marginLeft="5px" -->
-<!-- 	            i3d:layout_marginRight="5px" -->
-<!-- 	            i3d:ref="main@layout/card" />		 -->
-		</LinearLayout>
-	
-	
-	 	
-	
-	</LinearLayout>
-	
-	<LinearLayout
-	i3d:id="mainSupplyLinearLayout"
-	i3d:layout_width="match_parent"
-	    i3d:layout_height="match_parent"
-	i3d:orientation="horizontal"
-	>
-	
-<!-- 				<View -->
-<!-- 	            i3d:id="card" -->
-<!-- 	            i3d:layout_marginLeft="5px" -->
-<!-- 	            i3d:layout_marginRight="5px" -->
-<!-- 	            i3d:ref="main@layout/card" /> -->
-<!-- 	            <View -->
-<!-- 	            i3d:id="card" -->
-<!-- 	            i3d:layout_marginLeft="5px" -->
-<!-- 	            i3d:layout_marginRight="5px" -->
-<!-- 	            i3d:ref="main@layout/card" /> -->
-	</LinearLayout>
+
 </LinearLayout>

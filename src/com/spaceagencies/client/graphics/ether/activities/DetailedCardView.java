@@ -17,7 +17,7 @@ public class DetailedCardView extends ProxyView {
         TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/detailed_card");
         
         titleTextView.setText(card.getTitle());
-        descriptionTextView.setText(card.getLongDescription());
+        descriptionTextView.setText(card.getFullDescription());
     }
     
     

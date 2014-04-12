@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     i3d:id="main"
-    i3d:style="cardFront@styles"
-    i3d:orientation="vertical" >
+    i3d:style="bigCardFront@styles"
+    i3d:orientation="vertical"
+     >
 
 	  <TextView
 		  i3d:id="titleTextView"

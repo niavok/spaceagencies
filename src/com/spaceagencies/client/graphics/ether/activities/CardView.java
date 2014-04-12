@@ -10,6 +10,7 @@ import com.spaceagencies.i3d.input.I3dMouseEvent;
 import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.View;
+import com.spaceagencies.i3d.view.View.OnMouseEventListener;
 
 public class CardView extends ProxyView {
 
@@ -21,17 +22,72 @@ public class CardView extends ProxyView {
         mCard = card;
         
         TextView titleTextView = (TextView) findViewById("titleTextView@layout/card");
-        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
+//        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
         
         titleTextView.setText(card.getTitle());
-        descriptionTextView.setText(card.getFullDescription());
+//        descriptionTextView.setText(card.getFullDescription());
         
+        super.setOnMouseListener(new OnMouseEventListener() {
+			@Override
+			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
+				selectionManager.select(mCard);
+				return false;
+			}
+		});
         
         super.setOnClickListener(new OnClickListener() {
             
             @Override
             public void onClick(I3dMouseEvent mouseEvent, View view) {
-                selectionManager.select(mCard);
+                if(localClickListener!= null) {
+                    localClickListener.onClick(mouseEvent, view);
+                }
+            }
+        });
+        
+        selectionManager.addOnSelectionChangeListener(new OnSelectionChangeListener<Card>() {
+            
+            public void onSelectionChange(List<Card> selection) {
+                if(selection.contains(mCard)) {
+                    setState(ViewState.SELECTED);
+                } else {
+                    setState(ViewState.IDLE);
+                }
+            }
+
+            @Override
+            public boolean mustClear(Object clearKey) {
+                return (clearKey.equals(CardView.class));
+            }
+        });
+        
+        if(selectionManager.getSelection().contains(card)) {
+            setState(ViewState.SELECTED);
+        }
+    }
+    
+    public CardView(Card card, final SelectionManager<Card> selectionManager, String layout) {
+        super(I3dRessourceManager.loadView("main@layout/"+layout));
+        mCard = card;
+        
+        TextView titleTextView = (TextView) findViewById("titleTextView@layout/"+layout);
+//        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
+        
+        titleTextView.setText(card.getTitle());
+//        descriptionTextView.setText(card.getFullDescription());
+        
+        super.setOnMouseListener(new OnMouseEventListener() {
+			@Override
+			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
+				selectionManager.select(mCard);
+				return false;
+			}
+		});
+        
+        super.setOnClickListener(new OnClickListener() {
+            
+            @Override
+            public void onClick(I3dMouseEvent mouseEvent, View view) {
                 if(localClickListener!= null) {
                     localClickListener.onClick(mouseEvent, view);
                 }
