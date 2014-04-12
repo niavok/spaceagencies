@@ -3,7 +3,34 @@
     i3d:id="main"
     i3d:layout_width="match_parent"
     i3d:layout_height="match_parent"
-    i3d:orientation="vertical" >
+    i3d:orientation="horizontal" >
+    
+    <LinearLayout
+        	i3d:id="leftZone"
+            i3d:layout_width="100%"
+            i3d:layout_height="match_parent"
+            i3d:orientation="horizontal" >
+    	<LinearLayout
+        	i3d:id="supplyZoneAndHandZone"
+            i3d:layout_width="match_parent"
+            i3d:layout_height="wrap_content"
+            i3d:orientation="horizontal" >
+        </LinearLayout>
+    
+    
+    </LinearLayout>
+    <LinearLayout
+        	i3d:id="rightZone"
+            i3d:layout_width="wrap_content"
+            i3d:layout_height="match_parent"
+            i3d:orientation="horizontal" >
+    
+    
+    
+    </LinearLayout>
+    
+    
+    
         <LinearLayout
         	i3d:id="supplyZoneAndDetailZone"
             i3d:layout_width="match_parent"
