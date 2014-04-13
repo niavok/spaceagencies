@@ -35,6 +35,7 @@ def parse(inputFile):
     l__moreActions = file.readline().split(";")
     l__moreCards = file.readline().split(";")
     l__moreCoins = file.readline().split(";")
+    l__moreBuys = file.readline().split(";")
     l__revealTop = file.readline().split(";")
     l__discardDeck = file.readline().split(";")
     l__lotsActions = file.readline().split(";")
@@ -48,27 +49,33 @@ def parse(inputFile):
         if (l__title[i] == None) or (l__title[i].strip() == "" ) :
             continue
         
-        xml_file = """ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        xml_file = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <card type="%s" cost="%s" date="%s">
     <title>"%s"</title>
     <shortDescription>"%s"</shortDescription>
     <longDescription>"%s"</longDescription>
     <filename>"%s"</filename>
-    <victoryPoints>"%s"</victoryPoints>
-    <moreActions count="%s">
-    <moreCards count="%s">
-    <moreCoins count="%s">
-    <revealTop count="%s">
-    <discardDeck count="%s">
-    <lotsActions count="%s">
-    <sevenDraw count="%s">
-    <batchVP count="%s">
-</card>
-        """%(l__type[i],l__cost[i],l__date[i],l__title[i],
-             l__shortDesc[i],l__longDesc[i], l__filename[i],
-             l__PV[i], l__moreActions[i],l__moreCards[i],
-             l__moreCoins[i], l__revealTop[i], l__discardDeck[i],
-             l__lotsActions[i], l__sevenDraw[i], l__batchVP[i])
+    <victoryPoints>"%s"</victoryPoints>"""%(l__type[i],l__cost[i],l__date[i],l__title[i], l__shortDesc[i],l__longDesc[i], l__filename[i], l__PV[i])
+        if (l__moreActions[i].strip() != "") :
+            xml_file = xml_file + "\n<moreActions count=\"%s\">"%l__moreActions[i]
+        if (l__moreCards[i].strip() != "") :
+            xml_file = xml_file + "\n<moreCards count=\"%s\">"%l__moreCards[i]
+        if (l__moreCoins[i].strip() != "") :
+            xml_file = xml_file + "\n<moreCoins count=\"%s\">"%l__moreCoins[i]
+        if (l__moreBuys[i].strip() != "") :
+            xml_file = xml_file + "\n<moreBuys count=\"%s\">"%l__moreBuys[i]
+        if (l__revealTop[i].strip() != "") :
+            xml_file = xml_file + "\n<revealTop count=\"%s\">"%l__revealTop[i]
+        if (l__discardDeck[i].strip() != "") :
+            xml_file = xml_file + "\n<discardDeck count=\"%s\">"%l__discardDeck[i]
+        if (l__lotsActions[i].strip() != "") :
+            xml_file = xml_file + "\n<lotsActions count=\"%s\">"%l__lotsActions[i]
+        if (l__sevenDraw[i].strip() != "") :
+            xml_file = xml_file + "\n<sevenDraw count=\"%s\">"%l__sevenDraw[i]
+        if (l__batchVP[i].strip() != "") :
+            xml_file = xml_file + "\n<batchVP count=\"%s\">"%l__batchVP[i]
+		
+        xml_file = xml_file + "\n</card>"
         
         dirname = os.path.join(os.getcwd(),l__filename[i])
         if not os.path.isdir(dirname) :
@@ -81,7 +88,7 @@ def parse(inputFile):
         file.close()
         
         #move image to this directory if define
-        if ( l__image[i] != None ) or (l__image[i] != "") :
+        if ( l__image[i] != None ) or (l__image[i].strip() != "") :
             imagename = os.path.join(dirname,l__filename[i] + "." + l__image[i].split('.')[len(l__image[i].split('.')) -1])
             try :
                 urllib.urlretrieve(l__image[i], imagename)
