@@ -32,7 +32,7 @@ public class GameEngine implements Engine {
     
     @Override
     public void init() {
-        List<Card> cards = Card.loadCards();
+        List<Card> cards = Card.getCards();
         Collections.shuffle(cards);
         cards.add(Card.getArgent(mGame));
         cards.add(Card.getCuivre(mGame));
@@ -40,7 +40,7 @@ public class GameEngine implements Engine {
         
         int count = 0;
         for (final Card card : cards) {
-            if ((card.getType() & Card.Type.MISSIONS.getFlag()) == 0) {
+            if ((card.getType() & Card.Type.TECHNOLOGIES.getFlag()) != 0) {
                 if (count <= 10) {
                     CardPile pile = new NormalCardPile(mGame, GameServer.pickNewId());
                     for(int i = 0; i < 10 ; i++) {
@@ -114,9 +114,9 @@ public class GameEngine implements Engine {
         
         
         CardPile deck = newPlayer.getDeck();
-        deck.addBottom(Card.getCardByName("flirtwspace"));
-        deck.addBottom(Card.getCardByName("soundbarrier"));
-        deck.addBottom(Card.getCardByName("NACA"));
+        deck.addBottom(Card.pullCardByName("flirtwspace"));
+        deck.addBottom(Card.pullCardByName("soundbarrier"));
+        deck.addBottom(Card.pullCardByName("NACA"));
         for(int i = 0; i < 7 ;i++) {
             deck.addBottom(Card.getCuivre(mGame));
         }
@@ -280,7 +280,9 @@ public class GameEngine implements Engine {
         
         //Remove higther mission
         Card bottom = mGame.getVisibleMissions().takeTop();
-        mGame.getMissions().addBottom(bottom);
+        if (bottom != null) {
+            mGame.getMissions().addBottom(bottom);
+        }
         
         refillObjectives();
         

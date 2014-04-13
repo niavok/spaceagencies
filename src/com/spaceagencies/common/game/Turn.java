@@ -122,7 +122,7 @@ public class Turn extends GameEntity {
         
         mHand.remove(card);
         actionCount -= 1;
-        for(CardFeature feature : card.features) {
+        for(CardFeature feature : card.getFeaturesList()) {
             feature.resolve(this);
         }
         

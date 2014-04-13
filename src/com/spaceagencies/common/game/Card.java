@@ -18,9 +18,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-import com.spaceagencies.common.game.features.FeatureDrawCards;
 import com.spaceagencies.common.game.features.FeatureMoreActions;
-import com.spaceagencies.common.game.features.FeatureMoreBuy;
 import com.spaceagencies.common.game.features.FeatureMoreMoney;
 import com.spaceagencies.server.GameServer;
 
@@ -62,7 +60,7 @@ public class Card extends GameEntity {
     protected int victoryPoints;
 
     @XmlElement()
-    protected List<CardFeature> features = new ArrayList<CardFeature>();
+    private List<CardFeature> features = new ArrayList<CardFeature>();
 
     @XmlAttribute
     private int date;
@@ -145,7 +143,8 @@ public class Card extends GameEntity {
     }
 
     private static Map<String, Card> namedCards = new HashMap<String, Card>();
-    public static List<Card> loadCards() {
+    private static List<Card> cards = loadCards();
+    private static List<Card> loadCards() {
         ArrayList<Card> cards = new ArrayList<Card>();
         File directory = new File("res/cards/");
         File[] fList = directory.listFiles();
@@ -166,13 +165,18 @@ public class Card extends GameEntity {
         }
         return cards;
     }
-    static {
-        loadCards();
-    }
     
     public static Card getCardByName(String name) {
         Card c;
         if ((c = namedCards.get(name)) != null) {
+            return c.duplicate();
+        }
+        return null;
+    }
+    public static Card pullCardByName(String name) {
+        Card c;
+        if ((c = namedCards.get(name)) != null) {
+            namedCards.remove(name);
             return c.duplicate();
         }
         return null;
@@ -263,20 +267,13 @@ public class Card extends GameEntity {
 
         fullDescription.append(shortDescription);
 
-        fullDescription.append("\n");
-        fullDescription.append("Cost: " + cost);
 
-        if (victoryPoints > 0) {
-            fullDescription.append("\n");
-            fullDescription.append("Victory: " + victoryPoints);
-        }
-
-        for (Type typeValue : Type.values()) {
-            if ((type & typeValue.getFlag()) != 0) {
-                fullDescription.append("\n");
-                fullDescription.append(typeValue.toString());
-            }
-        }
+//        for (Type typeValue : Type.values()) {
+//            if ((type & typeValue.getFlag()) != 0) {
+//                fullDescription.append("\n");
+//                fullDescription.append(typeValue.toString());
+//            }
+//        }
 
         return fullDescription.toString();
     }
@@ -289,5 +286,13 @@ public class Card extends GameEntity {
         }
         
         return fullDescription.toString();
+    }
+
+    public static List<Card> getCards() {
+        return cards;
+    }
+
+    public List<CardFeature> getFeaturesList() {
+        return features;
     }
 }

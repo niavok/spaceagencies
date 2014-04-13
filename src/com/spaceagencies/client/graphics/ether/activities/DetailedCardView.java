@@ -1,11 +1,12 @@
 package com.spaceagencies.client.graphics.ether.activities;
 
 import com.spaceagencies.common.game.Card;
+import com.spaceagencies.common.game.CardFeature;
 import com.spaceagencies.i3d.I3dRessourceManager;
 import com.spaceagencies.i3d.Measure;
 import com.spaceagencies.i3d.Measure.Axis;
 import com.spaceagencies.i3d.view.DrawableView;
-import com.spaceagencies.i3d.view.LayoutParams.LayoutMeasure;
+import com.spaceagencies.i3d.view.LinearLayout;
 import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.drawable.InsetDrawable;
@@ -15,14 +16,23 @@ public class DetailedCardView extends ProxyView {
     private Card mCard;
 
     public DetailedCardView(Card card) {
-        super(I3dRessourceManager.loadView("main@layout/detailed_card"));
+        super(I3dRessourceManager.loadView("main@layout/details_zone"));
         mCard = card;
         
-        TextView titleTextView = (TextView) findViewById("titleTextView@layout/detailed_card");
-        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/detailed_card");
+        TextView titleTextView = (TextView) findViewById("titleTextView@layout/details_zone");
+        TextView descriptionTextView = (TextView) findViewById("handDescriptionTextView@layout/details_zone");
         
         titleTextView.setText(card.getTitle());
-        descriptionTextView.setText(card.getFullDescription());
+        descriptionTextView.setText(card.getLongDescription());
+        
+        LinearLayout featuresLayout = (LinearLayout) findViewById("featuresLayout@layout/details_zone");
+        
+        for (CardFeature feat : card.getFeaturesList()) {
+            TextView textView = new TextView();
+            textView.setText(feat.getDescription());
+            textView.getLayoutParams().setWidthMeasure(new Measure(150, false, Axis.HORIZONTAL));
+            featuresLayout.addViewInLayout(textView);
+        }
         
         if (card.getFilename() != "") {
             InsetDrawable insetDrawable = new InsetDrawable();
@@ -31,11 +41,7 @@ public class DetailedCardView extends ProxyView {
             insetDrawable.setInsetTop(0);
             insetDrawable.setInsetLeft(0);
             insetDrawable.setDrawableName(card.getFilename() + "_large@cards");
-            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/detailed_card");
-            drawableView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
-            drawableView.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
-            drawableView.getLayoutParams().setWidthMeasure(new Measure(420, false, Axis.HORIZONTAL));
-            drawableView.getLayoutParams().setHeightMeasure(new Measure(350, false, Axis.VERTICAL));
+            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/details_zone");
             drawableView.setDrawable(insetDrawable);
         }
     }
