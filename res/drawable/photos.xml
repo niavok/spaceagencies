@@ -24,6 +24,14 @@
         i3d:insetTop="0"
         i3d:width="420" />
         
+        <inset
+        name="logo_light_inset"
+        i3d:drawable="logo_light@photos"
+        i3d:height="350"
+        i3d:insetLeft="0"
+        i3d:insetTop="0"
+        i3d:width="420" />
+        
    <!-- <circle
         name="staters"
         i3d:quality="16"

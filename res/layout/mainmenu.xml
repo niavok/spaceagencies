@@ -13,7 +13,7 @@
     <LinearLayout
         i3d:layout_width="match_parent"
         i3d:layout_height="match_parent"
-        i3d:layout_marginLeft="70px"
+        i3d:layout_marginLeft="00px"
         i3d:orientation="vertical" >
 
         <View
@@ -26,15 +26,15 @@
             i3d:layout_height="wrap_content"
             i3d:orientation="vertical" >
 
-            <Button
-                i3d:id="newGameButton"
-                i3d:style="bigButton@styles"
-                i3d:layout_width="match_parent"
-                i3d:layout_marginBottom="20px"
-                i3d:layout_marginTop="100px"
-                i3d:text="newGameButton@strings"
-                i3d:help="newGameButtonHelp@help/mainmenu"
-                 />
+<!--             <Button -->
+<!--                 i3d:id="newGameButton" -->
+<!--                 i3d:style="bigButton@styles" -->
+<!--                 i3d:layout_width="match_parent" -->
+<!--                 i3d:layout_marginBottom="20px" -->
+<!--                 i3d:layout_marginTop="100px" -->
+<!--                 i3d:text="newGameButton@strings" -->
+<!--                 i3d:help="newGameButtonHelp@help/mainmenu" -->
+<!--                  /> -->
 
 <!--             <Button -->
 <!--                 i3d:id="continueGameButton" -->
@@ -49,6 +49,14 @@
 <!--                 i3d:layout_width="match_parent" -->
 <!--                 i3d:layout_marginBottom="20px" -->
 <!--                 i3d:text="loadGameButton@strings" /> -->
+
+ <TextView
+    
+    i3d:layout_marginTop="60px"
+    i3d:layout_marginLeft="150px"
+        i3d:text="Loading ..."
+        i3d:color="logoSecondary@color"
+        i3d:font="veryBigButton@fonts" />
         </LinearLayout>
     </LinearLayout>
 

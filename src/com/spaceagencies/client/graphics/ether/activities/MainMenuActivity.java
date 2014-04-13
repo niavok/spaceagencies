@@ -1,6 +1,7 @@
 package com.spaceagencies.client.graphics.ether.activities;
 
 import com.spaceagencies.client.GameClient;
+import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.i3d.Bundle;
 import com.spaceagencies.i3d.Intent;
 import com.spaceagencies.i3d.Measure;
@@ -23,24 +24,25 @@ public class MainMenuActivity extends Activity {
     private Time startTime;
     private Button newGameMenu;
     private Button continueGameButton;
+	private boolean mStarted;
 
     @Override
     public void onCreate(Bundle bundle) {
         setContentView("main@layout/mainmenu");
-
+        mStarted = false;
       //  mobileLogoPart = (Triangle) findViewById("logoRedPart@layout/logo");
         animationMesure = new Measure(0, true, Axis.VERTICAL);
 
-        newGameMenu = (Button) findViewById("newGameButton@layout/mainmenu");
+//        newGameMenu = (Button) findViewById("newGameButton@layout/mainmenu");
 //        continueGameButton = (Button) findViewById("continueGameButton@layout/mainmenu");
         
-        newGameMenu.setOnClickListener(new OnClickListener() {
-            
-            @Override
-            public void onClick(I3dMouseEvent mouseEvent, View view) {
-                startActivity(new Intent(NewGameActivity.class));
-            }
-        });
+//        newGameMenu.setOnClickListener(new OnClickListener() {
+//            
+//            @Override
+//            public void onClick(I3dMouseEvent mouseEvent, View view) {
+//                startActivity(new Intent(NewGameActivity.class));
+//            }
+//        });
         
 //        continueGameButton.setOnClickListener(new OnClickListener() {
 //            
@@ -55,7 +57,7 @@ public class MainMenuActivity extends Activity {
     @Override
     public void onResume() {
         startTime = Time.now(false);
-
+        
         // Pause the game in the main menu
         Time.pauseGame(startTime);
     }
@@ -71,7 +73,12 @@ public class MainMenuActivity extends Activity {
 
     @Override
     protected void onUpdate(Timestamp time) {
-        
+        if(mStarted == false && startTime.durationTo(Time.now(false)).getSeconds() > 5) {
+        	mStarted = true;
+        	startActivity(new Intent(NewGameActivity.class));
+        	Log.log("Start game");
+        }
+    	
 //        MetaGame activeGame = GameClient.getInstance().getGameManager().getPreviousGame();
 //        if(activeGame == null) {
 //            continueGameButton.setEnabled(false);
