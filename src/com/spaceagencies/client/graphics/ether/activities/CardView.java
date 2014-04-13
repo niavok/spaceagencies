@@ -4,13 +4,16 @@ import java.util.List;
 
 import com.spaceagencies.common.game.Card;
 import com.spaceagencies.i3d.I3dRessourceManager;
+import com.spaceagencies.i3d.Measure;
 import com.spaceagencies.i3d.SelectionManager;
+import com.spaceagencies.i3d.Measure.Axis;
 import com.spaceagencies.i3d.SelectionManager.OnSelectionChangeListener;
 import com.spaceagencies.i3d.input.I3dMouseEvent;
 import com.spaceagencies.i3d.view.DrawableView;
 import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.View;
+import com.spaceagencies.i3d.view.LayoutParams.LayoutMeasure;
 import com.spaceagencies.i3d.view.View.OnMouseEventListener;
 import com.spaceagencies.i3d.view.drawable.Drawable;
 import com.spaceagencies.i3d.view.drawable.InsetDrawable;
@@ -34,13 +37,17 @@ public class CardView extends ProxyView {
         
         if (card.getFilename() != "") {
             InsetDrawable insetDrawable = new InsetDrawable();
-            insetDrawable.setHeight(159);
-            insetDrawable.setWidth(255);
+            insetDrawable.setWidth(150);
+            insetDrawable.setHeight(125);
             insetDrawable.setInsetTop(0);
             insetDrawable.setInsetLeft(0);
             insetDrawable.setDrawableName(card.getFilename() + "@cards");
-            DrawableView imageDrawable = (DrawableView) findViewById("imageDrawable@layout/card");
-            imageDrawable.setDrawable(insetDrawable);
+            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/card");
+            drawableView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setWidthMeasure(new Measure(150, false, Axis.HORIZONTAL));
+            drawableView.getLayoutParams().setHeightMeasure(new Measure(125, false, Axis.VERTICAL));
+            drawableView.setDrawable(insetDrawable);
         }
         
         super.setOnMouseListener(new OnMouseEventListener() {
@@ -100,13 +107,17 @@ public class CardView extends ProxyView {
         
         if (card.getFilename() != "") {
             InsetDrawable insetDrawable = new InsetDrawable();
-            insetDrawable.setHeight(159);
-            insetDrawable.setWidth(255);
+            insetDrawable.setWidth(150);
+            insetDrawable.setHeight(125);
             insetDrawable.setInsetTop(0);
             insetDrawable.setInsetLeft(0);
             insetDrawable.setDrawableName(card.getFilename() + "@cards");
-            DrawableView imageDrawable = (DrawableView) findViewById("imageDrawable@layout/"+layout);
-            imageDrawable.setDrawable(insetDrawable);
+            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/"+layout);
+            drawableView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setWidthMeasure(new Measure(150, false, Axis.HORIZONTAL));
+            drawableView.getLayoutParams().setHeightMeasure(new Measure(125, false, Axis.VERTICAL));
+            drawableView.setDrawable(insetDrawable);
         }
         
         

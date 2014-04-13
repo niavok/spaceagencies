@@ -2,7 +2,10 @@ package com.spaceagencies.client.graphics.ether.activities;
 
 import com.spaceagencies.common.game.Card;
 import com.spaceagencies.i3d.I3dRessourceManager;
+import com.spaceagencies.i3d.Measure;
+import com.spaceagencies.i3d.Measure.Axis;
 import com.spaceagencies.i3d.view.DrawableView;
+import com.spaceagencies.i3d.view.LayoutParams.LayoutMeasure;
 import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.drawable.InsetDrawable;
@@ -23,13 +26,17 @@ public class DetailedCardView extends ProxyView {
         
         if (card.getFilename() != "") {
             InsetDrawable insetDrawable = new InsetDrawable();
-            insetDrawable.setHeight(159);
-            insetDrawable.setWidth(255);
+            insetDrawable.setHeight(350);
+            insetDrawable.setWidth(420);
             insetDrawable.setInsetTop(0);
             insetDrawable.setInsetLeft(0);
             insetDrawable.setDrawableName(card.getFilename() + "_large@cards");
-            DrawableView imageDrawable = (DrawableView) findViewById("imageDrawable@layout/detailed_card");
-            imageDrawable.setDrawable(insetDrawable);
+            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/detailed_card");
+            drawableView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setWidthMeasure(new Measure(420, false, Axis.HORIZONTAL));
+            drawableView.getLayoutParams().setHeightMeasure(new Measure(350, false, Axis.VERTICAL));
+            drawableView.setDrawable(insetDrawable);
         }
     }
     
