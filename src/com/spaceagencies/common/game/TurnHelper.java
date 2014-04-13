@@ -23,4 +23,20 @@ public class TurnHelper {
         }
     }
 
+    public static boolean isMissionCard(Card card) {
+        if((card.getType() & Type.MISSIONS.getFlag()) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public static boolean isTechnoCard(Card card) {
+        if((card.getType() & Type.TECHNOLOGIES.getFlag()) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
 }

@@ -89,7 +89,16 @@
      i3d:gravity="center"
      i3d:layout_marginTop="100px"
      i3d:layout_marginLeft="10px"
-   />	  
+   />	
+   
+   <Drawable
+	   	i3d:ref="cardTypeMission@card"
+     	i3d:layout_width="30px"
+        i3d:layout_height="30px"
+        i3d:layout_marginTop="200px"
+        i3d:layout_marginLeft="65px"
+	   	 />
+    
          
         
 </RelativeLayout>

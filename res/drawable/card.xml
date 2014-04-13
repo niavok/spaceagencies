@@ -61,6 +61,32 @@
         i3d:width="10"
         i3d:height="19" />
         
+        
+        <inset
+        name="cardTypeMission"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="32"
+        i3d:insetTop="263"
+        i3d:width="30"
+        i3d:height="30" />
+        
+        <inset
+        name="cardTypeTechno"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="109"
+        i3d:insetTop="247"
+        i3d:width="30"
+        i3d:height="33" />
+        
+        <inset
+        name="cardTechnoBorder"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="169"
+        i3d:insetTop="291"
+        i3d:width="166"
+        i3d:height="143" />
+        
+        
    <!-- <circle
         name="staters"
         i3d:quality="16"

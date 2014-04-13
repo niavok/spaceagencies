@@ -26,14 +26,16 @@
         i3d:layout_marginTop="-7px"
         i3d:layout_marginLeft="-7px"
 	   	 />
-   	 <Drawable
-	   	i3d:ref="cardMissionBorder@card"
-     	i3d:layout_width="166px"
+	   	 
+	   	 <RelativeLayout
+    i3d:id="cardBorderPlaceholder"
+    	i3d:layout_width="166px"
         i3d:layout_height="145px"
         i3d:layout_marginTop="-8px"
         i3d:layout_marginLeft="-9px"
-	   	 />
-
+		>
+    </RelativeLayout>
+	   	 
 <LinearLayout
 	i3d:layout_width="wrap_content"
     i3d:layout_height="wrap_content"
@@ -76,6 +78,16 @@
      i3d:layout_marginLeft="-11px"
      i3d:font="cost@fonts"
    />
+   
+   <RelativeLayout
+    i3d:id="cardTypePlaceholder"
+    i3d:layout_width="30px"
+    i3d:layout_height="30px"
+    i3d:layout_marginTop="100px"
+    i3d:layout_marginLeft="65px"
+	>
+    </RelativeLayout>
+
          
         
 </RelativeLayout>
