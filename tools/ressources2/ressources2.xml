@@ -1,0 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="1" cost="3" date="">
+    <title>"Launcher"</title>
+    <shortDescription>""</shortDescription>
+    <longDescription>""</longDescription>
+    <filename>"ressources2"</filename>
+    <featureDescription>action</featureDescription>
+    <victoryPoints>""</victoryPoints>
+    <moreActions count="">
+    <moreCards count="">
+    <moreCoins count="">
+    <revealTop count="">
+    <discardDeck count="">
+    <lotsActions count="">
+    <sevenDraw count="">
+    <batchVP count="">
+</card>
+        
