@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1961-07-21">
+<card type="4" cost="3" date="1961">
     <title>Redstone 4</title>
     <shortDescription>Spacecraft sank before recovery when hatch unexpectedly blew off</shortDescription>
-    <longDescription>STS-109 (SM3B) was a Space Shuttle mission that launched from the Kennedy Space Center on 1 March 2002. It was the 108th mission of the Space Shuttle program,[1] the 27th flight of the orbiter Columbia[1] and the fourth servicing of the Hubble Space Telescope.[2] It was also the last successful mission of the orbiter Columbia before the ill-fated STS-107 mission, which culminated in the Columbia disaster.</longDescription>
+    <longDescription>STS-5 was the fifth NASA Space Shuttle mission and the fifth flight of the Space Shuttle Columbia. It launched on November 11, 1982 and landed five days later on November 16. STS-5 was the first shuttle mission to deploy communications satellites into orbit, and the first officially "operational" shuttle mission.</longDescription>
     <filename>redstone4</filename>
     <victoryPoints>1</victoryPoints>
 </card>

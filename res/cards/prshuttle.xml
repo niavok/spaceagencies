@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="4" date="">
+<card type="4" cost="4" date="1976">
     <title>Space Shuttle Program</title>
-    <shortDescription></shortDescription>
-    <longDescription> special tests of  the LM's support systems</longDescription>
+    <shortDescription>Conduct a Space shuttle Program. Worth 1vp for every 10 cards in your deck (rounded down)</shortDescription>
+    <longDescription> and passive thermal control. The detailed test objectives  were to refine the systems and procedures relating to future lunar  operations. All primary mission objectives and detailed test objectives were  achieved. All launch vehicle and spacecraft systems performed according  to plan. Engineering accomplishments included use of the ground network with onboard navigational techniques to sharpen the accuracy of lunar  orbit determination and the successful use of Apollo high-gain antenna -  a four-dish unified S-band antenna that deployed from the service module, or SM, after separation from the third stage.</longDescription>
     <filename>prshuttle</filename>
     <victoryPoints></victoryPoints>
 <batchVP count="1" />

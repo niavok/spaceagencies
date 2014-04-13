@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1966-07-18">
+<card type="4" cost="3" date="1966">
     <title>Gemini X</title>
-    <shortDescription>First space rendezvous accomplished with Gemini VII, station-keeping for over five hours at distances from 0.3 to 90 m (1 to 300 ft).</shortDescription>
-    <longDescription> the capsule sank into the Atlantic and was not recovered until 1999.</longDescription>
+    <shortDescription>First use of the Agena Target Vehicle's propulsion systems.</shortDescription>
+    <longDescription>Mercury-Redstone 4 was the second United States human spaceflight, on July 21, 1961. The suborbital Project Mercury flight was launched with a Mercury-Redstone Launch Vehicle, MRLV-8. The spacecraft, Mercury capsule #11, was named Liberty Bell 7 and piloted by astronaut Virgil I. "Gus" Grissom.The flight lasted 15 minutes 30 seconds, reached an altitude of more than 102.8 nautical miles (190.4 km) and traveled 262.5 nautical miles (486.2 km) downrange, landing in the Atlantic ocean. The flight went as expected until just after splashdown, when the hatch cover, designed to release explosively in the event of an emergency, accidentally blew. Grissom was at risk of drowning but was recovered safely</longDescription>
     <filename>gem10</filename>
     <victoryPoints>1</victoryPoints>
 </card>

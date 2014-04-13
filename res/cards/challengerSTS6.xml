@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="5" date="04/04/1983">
+<card type="4" cost="5" date="1983">
     <title>Space Shuttle Program STS-6</title>
     <shortDescription>First spacewalk during a space shuttle mission</shortDescription>
-    <longDescription>Third intended mission to land on the Moon. The lunar landing was aborted after an oxygen tank exploded two days later, crippling the Service Module (SM) upon which the Command Module (CM) depended. The crew returned safely to Earth on April 17 after orbiting moon but without landing on it. Crew : James A. Lovell, John L. ""Jack"" Swigert, Fred W. Haise as Lunar Module Pilot. Seventh mission of the Apollo Program</longDescription>
+    <longDescription>First spaceflight that landed the first humans on the Moon. Neil  Armstrong is the first to step onto the lunar surface, he spent about two and a half hours outside the spacecraft. Buzz Aldrin is the second  one. They collected 21.5 kg of lunar material. Michael Collins, was  piloting the command spacecraft alone in lunar orbit during this time.Fifth mission of the Apollo Program</longDescription>
     <filename>challengerSTS6</filename>
     <victoryPoints>3</victoryPoints>
 </card>

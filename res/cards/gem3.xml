@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1965-03-23">
+<card type="4" cost="3" date="1965">
     <title>Gemini 3</title>
     <shortDescription>First manned Gemini flight, three orbits.</shortDescription>
-    <longDescription>End of the Space Shuttle Program on the July 21 2011</longDescription>
+    <longDescription>STS-31 was the thirty-fifth mission of the American Space Shuttle program, which launched the Hubble Space Telescope astronomical observatory into Earth orbit. The mission used the Space Shuttle Discovery (the tenth for this orbiter), which lifted off from Launch Complex 39B on 24 April 1990 from Kennedy Space Center, Florida.</longDescription>
     <filename>gem3</filename>
     <victoryPoints>1</victoryPoints>
 </card>

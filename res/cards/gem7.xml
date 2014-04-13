@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1965-12-04">
+<card type="4" cost="3" date="1965">
     <title>Gemini VII</title>
-    <shortDescription>First week-long flight</shortDescription>
-    <longDescription>First Nasa space station</longDescription>
+    <shortDescription>Space Rendezvous</shortDescription>
+    <longDescription>The International Space Station (ISS) is a space station, or a habitable artificial satellite in low Earth orbit. It is a modular structure whose first component was launched in 1998.Now the largest artificial body in orbit, it can often be seen at the appropriate time with the naked eye from Earth.The ISS consists of pressurised modules, external trusses, solar arrays and other components. ISS components have been launched by American Space Shuttles as well as Russian Proton and Soyuz rockets.</longDescription>
     <filename>gem7</filename>
     <victoryPoints>1</victoryPoints>
 </card>

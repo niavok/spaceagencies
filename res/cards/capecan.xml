@@ -2,7 +2,7 @@
 <card type="2" cost="4" date="">
     <title>Cape Canaveral</title>
     <shortDescription>+3 cards</shortDescription>
-    <longDescription></longDescription>
+    <longDescription>A heat shield is designed to shield a substance from absorbing excessive heat from an outside source by either dissipating, reflecting or simply absorbing the heat.</longDescription>
     <filename>capecan</filename>
     <victoryPoints></victoryPoints>
 <moreCards count="3" />

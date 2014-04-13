@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1965-12-15">
+<card type="4" cost="3" date="1965">
     <title>Gemini VI-A</title>
-    <shortDescription> first use of fuel cells for electrical power</shortDescription>
-    <longDescription>Project Mercury was the first human spaceflight program of the United States led by its newly created space agency NASA. It ran from 1959 through 1963 with the goal of putting a human in orbit around the Earth, and doing it before the Soviet Union, as part of the early space race. It involved seven astronauts flying a total of six solo trips.</longDescription>
+    <shortDescription>First space Rendezvous</shortDescription>
+    <longDescription>Skylab was a space station launched and operated by NASA and was the United States' first space station. Skylab orbited the Earth from 1973 to 1979, and included a workshop, a solar observatory, and other systems. It was launched unmanned by a modified Saturn V rocket, with a mass of 169,950 pounds (77 t).Three manned missions to the station, conducted between 1973 and 1974 using the Apollo Command/Service Module (CSM) atop the smaller Saturn IB, each delivered a three-astronaut crew. On the last two manned missions, an additional Apollo / Saturn IB stood by ready to rescue the crew in orbit if it was needed.</longDescription>
     <filename>gem6a</filename>
     <victoryPoints>1</victoryPoints>
 </card>

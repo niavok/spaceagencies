@@ -63,7 +63,7 @@ public class Card extends GameEntity {
     private List<CardFeature> features = new ArrayList<CardFeature>();
 
     @XmlAttribute
-    private String date;
+    private int date;
 
     public Card() {
         super(null, 0);
@@ -88,7 +88,7 @@ public class Card extends GameEntity {
         this.type = type;
         this.cost = cost;
         this.victoryPoints = victoryPoints;
-        this.date = "0";
+        this.date = 0;
     }
 
     public final int getVictoryPoints() {
@@ -123,7 +123,7 @@ public class Card extends GameEntity {
         return cost;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
@@ -254,7 +254,7 @@ public class Card extends GameEntity {
                           Type.MISSIONS.getFlag(),
                           cost,
                           victory);
-        c.date = "12";
+        c.date = i;
         return c;
     }
 

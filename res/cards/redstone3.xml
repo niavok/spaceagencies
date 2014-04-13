@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1961-05-05">
+<card type="4" cost="3" date="1961">
     <title>Redstone 3</title>
     <shortDescription>1st american in space</shortDescription>
-    <longDescription>STS-5 was the fifth NASA Space Shuttle mission and the fifth flight of the Space Shuttle Columbia. It launched on November 11, 1982 and landed five days later on November 16. STS-5 was the first shuttle mission to deploy communications satellites into orbit, and the first officially ""operational"" shuttle mission.</longDescription>
+    <longDescription>STS-1 was the first orbital flight of NASA's Space Shuttle program. The first orbiter, Space Shuttle Columbia, launched on April 12, 1981 and returned to Earth on April 14, having orbited the Earth 37 times during its 54.5-hour mission. Columbia carried a crew of two  mission commander John W. Young and pilot Robert L. Crippen.</longDescription>
     <filename>redstone3</filename>
     <victoryPoints>1</victoryPoints>
 </card>

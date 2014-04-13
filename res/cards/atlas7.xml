@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1962-05-24">
+<card type="4" cost="3" date="1962">
     <title>Atlas 7</title>
-    <shortDescription>first study of liquids in weightlessness, targeting error during reentry</shortDescription>
-    <longDescription>STS-6 was the sixth NASA Space Shuttle mission and the maiden flight of the Space Shuttle Challenger. Launched from Kennedy Space Center on April 4, 1983, the mission deployed the first Tracking and Data Relay Satellite, TDRS-1, into orbit, before landing at Edwards Air Force Base on April 9. STS-6 was the first Space Shuttle mission during which a spacewalk was conducted, and hence was the first in which the Extravehicular Mobility Unit (EMU) was used.</longDescription>
+    <shortDescription>First study of liquids in weightlessness, targeting error during reentry</shortDescription>
+    <longDescription>STS-107 was the 113th flight of the Space Shuttle program, and the final flight of Space Shuttle Columbia. The mission launched from Kennedy Space Center on 16 January 2003, and during its 16 days in orbit conducted a multitude of international scientific investigations.  The seven-member crew died on 1 February 2003 when the Columbia orbiter disintegrated during reentry into the Earth's atmosphere. The Columbia Accident Investigation Board determined the failure was caused by a piece of foam that broke off during launch and damaged the thermal protection system components (reinforced carbon-carbon panels and thermal protection tiles) on the leading edge of the left wing of the orbiter.</longDescription>
     <filename>atlas7</filename>
     <victoryPoints>1</victoryPoints>
 </card>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="5" date="16/01/2003">
+<card type="4" cost="5" date="2003">
     <title>Space Shuttle Program  STS-107</title>
-    <shortDescription>??????</shortDescription>
-    <longDescription>Second manned land on the moon. Crew :Charles ""Pete"" Conrad, Alan L. Bean, Richard F. Gordon. Six mission of the Apollo Program.  It was launched on November 14, 1969 from the Kennedy Space Center, Florida, four months after Apollo 11. Mission commander Charles ""Pete"" Conrad and Lunar Module Pilot Alan L. Bean performed just over one day and seven hours of lunar surface activity while Command Module Pilot Richard F. Gordon remained in lunar orbit. The landing site for the mission was located in the southeastern portion of the Ocean of Storms.</longDescription>
+    <shortDescription>Columbia Accident Investigation Board</shortDescription>
+    <longDescription>Dress rehearsal for first lunar landing. Fourth mission of the Apollo Program. The Apollo 10 mission encompassed all aspects of an actual crewed lunar  landing, except the landing. It was the first flight of a complete,  crewed Apollo spacecraft to operate around the moon. Objectives included a scheduled eight-hour lunar orbit of the separated lunar module, or  LM, and descent to about nine miles off the moon's surface before  ascending for rendezvous and docking with the command and service  module, or CSM, in about a 70-mile circular lunar orbit. Pertinent data  to be gathered in this landing rehearsal dealt with the lunar potential, or gravitational effect, to refine the Earth-based crewed spaceflight network tracking techniques, and to check out LM programmed trajectories and radar, and lunar flight control systems. Twelve television  transmissions to Earth were planned. All mission objectives were achieved.</longDescription>
     <filename>columbiaSTS107</filename>
     <victoryPoints>3</victoryPoints>
 </card>

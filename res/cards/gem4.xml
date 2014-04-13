@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1965-06-03">
+<card type="4" cost="3" date="1965">
     <title>Gemini IV</title>
     <shortDescription>Included first extravehicular activity (EVA) by an American</shortDescription>
-    <longDescription></longDescription>
+    <longDescription>STS-88 was the first Space Shuttle mission to the International Space Station (ISS). It was flown by Space Shuttle Endeavour, and took the first American module, the Unity node, to the station.  The seven-day mission was highlighted by the mating of the U.S.-built Unity node to the Functional Cargo Block (Zarya module) already in orbit, and three spacewalks to connect power and data transmission cables between the Node and the FGB. Zarya, built by Boeing and the Russian Space Agency, was launched on a Russian Proton rocket from the Baikonur Cosmodrome in Kazakhstan in November 1998.</longDescription>
     <filename>gem4</filename>
     <victoryPoints>1</victoryPoints>
 </card>

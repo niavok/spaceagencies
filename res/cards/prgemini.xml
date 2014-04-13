@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="4" date="">
+<card type="4" cost="4" date="1962">
     <title>Gemini Program</title>
-    <shortDescription></shortDescription>
-    <longDescription>First ISS mission</longDescription>
+    <shortDescription>Conduct a space flight program. Worth 1vp for every 10 cards in your deck (rounded down)</shortDescription>
+    <longDescription>STS-51L was the 25th flight of the American Space Shuttle program, using the Space Shuttle Challenger, which lifted-off from Launch Complex 39-B, at the Kennedy Space Center in Florida, on January 28, 1986. The mission ended in catastrophic failure with the destruction of Challenger, starting at 72 seconds after lift-off, and the death of all seven crew members.</longDescription>
     <filename>prgemini</filename>
     <victoryPoints></victoryPoints>
 <batchVP count="1" />

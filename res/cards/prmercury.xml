@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="4" date="1959-1963">
+<card type="4" cost="4" date="1959">
     <title>Mercury Program</title>
-    <shortDescription>Worth 1vp for every 10 cards in your deck (rounded down)</shortDescription>
-    <longDescription>STS-1 was the first orbital flight of NASA's Space Shuttle program. The first orbiter, Space Shuttle Columbia, launched on April 12, 1981 and returned to Earth on April 14, having orbited the Earth 37 times during its 54.5-hour mission. Columbia carried a crew of two ' mission commander John W. Young and pilot Robert L. Crippen.</longDescription>
+    <shortDescription>Conduct a spaceflight program. Worth 1vp for every 10 cards in your deck (rounded down)</shortDescription>
+    <longDescription>The Space Shuttle Enterprise (NASA Orbiter Vehicle Designation: OV-101) was the first Space Shuttle. It was built for NASA as part of the Space Shuttle program to perform test flights in the atmosphere.It was constructed without engines or a functional heat shield, and was therefore not capable of spaceflight. It was unveiled on September 17, 1976.</longDescription>
     <filename>prmercury</filename>
     <victoryPoints></victoryPoints>
 <batchVP count="1" />

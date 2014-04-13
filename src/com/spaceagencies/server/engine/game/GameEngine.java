@@ -78,7 +78,7 @@ public class GameEngine implements Engine {
             @Override
             public int compare(Card o1, Card o2) {
                 
-                return 12 ;//o2.getDate() - o1.getDate();
+                return o2.getDate() - o1.getDate();
         }});
         
         

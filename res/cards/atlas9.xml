@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="3" date="1963-05-15">
+<card type="4" cost="3" date="1963">
     <title>Atlas 9</title>
     <shortDescription>First American in space for over a day, Last American solo mission.</shortDescription>
-    <longDescription>STS-51L was the 25th flight of the American Space Shuttle program, using the Space Shuttle Challenger, which lifted-off from Launch Complex 39-B, at the Kennedy Space Center in Florida, on January 28, 1986. The mission ended in catastrophic failure with the destruction of Challenger, starting at 72 seconds after lift-off, and the death of all seven crew members.</longDescription>
+    <longDescription>STS-61-A (also known as D-1) was the 22nd mission of NASA's Space Shuttle program. It was a scientific Spacelab mission, funded and directed by West Germany  hence the non-NASA designation of D-1 (for Deutschland-1). STS-61-A was the last successful mission of the Space Shuttle Challenger, which was destroyed during STS-51-L in 1986. STS-61-A currently holds the record for the largest crew, eight people, aboard any single spacecraft for the entire period from launch to landing.</longDescription>
     <filename>atlas9</filename>
     <victoryPoints>1</victoryPoints>
 </card>

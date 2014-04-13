@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="4" date="1973-1979">
+<card type="4" cost="4" date="1973">
     <title>Skylab Program</title>
-    <shortDescription>Conducte scientific experiments on a space station orbiting around Earth - 1</shortDescription>
-    <longDescription>The Space Shuttle Enterprise (NASA Orbiter Vehicle Designation: OV-101) was the first Space Shuttle. It was built for NASA as part of the Space Shuttle program to perform test flights in the atmosphere.[1] It was constructed without engines or a functional heat shield, and was therefore not capable of spaceflight. It was unveiled on September 17, 1976.</longDescription>
+    <shortDescription>Scientific experiments on a space station orbiting around Earth - 1</shortDescription>
+    <longDescription>NASA's space shuttle fleet began setting records with its first launch  on April 12, 1981 and continued to set high marks of achievement and endurance through 30 years of missions. Starting with Columbia and  continuing with Challenger, Discovery, Atlantis and Endeavour, the spacecraft has carried people into orbit repeatedly, launched, recovered and repaired satellites, conducted cutting-edge research and built the  largest structure in space, the International Space Station. The final  space shuttle mission, STS-135, ended July 21, 2011 when Atlantis rolled to a stop at its home port, NASA's Kennedy Space Center in Florida. As humanity's first reusable spacecraft, the space shuttle pushed the  bounds of discovery ever farther, requiring not only advanced  technologies but the tremendous effort of a vast workforce. Thousands of civil servants and contractors throughout NASA's field centers and  across the nation have demonstrated an unwavering commitment to mission success and the greater goal of space exploration.</longDescription>
     <filename>Skylab</filename>
     <victoryPoints>3</victoryPoints>
 </card>

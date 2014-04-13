@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<card type="4" cost="5" date="08/08/2011">
-    <title>Space Shuttle Program STS-135</title>
+<card type="4" cost="5" date="2011">
+    <title>Space Shuttle Program</title>
     <shortDescription>Happy End</shortDescription>
-    <longDescription></longDescription>
+    <longDescription>Penultimate mission to land on the moon. First mission to land on highland of the moon, to collect geological samples (95.8 kg). Crew : John Young, Charles Duke and Ken Mattingly.</longDescription>
     <filename>atlantisSTS135</filename>
     <victoryPoints>3</victoryPoints>
 </card>
