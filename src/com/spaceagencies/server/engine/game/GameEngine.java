@@ -34,6 +34,10 @@ public class GameEngine implements Engine {
     public void init() {
         List<Card> cards = Card.loadCards();
         Collections.shuffle(cards);
+        cards.add(Card.getArgent(mGame));
+        cards.add(Card.getCuivre(mGame));
+        cards.add(Card.getOr(mGame));
+        
         int count = 0;
         for (final Card card : cards) {
             if ((card.getType() & Card.Type.MISSIONS.getFlag()) == 0) {
@@ -111,10 +115,10 @@ public class GameEngine implements Engine {
         
         CardPile deck = newPlayer.getDeck();
         for(int i = 0; i < 3 ;i++) {
-            deck.addBottom(Card.getTestCardDomaine());
+            deck.addBottom(Card.getCardByName("flirtwspace"));
         }
         for(int i = 0; i < 7 ;i++) {
-            deck.addBottom(Card.getTestCardCuivre());
+            deck.addBottom(Card.getCuivre(mGame));
         }
         
         deck.shuffle();

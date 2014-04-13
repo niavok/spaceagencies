@@ -51,29 +51,29 @@ def parse(inputFile):
         
         xml_file = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <card type="%s" cost="%s" date="%s">
-    <title>"%s"</title>
-    <shortDescription>"%s"</shortDescription>
-    <longDescription>"%s"</longDescription>
-    <filename>"%s"</filename>
-    <victoryPoints>"%s"</victoryPoints>"""%(l__type[i],l__cost[i],l__date[i],l__title[i], l__shortDesc[i],l__longDesc[i], l__filename[i], l__PV[i])
+    <title>%s</title>
+    <shortDescription>%s</shortDescription>
+    <longDescription>%s</longDescription>
+    <filename>%s</filename>
+    <victoryPoints>%s</victoryPoints>"""%(l__type[i].strip('"'),l__cost[i].strip('"'),l__date[i].strip('"'),l__title[i].strip('"'), l__shortDesc[i].strip('"'),l__longDesc[i].strip('"'), l__filename[i].strip('"'), l__PV[i].strip('"'))
         if (l__moreActions[i].strip() != "") :
-            xml_file = xml_file + "\n<moreActions count=\"%s\">"%l__moreActions[i]
+            xml_file = xml_file + "\n<moreActions count=\"%s\" />"%l__moreActions[i].strip('"')
         if (l__moreCards[i].strip() != "") :
-            xml_file = xml_file + "\n<moreCards count=\"%s\">"%l__moreCards[i]
+            xml_file = xml_file + "\n<moreCards count=\"%s\" />"%l__moreCards[i].strip('"')
         if (l__moreCoins[i].strip() != "") :
-            xml_file = xml_file + "\n<moreCoins count=\"%s\">"%l__moreCoins[i]
+            xml_file = xml_file + "\n<moreCoins count=\"%s\" />"%l__moreCoins[i].strip('"')
         if (l__moreBuys[i].strip() != "") :
-            xml_file = xml_file + "\n<moreBuys count=\"%s\">"%l__moreBuys[i]
+            xml_file = xml_file + "\n<moreBuys count=\"%s\" />"%l__moreBuys[i].strip('"')
         if (l__revealTop[i].strip() != "") :
-            xml_file = xml_file + "\n<revealTop count=\"%s\">"%l__revealTop[i]
+            xml_file = xml_file + "\n<revealTop count=\"%s\" />"%l__revealTop[i].strip('"')
         if (l__discardDeck[i].strip() != "") :
-            xml_file = xml_file + "\n<discardDeck count=\"%s\">"%l__discardDeck[i]
+            xml_file = xml_file + "\n<discardDeck count=\"%s\" />"%l__discardDeck[i].strip('"')
         if (l__lotsActions[i].strip() != "") :
-            xml_file = xml_file + "\n<lotsActions count=\"%s\">"%l__lotsActions[i]
+            xml_file = xml_file + "\n<lotsActions count=\"%s\" />"%l__lotsActions[i].strip('"')
         if (l__sevenDraw[i].strip() != "") :
-            xml_file = xml_file + "\n<sevenDraw count=\"%s\">"%l__sevenDraw[i]
+            xml_file = xml_file + "\n<sevenDraw count=\"%s\" />"%l__sevenDraw[i].strip('"')
         if (l__batchVP[i].strip() != "") :
-            xml_file = xml_file + "\n<batchVP count=\"%s\">"%l__batchVP[i]
+            xml_file = xml_file + "\n<batchVP count=\"%s\" />"%l__batchVP[i].strip('"')
 		
         xml_file = xml_file + "\n</card>"
         
