@@ -42,7 +42,6 @@ public class GameEngine implements Engine {
         for (final Card card : cards) {
             if ((card.getType() & Card.Type.MISSIONS.getFlag()) == 0) {
                 if (count <= 10) {
-                    System.out.println("Add Mission: " + card.getTitle());
                     CardPile pile = new NormalCardPile(mGame, GameServer.pickNewId());
                     for(int i = 0; i < 10 ; i++) {
                         pile.addTop(card.duplicate());
@@ -115,9 +114,9 @@ public class GameEngine implements Engine {
         
         
         CardPile deck = newPlayer.getDeck();
-        for(int i = 0; i < 3 ;i++) {
-            deck.addBottom(Card.getCardByName("flirtwspace"));
-        }
+        deck.addBottom(Card.getCardByName("flirtwspace"));
+        deck.addBottom(Card.getCardByName("soundbarrier"));
+        deck.addBottom(Card.getCardByName("NACA"));
         for(int i = 0; i < 7 ;i++) {
             deck.addBottom(Card.getCuivre(mGame));
         }
