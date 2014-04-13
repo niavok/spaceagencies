@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <card type="4" cost="5" date="1981">
-    <title>Space Shuttle Program  STS-1</title>
+    <title>Space Shuttle Program</title>
     <shortDescription>First orbital flight of the space shuttle</shortDescription>
     <longDescription> special tests of  the LM's support systems</longDescription>
     <filename>columbiaSTS1</filename>

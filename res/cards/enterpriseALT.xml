@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <card type="4" cost="5" date="1976">
-    <title>Space Shuttle Program ALT</title>
+    <title>Space Shuttle Program</title>
     <shortDescription>Prototype of Space shuttle - First flights</shortDescription>
     <longDescription>First flight of the Command/Service Module (CSM) with the Lunar Module (LM).Crew : James McDivitt, David Scott, Rusty Schweickart. 2nd manned flight with the Saturn V rocket.Third mission of the Apollo Program. The primary objective of Apollo 9 was an Earth-orbital engineering test  of the first crewed lunar module, or LM. Concurrent prime objectives  included an overall checkout of launch vehicle and spacecraft systems,  the crew, and procedures. This was done by performing an integrated  series of flight tasks with the command module, or CM, the service module, or SM, the joined command and service module, or CSM, the LM and S-IVB stage while they were linked in launch or various docked  configurations, and while they were flying separate orbital patterns.  The LM was to be tested as a self-sufficient spacecraft, and was also to  perform active rendezvous and docking maneuvers paralleling those scheduled for the following Apollo 10 lunar-orbit mission.The flight plan's top priority was the CSM and LM rendezvous and  docking. This was performed twice - once while the LM was still attached to the S-IVB, and again when the LM was active. Further goals included  internal crew transfer from the docked CSM to the LM</longDescription>
     <filename>enterpriseALT</filename>

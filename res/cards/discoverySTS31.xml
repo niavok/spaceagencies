@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <card type="4" cost="5" date="1990">
-    <title>Space Shuttle Program  STS-31</title>
+    <title>Space Shuttle Program</title>
     <shortDescription>Launch Hubble space telescop</shortDescription>
     <longDescription>Thirds mission to land on the moon.Last H missions.Crew : Alan Shepard, Stuart Roosa, and Edgar Mitchell. Eight mission of the Apollo Program</longDescription>
     <filename>discoverySTS31</filename>

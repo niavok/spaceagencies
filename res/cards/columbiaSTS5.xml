@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <card type="4" cost="5" date="1982">
-    <title>Space Shuttle Program  STS-5</title>
+    <title>Space Shuttle Program</title>
     <shortDescription>Carry 4 crews in low Earth orbit and deploy communication satellite into orbit</shortDescription>
     <longDescription> crew procedures</longDescription>
     <filename>columbiaSTS5</filename>

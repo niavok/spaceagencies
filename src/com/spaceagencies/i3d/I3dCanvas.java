@@ -200,7 +200,7 @@ public class I3dCanvas {
     }
     
     public void maximise() {
-        frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        //frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
     }
     
 }
