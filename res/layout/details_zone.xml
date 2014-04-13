@@ -27,7 +27,7 @@
 	       	i3d:layout_marginLeft="30px"
 	       	i3d:layout_marginRight="30px"
 	       	i3d:layout_width="800px"
-	        i3d:font="title-bold@fonts" />
+	        i3d:font="veryverylargebold@fonts" />
          	
 	<LinearLayout
 	    i3d:layout_height="wrap_content"
@@ -44,7 +44,7 @@
 	       	i3d:layout_marginLeft="30px"
 	       	i3d:layout_marginRight="30px"
 	       	i3d:layout_width="800px"
-	        i3d:font="title@fonts" />
+	        i3d:font="verylarge@fonts" />
 
 	</LinearLayout>
 	

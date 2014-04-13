@@ -10,7 +10,10 @@
     <font name="title" font="Ubuntu" size="18" style="bold"/>
     <font name="title-bold" font="Ubuntu" size="18" style="bold"/>
     <font name="logo" font="Ubuntu" size="120" style="bold"/>
-    <font name="systemNameWorldMap" font="Ubuntu" size="13" style=""/>
+    
+    <font name="verylarge" font="Ubuntu" size="20" style=""/>
+    <font name="verylargebold" font="Ubuntu" size="20" style="bold"/>
+    <font name="veryverylargebold" font="Ubuntu" size="24" style="bold"/>
     
     <font name="cost" font="Ubuntu" size="16" style="bold"/>
 </resources>
