@@ -147,4 +147,9 @@
         <item name="i3d:background">cardTitleCenter@card</item>
     </style>
     
+    <style name="pv" >
+        <item name="i3d:color">pv@color</item>
+        <item name="i3d:font">veryBigButton@fonts</item>
+    </style>
+    
 </resources>

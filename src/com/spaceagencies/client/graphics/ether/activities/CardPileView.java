@@ -41,7 +41,20 @@ public class CardPileView extends ProxyView {
         
         
         if(TurnHelper.isMoneyCard(peekTop)) {
+
+            DrawableView drawableView2 = new DrawableView();
+            drawableView2.setDrawable(I3dRessourceManager.getInstance().loadDrawable("cardResourcesBorder@card"));
+            drawableView2.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView2.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView2.getLayoutParams().setWidthMeasure(new Measure(166, false, Axis.HORIZONTAL));
+            drawableView2.getLayoutParams().setHeightMeasure(new Measure(145, false, Axis.VERTICAL));
+            cardBorderPlaceholder.addViewInLayout(drawableView2);
             
+            View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/card");
+            TextView pvTextView = (TextView) findViewById("pvTextView@layout/card");
+            pvTextView.setText(""+peekTop.getVictoryPoints());
+            cardPvFlagDrawable.setVisible(false);
+            pvTextView.setVisible(false);
         } else if(TurnHelper.isTechnoCard(peekTop)) {
             DrawableView drawableView = new DrawableView();
             drawableView.setDrawable(I3dRessourceManager.getInstance().loadDrawable("cardTypeTechno@card"));
@@ -60,6 +73,12 @@ public class CardPileView extends ProxyView {
             drawableView2.getLayoutParams().setHeightMeasure(new Measure(145, false, Axis.VERTICAL));
             cardBorderPlaceholder.addViewInLayout(drawableView2);
             
+            View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/card");
+            TextView pvTextView = (TextView) findViewById("pvTextView@layout/card");
+            pvTextView.setText(""+peekTop.getVictoryPoints());
+            cardPvFlagDrawable.setVisible(false);
+            pvTextView.setVisible(false);
+            
         } else if(TurnHelper.isMissionCard(peekTop)) {
             DrawableView drawableView = new DrawableView();
             drawableView.setDrawable(I3dRessourceManager.getInstance().loadDrawable("cardTypeMission@card"));
@@ -76,6 +95,12 @@ public class CardPileView extends ProxyView {
             drawableView2.getLayoutParams().setWidthMeasure(new Measure(166, false, Axis.HORIZONTAL));
             drawableView2.getLayoutParams().setHeightMeasure(new Measure(145, false, Axis.VERTICAL));
             cardBorderPlaceholder.addViewInLayout(drawableView2);
+            
+            View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/card");
+            TextView pvTextView = (TextView) findViewById("pvTextView@layout/card");
+            pvTextView.setText(""+peekTop.getVictoryPoints());
+            cardPvFlagDrawable.setVisible(true);
+            pvTextView.setVisible(true);
         }
         
         

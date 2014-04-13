@@ -38,12 +38,24 @@ public class CardView extends ProxyView {
 //        drawableView.setDrawable(I3dRessourceManager.getInstance().loadDrawable("cardTypeMission@card"));
         
         
+        
         RelativeLayout cardTypePlaceholder = (RelativeLayout) findViewById("cardTypePlaceholder@layout/card");
         RelativeLayout cardBorderPlaceholder = (RelativeLayout) findViewById("cardBorderPlaceholder@layout/card");
         
         
         if(TurnHelper.isMoneyCard(card)) {
+        	DrawableView drawableView2 = new DrawableView();
+            drawableView2.setDrawable(I3dRessourceManager.getInstance().loadDrawable("cardResourcesBorder@card"));
+            drawableView2.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView2.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView2.getLayoutParams().setWidthMeasure(new Measure(166, false, Axis.HORIZONTAL));
+            drawableView2.getLayoutParams().setHeightMeasure(new Measure(145, false, Axis.VERTICAL));
+            cardBorderPlaceholder.addViewInLayout(drawableView2);
             
+            View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/card");
+            TextView pvTextView = (TextView) findViewById("pvTextView@layout/card");
+            cardPvFlagDrawable.setVisible(false);
+            pvTextView.setVisible(false);
         } else if(TurnHelper.isTechnoCard(card)) {
             DrawableView drawableView = new DrawableView();
             drawableView.setDrawable(I3dRessourceManager.getInstance().loadDrawable("cardTypeTechno@card"));
@@ -62,6 +74,11 @@ public class CardView extends ProxyView {
             drawableView2.getLayoutParams().setHeightMeasure(new Measure(145, false, Axis.VERTICAL));
             cardBorderPlaceholder.addViewInLayout(drawableView2);
             
+            View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/card");
+            TextView pvTextView = (TextView) findViewById("pvTextView@layout/card");
+            cardPvFlagDrawable.setVisible(false);
+            pvTextView.setVisible(false);
+            
         } else if(TurnHelper.isMissionCard(card)) {
             DrawableView drawableView = new DrawableView();
             drawableView.setDrawable(I3dRessourceManager.getInstance().loadDrawable("cardTypeMission@card"));
@@ -78,6 +95,12 @@ public class CardView extends ProxyView {
             drawableView2.getLayoutParams().setWidthMeasure(new Measure(166, false, Axis.HORIZONTAL));
             drawableView2.getLayoutParams().setHeightMeasure(new Measure(145, false, Axis.VERTICAL));
             cardBorderPlaceholder.addViewInLayout(drawableView2);
+            
+            View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/card");
+            TextView pvTextView = (TextView) findViewById("pvTextView@layout/card");
+            pvTextView.setText(""+card.getVictoryPoints());
+            cardPvFlagDrawable.setVisible(true);
+            pvTextView.setVisible(true);
         }
         
         costTextView.setText(""+card.getCost());
@@ -170,6 +193,12 @@ public class CardView extends ProxyView {
             drawableView.setDrawable(insetDrawable);
         }
         
+        
+        View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/"+layout);
+        TextView pvTextView = (TextView) findViewById("pvTextView@layout/"+layout);
+        pvTextView.setText(""+card.getVictoryPoints());
+        cardPvFlagDrawable.setVisible(true);
+        pvTextView.setVisible(true);
         
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override

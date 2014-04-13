@@ -86,6 +86,21 @@
         i3d:width="166"
         i3d:height="143" />
         
+         <inset
+        name="cardResourcesBorder"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="343"
+        i3d:insetTop="253"
+        i3d:width="166"
+        i3d:height="143" />
+        
+        <inset
+        name="cardPvFlag"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="7"
+        i3d:insetTop="302"
+        i3d:width="60"
+        i3d:height="47" />
         
    <!-- <circle
         name="staters"
