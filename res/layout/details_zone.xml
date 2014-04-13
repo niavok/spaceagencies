@@ -36,7 +36,17 @@
 	    i3d:id="featuresLayout">
 	    
     </LinearLayout>
-	        
+	        <ScrollView
+        i3d:id="descriptionScrollView"
+        i3d:layout_width="800px"
+        i3d:layout_height="100%"
+        i3d:scroll_axis="vertical"
+        i3d:layout_marginTop="10px"
+        i3d:layout_marginBottom="10px"
+        i3d:layout_marginLeft="10px"
+       	i3d:layout_marginRight="10px"
+        i3d:style="lightBlock@styles"
+        i3d:scroll_limits="strict" >
 			<TextView
 	 		i3d:id="handDescriptionTextView"
 	        i3d:text=""
@@ -46,7 +56,7 @@
 	       	i3d:layout_marginRight="30px"
 	       	i3d:layout_width="800px"
 	        i3d:font="verylarge@fonts" />
-
+		</ScrollView>
 	</LinearLayout>
 	
 </LinearLayout>
