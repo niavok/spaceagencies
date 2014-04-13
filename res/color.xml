@@ -38,4 +38,6 @@
     <color name="cardBackBackground">#366EBF</color>
     <color name="cardFrontBackground">#FFFFFF88</color>
     
+    <color name="pv">#330080ff</color>
+    
 </resources>

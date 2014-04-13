@@ -87,7 +87,25 @@
 	>
     </RelativeLayout>
 
-         
+     <Drawable
+     	i3d:id="cardPvFlagDrawable"
+	   	i3d:ref="cardPvFlag@card"
+	   	i3d:layout_marginTop="80px"
+    	i3d:layout_marginLeft="-7px"
+     	i3d:layout_width="60px"
+        i3d:layout_height="47px"
+	   	 />    
+        <TextView
+	i3d:id="pvTextView"
+     i3d:text="2"
+     i3d:layout_width = "30px"
+     i3d:layout_height="47px"
+     i3d:layout_marginTop="83px"
+   	 i3d:layout_marginLeft="7px"
+     i3d:gravity="center"
+     i3d:style="pv@styles"
+   />
+        
         
 </RelativeLayout>
 
