@@ -16,6 +16,14 @@
         i3d:insetTop="0"
         i3d:width="150" />
         
+        <inset
+        name="logo_dark_inset"
+        i3d:drawable="logo_dark@photos"
+        i3d:height="350"
+        i3d:insetLeft="0"
+        i3d:insetTop="0"
+        i3d:width="420" />
+        
    <!-- <circle
         name="staters"
         i3d:quality="16"
