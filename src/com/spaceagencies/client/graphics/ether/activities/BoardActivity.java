@@ -182,7 +182,7 @@ public class BoardActivity extends Activity {
         mTurn = mPlayer.getTurn();
         
         TextView titleTextView = (TextView) findViewById("titleTextView@layout/details_zone");
-        titleTextView.setText("\n\n\nLear about a race ...\n\n\nLear about History ...\n\n\nLear about conquest ...");
+        titleTextView.setText("\n\nLearn about a race ...\n\n\nLearn about History ...\n\n\nLearn about conquest ...");
         updateUi();
     }
 
