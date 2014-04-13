@@ -9,11 +9,6 @@
     i3d:layout_marginRight="10px"
     i3d:orientation="vertical" >
 
- 	<TextView
- 		i3d:id="handDescriptionTextView"
-        i3d:text="Hand"
-        i3d:layout_marginBottom="5px" />
-	
 	<ScrollView
         i3d:id="handScrollView"
         i3d:layout_width="100%"
@@ -27,27 +22,12 @@
         i3d:scroll_limits="strict" >
 	
 		<LinearLayout
+		i3d:layout_marginTop="10px"
 		i3d:id="handLinearLayout"
 		i3d:layout_width="wrap_content"
 		    i3d:layout_height="wrap_content"
-		i3d:orientation="vertical"
-		>
-		
-		<LinearLayout
-		i3d:id="firstLineHandLinearLayout"
-		i3d:layout_width="wrap_content"
-	    i3d:layout_height="wrap_content"
 		i3d:orientation="horizontal"
 		>
-		</LinearLayout>
-		<LinearLayout
-		i3d:id="secondLineHandLinearLayout"
-		i3d:layout_width="wrap_content"
-	    i3d:layout_height="wrap_content"
-		i3d:orientation="horizontal"
-		>
-		</LinearLayout>
-	
 		</LinearLayout>
 	</ScrollView>
 </LinearLayout>

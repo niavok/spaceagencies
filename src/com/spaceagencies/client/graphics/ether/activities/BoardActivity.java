@@ -57,10 +57,9 @@ public class BoardActivity extends Activity {
     private TextView missionsTextView;
     private LinearLayout firstLineLinearLayout;
     private LinearLayout secondLineLinearLayout;
-	private LinearLayout firstLineHandLinearLayout;
-	private LinearLayout secondLineHandLinearLayout;
 	private LinearLayout firstColumnLinearLayout;
 	private LinearLayout secondColumnLinearLayout;
+    private LinearLayout handLinearLayout;
 	
 
     private static final int UPDATE_UI_WHAT = 1;
@@ -73,7 +72,7 @@ public class BoardActivity extends Activity {
         mPlayer = LoginManager.getLocalPlayer();
         
         deckDescription = (TextView) findViewById("deckDescription@layout/deck_zone");
-        handDescriptionTextView = (TextView) findViewById("handDescriptionTextView@layout/hand_zone");
+//        handDescriptionTextView = (TextView) findViewById("handDescriptionTextView@layout/hand_zone");
         discardPileTextView = (TextView) findViewById("discardPileTextView@layout/discard_pile_zone");
         
         turnMoneyCounterTextView = (TextView) findViewById("turnMoneyCounterTextView@layout/turn_zone");
@@ -82,8 +81,7 @@ public class BoardActivity extends Activity {
         
         todoTextView = (TextView) findViewById("todoTextView@layout/turn_zone");
         
-        firstLineHandLinearLayout = (LinearLayout) findViewById("firstLineHandLinearLayout@layout/hand_zone");
-        secondLineHandLinearLayout = (LinearLayout) findViewById("secondLineHandLinearLayout@layout/hand_zone");
+        handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
         
         playedCardsLinearLayout = (LinearLayout) findViewById("playedCardsLinearLayout@layout/played_cards_zone");
         firstLineLinearLayout = (LinearLayout) findViewById("firstLineLinearLayout@layout/supply_zone");
@@ -215,8 +213,8 @@ public class BoardActivity extends Activity {
         int deckSize = mTurn.getPlayer().getDeck().getNbCards();
         deckDescription.setText("Deck: "+deckSize+ " card"+(deckSize > 1 ? "s" : ""));
         
-        int handSize = mTurn.getHand().getNbCards();
-        handDescriptionTextView.setText("Hand: "+handSize+ " card"+(handSize > 1 ? "s" : ""));
+//        int handSize = mTurn.getHand().getNbCards();
+//        handDescriptionTextView.setText("Hand: "+handSize+ " card"+(handSize > 1 ? "s" : ""));
         
         int discardPileSize = mTurn.getPlayer().getDiscardPile().getNbCards();
         discardPileTextView.setText("Discard pile: "+discardPileSize+ " card"+(discardPileSize > 1 ? "s" : ""));
@@ -226,19 +224,14 @@ public class BoardActivity extends Activity {
         turnBuyCounterTextView.setText("Buy count: "+mTurn.getBuyCount());
         
         //Display hand
-        firstLineHandLinearLayout.removeAllView();
-        secondLineHandLinearLayout.removeAllView();
+        handLinearLayout.removeAllView();
         int i = 0;
         for(final Card card : mTurn.getHand().getCards()) {
             CardView cardView = new CardView(card, cardSelectionManager);
             cardView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
             cardView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
             
-            if(i % 2 == 0) {
-            	firstLineHandLinearLayout.addViewInLayout(cardView);
-            } else {
-            	secondLineHandLinearLayout.addViewInLayout(cardView);
-            }
+                handLinearLayout.addViewInLayout(cardView);
             cardView.setOnClickListener(new OnClickListener() {
                 
                 @Override
@@ -272,8 +265,11 @@ public class BoardActivity extends Activity {
         for(final CardPile cardPile : mPlayer.getWorld().getSupply()) {
             if(cardPile.getNbCards() > 0) {
                 CardPileView cardPileView = new CardPileView(cardPile, cardSelectionManager);
-                cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
-                cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
+                
+                cardPileView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
+                cardPileView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
+                cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
+                cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
                 if(i %2 == 0) {
                     firstLineLinearLayout.addViewInLayout(cardPileView);
                 } else {
@@ -429,12 +425,16 @@ public class BoardActivity extends Activity {
 		CardView cardView = null;
 		if (BigCard) { 
 	    	cardView = new CardView(card, cardSelectionManager,"bigCard");
-	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(5, false, Axis.HORIZONTAL));
-	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(5, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
+            cardView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
 		} else {
 	    	cardView = new CardView(card, cardSelectionManager);
-	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(5, false, Axis.HORIZONTAL));
-	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(5, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
+            cardView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
 		}
         return cardView;
     }

@@ -280,4 +280,14 @@ public class Card extends GameEntity {
 
         return fullDescription.toString();
     }
+    public String getFeaturesDescription() {
+        StringBuilder fullDescription = new StringBuilder();
+        
+        for(CardFeature feature: features) {
+            fullDescription.append(feature.getDescription());
+            fullDescription.append("\n");
+        }
+        
+        return fullDescription.toString();
+    }
 }

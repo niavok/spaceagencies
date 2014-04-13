@@ -1,24 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     i3d:id="main"
     i3d:style="cardFront@styles"
-    i3d:orientation="vertical" >
+     >
 
-	  <TextView
-		  i3d:id="titleTextView"
-        i3d:text="Saturn V"
-        i3d:layout_marginTop="5px"
-        i3d:layout_width = "match_parent"
-        i3d:gravity="center"
-        i3d:layout_marginBottom="5px"
-         />
-         
-         <Drawable
+	<Drawable
+	   	i3d:ref="cardBackground@card"
+     	i3d:layout_width="160px"
+        i3d:layout_height="142px"
+	   	 />
+	   	  <Drawable
          	i3d:layout_width="150px"
-         	i3d:layout_height="94px"
+         	i3d:layout_height="126px"
+         	i3d:layout_marginTop="9px"
          	i3d:layout_marginLeft="5px"
          	i3d:layout_marginRight="5px"
-         	i3d:ref="saturn5@photos"
+         	i3d:ref="naca_inset@photos" 
          	i3d:id="imageDrawable"
          	/>
+	   	 
+	   	  	 <Drawable
+	   	i3d:ref="cardBubble@card"
+     	i3d:layout_width="24px"
+        i3d:layout_height="24px"
+        i3d:layout_marginTop="-7px"
+        i3d:layout_marginLeft="-7px"
+	   	 />
+   	 <Drawable
+	   	i3d:ref="cardMissionBorder@card"
+     	i3d:layout_width="166px"
+        i3d:layout_height="145px"
+        i3d:layout_marginTop="-8px"
+        i3d:layout_marginLeft="-9px"
+	   	 />
+
+<LinearLayout
+	i3d:layout_width="wrap_content"
+    i3d:layout_height="wrap_content"
+    i3d:layout_marginTop="20px"
+    i3d:layout_marginLeft="-6px"
+    i3d:orientation="horizontal">
+        <Drawable
+	   	i3d:ref="cardTitleLeft@card"
+     	i3d:layout_width="10px"
+        i3d:layout_height="22px"
+	   	 />
+	   	 <TextView
+		  	i3d:id="titleTextView"
+	        i3d:text="NACA"
+	        i3d:layout_width = "wrap_content"
+	        i3d:layout_height="wrap_content"
+	        i3d:layout_marginTop="7px"
+	        i3d:layout_paddingRight="7px"
+	        i3d:gravity="center"
+	        i3d:style="cardTitle@styles"
+         />
+	   	 
+	   	 <Drawable
+	   	i3d:ref="cardTitleRight@card"
+     	i3d:layout_width="10px"
+        i3d:layout_height="23px"
+        i3d:layout_marginTop="1px"
+        i3d:layout_marginLeft="0px"
+	   	 />
 </LinearLayout>
+
+
+<TextView
+	i3d:id="costTextView"
+     i3d:text="2"
+     i3d:layout_width = "32px"
+     i3d:layout_height="32px"
+     i3d:gravity="center"
+     i3d:layout_marginTop="-11px"
+     i3d:layout_marginLeft="-11px"
+     i3d:font="cost@fonts"
+   />
+         
+        
+</RelativeLayout>
+

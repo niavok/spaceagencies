@@ -36,6 +36,6 @@
     <color name="cardShapeBackground">#eeeeee</color>
     <color name="cardBaseBorder">#000000</color>
     <color name="cardBackBackground">#366EBF</color>
-    <color name="cardFrontBackground">#DDEBFF</color>
+    <color name="cardFrontBackground">#FFFFFF88</color>
     
 </resources>

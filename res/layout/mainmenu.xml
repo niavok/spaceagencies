@@ -4,6 +4,12 @@
     i3d:layout_width="match_parent"
     i3d:layout_height="match_parent" >
 
+ <Drawable
+ i3d:layout_width="match_parent"
+    i3d:layout_height="match_parent"
+	   	i3d:ref="background@photos"
+  	 />
+
     <LinearLayout
         i3d:layout_width="match_parent"
         i3d:layout_height="match_parent"

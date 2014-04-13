@@ -14,6 +14,53 @@
         i3d:insetTop="0"
         i3d:width="165"
         i3d:height="245" />
+    
+    <inset
+        name="cardBackground"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="178"
+        i3d:insetTop="0"
+        i3d:width="160"
+        i3d:height="140" />
+     <inset
+        name="cardMissionBorder"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="169"
+        i3d:insetTop="143"
+        i3d:width="166"
+        i3d:height="143" />
+    
+        
+      <inset
+        name="cardBubble"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="2"
+        i3d:insetTop="262"
+        i3d:width="24"
+        i3d:height="24" />
+        
+      <inset
+        name="cardTitleLeft"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="0"
+        i3d:insetTop="241"
+        i3d:width="10"
+        i3d:height="19" />
+      <inset
+        name="cardTitleCenter"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="30"
+        i3d:insetTop="241"
+        i3d:width="53"
+        i3d:height="19" />
+      <inset
+        name="cardTitleRight"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="83"
+        i3d:insetTop="241"
+        i3d:width="10"
+        i3d:height="19" />
+        
    <!-- <circle
         name="staters"
         i3d:quality="16"

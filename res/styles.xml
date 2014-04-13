@@ -142,5 +142,9 @@
         <item name="i3d:color">disabledDarkText@color</item>
     </style>
     
+     <style name="cardTitle" >
+        <item name="i3d:color">black@color</item>
+        <item name="i3d:background">cardTitleCenter@card</item>
+    </style>
     
 </resources>

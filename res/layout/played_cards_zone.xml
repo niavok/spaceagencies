@@ -9,10 +9,6 @@
     i3d:layout_marginRight="10px"
     i3d:orientation="vertical" >
 
- 	<TextView
-        i3d:text="Played cards"
-        i3d:layout_marginBottom="5px" />
-
 	<ScrollView
         i3d:id="playedScrollView"
         i3d:layout_width="100%"
@@ -26,6 +22,7 @@
         i3d:scroll_limits="strict" >
 	<LinearLayout
 	i3d:id="playedCardsLinearLayout"
+	i3d:layout_marginTop="10px"
 	i3d:layout_width="wrap_content"
 	    i3d:layout_height="wrap_content"
 	i3d:orientation="horizontal"
