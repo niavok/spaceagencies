@@ -11,6 +11,7 @@ public class Game {
     private final List<Player> players = new ArrayList<Player>();
     
     private final List<CardPile> supply = new ArrayList<CardPile>();
+    private final List<CardPile> resources = new ArrayList<CardPile>();
     
     private final CardPile missions = new NormalCardPile(this, GameServer.pickNewId());
     
@@ -48,7 +49,7 @@ public class Game {
         return state;
     }
     
-    public void setState(State state) {
-        this.state = state;
+    public List<CardPile> getResources() {
+        return resources;
     }
 }

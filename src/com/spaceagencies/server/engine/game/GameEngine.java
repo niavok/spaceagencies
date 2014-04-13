@@ -32,37 +32,10 @@ public class GameEngine implements Engine {
     
     @Override
     public void init() {
-        // Add Cuivre pile
-        InfinitCardPile cuivrePile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
-            @Override
-            public Card createCard() {
-                return Card.getTestCardCuivre();
-            }
-        });
-        mGame.getSupply().add(cuivrePile);
-
-        // Add Argent pile
-        InfinitCardPile argentPile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
-            @Override
-            public Card createCard() {
-                return Card.getTestCardArgent();
-            }
-        });
-        mGame.getSupply().add(argentPile);
-        
-        // Add Or pile
-        InfinitCardPile orPile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
-            @Override
-            public Card createCard() {
-                return Card.getTestCardOr();
-            }
-        });
-        mGame.getSupply().add(orPile);
-        
         List<Card> cards = Card.loadCards();
         Collections.shuffle(cards);
         int count = 0;
-        for (Card card : cards) {
+        for (final Card card : cards) {
             if ((card.getType() & Card.Type.MISSIONS.getFlag()) == 0) {
                 if (count <= 10) {
                     CardPile pile = new NormalCardPile(mGame, GameServer.pickNewId());
@@ -72,6 +45,14 @@ public class GameEngine implements Engine {
                     mGame.getSupply().add(pile);
                     count += 1;
                 }
+            } else if (card.getType()  == Card.Type.MISSIONS.getFlag()) {
+                InfinitCardPile pile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
+                    @Override
+                    public Card createCard() {
+                        return card.duplicate();
+                    }
+                });
+                mGame.getResources().add(pile);
             } else {
                 mGame.getMissions().addTop(card.duplicate());
             }
