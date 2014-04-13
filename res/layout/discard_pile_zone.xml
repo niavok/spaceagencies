@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     i3d:id="main"
     i3d:layout_width="wrap_content"
     i3d:layout_height="wrap_content"
     i3d:layout_marginBottom="10px"
-    i3d:layout_marginTop="10px"
-    i3d:layout_marginLeft="10px"
+    i3d:layout_marginTop="20px"
+    i3d:layout_marginLeft="0px"
     i3d:layout_marginRight="10px"
-    i3d:orientation="vertical" >
+     >
+
+	<Drawable
+     	i3d:id="cardPvFlagDrawable"
+	   	i3d:ref="cardBack@card"
+     	i3d:layout_width="153px"
+        i3d:layout_height="100px"
+	   	 />  
 
 	  <TextView
-	  i3d:id="discardPileTextView"
-        i3d:text="Discard pile : 3 cards"
+	  	i3d:id="discardPileTextView"
+        i3d:text="Deck : 5 cards"
         i3d:layout_marginBottom="5px"
+        i3d:font="veryBigButton@fonts"
+        i3d:layout_width="153px"
+    	i3d:layout_height="100px"
+    	i3d:gravity="center"
          />
-	<RelativeLayout
-	 i3d:id="discardPilePlaceholder"
-	 i3d:style="cardShape@styles"
-	 >
-		<View
-            i3d:id="card"
-            i3d:ref="main@layout/card" />
-	</RelativeLayout>
- 		
 
-</LinearLayout>
+
+</RelativeLayout>

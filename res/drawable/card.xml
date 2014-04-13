@@ -102,6 +102,14 @@
         i3d:width="60"
         i3d:height="47" />
         
+        <inset
+        name="cardBack"
+        i3d:drawable="card_texture@icons"
+        i3d:insetLeft="358"
+        i3d:insetTop="400"
+        i3d:width="153"
+        i3d:height="100" />
+        
    <!-- <circle
         name="staters"
         i3d:quality="16"

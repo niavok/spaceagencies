@@ -217,13 +217,13 @@ public class BoardActivity extends Activity {
 //        cardSelectionManager.getSelection();
         
         int deckSize = mTurn.getPlayer().getDeck().getNbCards();
-        deckDescription.setText("Deck: "+deckSize+ " card"+(deckSize > 1 ? "s" : ""));
+        deckDescription.setText("Deck: \n"+deckSize+ " card"+(deckSize > 1 ? "s" : ""));
         
 //        int handSize = mTurn.getHand().getNbCards();
 //        handDescriptionTextView.setText("Hand: "+handSize+ " card"+(handSize > 1 ? "s" : ""));
         
         int discardPileSize = mTurn.getPlayer().getDiscardPile().getNbCards();
-        discardPileTextView.setText("Discard pile: "+discardPileSize+ " card"+(discardPileSize > 1 ? "s" : ""));
+        discardPileTextView.setText("Discard: \n"+discardPileSize+ " card"+(discardPileSize > 1 ? "s" : ""));
         
         turnMoneyCounterTextView.setText("Money count: "+mTurn.getMoneyCount());
         turnActionCounterTextView.setText("Action count: "+mTurn.getActionCount());
