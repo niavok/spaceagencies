@@ -3,6 +3,8 @@
 # Import libraries
 import sys
 import os
+import urllib, cStringIO
+
 
 def parse(inputFile):
     # put all csv column in a dict
@@ -62,10 +64,11 @@ def parse(inputFile):
     <sevenDraw count="%s">
     <batchVP count="%s">
 </card>
-        """%(l__type[i],l__cost[i],l__date[i],l__title[i],l__shortDesc[i],l__longDesc[i],
-             l__filename[i],l__PV[i], l__moreActions[i],l__moreCards[i], l__moreCoins[i],
-             l__revealTop[i], l__discardDeck[i], l__lotsActions[i], l__sevenDraw[i],
-             l__batchVP[i])
+        """%(l__type[i],l__cost[i],l__date[i],l__title[i],
+             l__shortDesc[i],l__longDesc[i], l__filename[i],
+             l__PV[i], l__moreActions[i],l__moreCards[i],
+             l__moreCoins[i], l__revealTop[i], l__discardDeck[i],
+             l__lotsActions[i], l__sevenDraw[i], l__batchVP[i])
         
         dirname = os.path.join(os.getcwd(),l__filename[i])
         if not os.path.isdir(dirname) :
@@ -76,6 +79,16 @@ def parse(inputFile):
         # create xml file
         file.write(xml_file)
         file.close()
+        
+        #move image to this directory if define
+        if ( l__image[i] != None ) or (l__image[i] != "") :
+            imagename = os.path.join(dirname,l__filename[i] + "." + l__image[i].split('.')[len(l__image[i].split('.')) -1])
+            try :
+                urllib.urlretrieve(l__image[i], imagename)
+            except:
+                print "image not found for : " + l__title[i]
+                print "should be : " + l__image[i]
+                print " !!! "
 
 if (__name__ == '__main__'):
     if len(sys.argv) > 1 :
