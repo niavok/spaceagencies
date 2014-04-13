@@ -1,135 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    i3d:id="main"
-    i3d:layout_width="wrap_content"
-    i3d:layout_height="wrap_content"
-    i3d:layout_marginBottom="10px"
-    i3d:layout_marginTop="10px"
-    i3d:layout_marginLeft="10px"
-    i3d:layout_marginRight="10px"
-    i3d:orientation="horizontal" >
+<LinearLayout i3d:id="main" i3d:layout_width="wrap_content"
+	i3d:layout_height="wrap_content" i3d:layout_marginBottom="10px"
+	i3d:layout_marginTop="10px" i3d:layout_marginLeft="10px"
+	i3d:layout_marginRight="10px" i3d:orientation="horizontal">
 
 
-   <View
-        i3d:layout_width="20px"
-        i3d:layout_height="match_parent"
-        i3d:layout_gravity_y="center"
-        i3d:ref="main@layout/separator_vertical" />
+	<View i3d:layout_width="20px" i3d:layout_height="match_parent"
+		i3d:layout_gravity_y="center" i3d:ref="main@layout/separator_vertical" />
 
 
 
-	<LinearLayout
-		i3d:orientation="vertical"
-		i3d:layout_width="wrap_content"
-			i3d:layout_height="wrap_content">
-	>
-		<LinearLayout
-			i3d:id="turnStaticZone"
-			i3d:orientation="horizontal"
-			i3d:layout_width="wrap_content"
-			i3d:layout_height="wrap_content">
-	
-			<LinearLayout
-				i3d:id="turnCounter"
-				i3d:orientation="vertical"
-				i3d:layout_width="wrap_content"
-				i3d:layout_height="match_parent">
-				<TextView
-				i3d:id="turnMoneyCounterTextView"
-		        i3d:text="Money : 5"
-		        i3d:layout_marginBottom="5px"
-		        i3d:layout_marginTop="10px"
-		         />
-		         <TextView
-		         i3d:id="turnActionCounterTextView"
-		        i3d:text="Action : 3"
-		        i3d:layout_marginBottom="5px"
-		        i3d:layout_marginTop="10px"
-		         />
-		         <TextView
-		         i3d:id="turnBuyCounterTextView"
-		        i3d:text="Buy : 1"
-		        i3d:layout_marginBottom="5px"
-		        i3d:layout_marginTop="10px"
-		         />
-		         
+	<LinearLayout i3d:id="rightTurnZone" i3d:orientation="vertical"
+		i3d:layout_width="100%" i3d:layout_height="match_parent">
+
+		<LinearLayout i3d:id="textTurnZone" i3d:style="detailZone@styles" i3d:orientation="vertical"
+			i3d:layout_width="match_parent" i3d:layout_height="wrap_content" i3d:layout_marginBottom="10px" i3d:layout_marginTop="10px" >
+			<TextView i3d:id="phaseTextView" i3d:text="Action phase"
+				i3d:layout_marginTop="5px" i3d:layout_width="match_parent"
+				i3d:gravity="center" i3d:layout_marginBottom="5px" i3d:font="big@fonts" />
+			<TextView i3d:id="todoTextView" i3d:text="Choose to keep or discard this card."
+				i3d:layout_marginTop="5px" i3d:layout_width="match_parent"
+				i3d:gravity="center" i3d:layout_marginBottom="5px" i3d:font="title-bold@fonts" />
+
+		</LinearLayout>
+
+		<LinearLayout i3d:id="turnStaticZone" i3d:orientation="horizontal"
+			i3d:layout_width="wrap_content" i3d:layout_height="wrap_content">
+
+
+			<LinearLayout i3d:id="turnButton" i3d:orientation="vertical"
+				i3d:layout_width="wrap_content" i3d:layout_height="match_parent">
+				<Button i3d:id="turnPhaseButton" i3d:style="bigButton@styles"
+					i3d:layout_width="match_parent" i3d:layout_height="wrap_content"
+					i3d:layout_marginBottom="0px" i3d:layout_marginLeft="20px"
+					i3d:layout_marginRight="20px" i3d:layout_marginTop="10px" i3d:text="End turn"
+					i3d:help="newGameButtonHelp@help/mainmenu" />
+				<TextView i3d:text="Shortcut : SPACE" i3d:layout_width="match_parent"
+					i3d:layout_height="wrap_content" i3d:gravity="center" i3d:style="tips@styles"
+					i3d:layout_marginBottom="5px" i3d:layout_marginTop="0px" />
+
+				<LinearLayout i3d:id="dynamicButtonsZone"
+					i3d:orientation="horizontal" i3d:layout_width="wrap_content"
+					i3d:layout_marginRight="20px" i3d:layout_height="wrap_content">
+
 				</LinearLayout>
-				
-				<LinearLayout
-				i3d:id="turnButton"
-				i3d:orientation="vertical"
-				i3d:layout_width="wrap_content"
-				i3d:layout_height="match_parent">
-				<Button
-		                i3d:id="turnPhaseButton"
-		                i3d:style="bigButton@styles"
-		                i3d:layout_width="match_parent"
-		                i3d:layout_height="wrap_content"
-		                i3d:layout_marginBottom="0px"
-		                i3d:layout_marginLeft="20px"
-		                i3d:layout_marginRight="20px"
-		                i3d:layout_marginTop="10px"
-		                i3d:text="End turn"
-		                i3d:help="newGameButtonHelp@help/mainmenu"
-		                 />
-		                 <TextView
-		        i3d:text="Shortcut : SPACE"
-		        i3d:layout_width="match_parent"
-                i3d:layout_height="wrap_content"
-                i3d:gravity="center"
-                i3d:style="tips@styles"
-		        i3d:layout_marginBottom="5px"
-		        i3d:layout_marginTop="0px"
-		         />
-				</LinearLayout>
-	
-		  </LinearLayout>
-	 		<LinearLayout
-			i3d:id="turnDynamicZone"
-			i3d:orientation="vertical"
-			i3d:layout_width="255px"
-			i3d:layout_height="100%">
-	 			<TextView
- 			i3d:id="todoTextView"
-	        i3d:text="Choose to keep or discard this card."
-	        i3d:layout_marginTop="5px"
-	        i3d:layout_width = "match_parent"
-	        i3d:gravity="center"
-	        i3d:layout_marginBottom="5px"
-	        i3d:font="title-bold@fonts"
-	         />
-	         <LinearLayout
-	         i3d:id="dynamicButtonsZone"
-	         i3d:orientation="horizontal"
-	         i3d:layout_width="wrap_content"
-	         i3d:layout_marginRight="20px"
-				i3d:layout_height="wrap_content">
-<!-- 				<Button -->
-<!-- 		                i3d:id="keepButton" -->
-<!-- 		                i3d:style="bigButton@styles" -->
-<!-- 		                i3d:layout_width="wrap_content" -->
-<!-- 		                i3d:layout_height="wrap_content" -->
-<!-- 		                i3d:layout_marginBottom="0px" -->
-<!-- 		                i3d:layout_marginLeft="10px" -->
-<!-- 		                i3d:layout_marginRight="10px" -->
-<!-- 		                i3d:layout_marginTop="10px" -->
-<!-- 		                i3d:text="Keep" -->
-<!-- 		                i3d:help="newGameButtonHelp@help/mainmenu" -->
-<!-- 		                 /> -->
-<!-- 		                 <Button -->
-<!-- 		                i3d:id="discardButton" -->
-<!-- 		                i3d:style="bigButton@styles" -->
-<!-- 		                i3d:layout_width="wrap_content" -->
-<!-- 		                i3d:layout_height="wrap_content" -->
-<!-- 		                i3d:layout_marginBottom="0px" -->
-<!-- 		                i3d:layout_marginLeft="10px" -->
-<!-- 		                i3d:layout_marginRight="10px" -->
-<!-- 		                i3d:layout_marginTop="10px" -->
-<!-- 		                i3d:text="Discard" -->
-<!-- 		                i3d:help="newGameButtonHelp@help/mainmenu" -->
-<!-- 		                 /> -->
-				</LinearLayout>
-	 			
-	 		</LinearLayout>
+			</LinearLayout>
+			<LinearLayout i3d:orientation="vertical" i3d:style="detailZone@styles"
+				i3d:layout_width="wrap_content" i3d:layout_height="wrap_content"
+				i3d:layout_paddingLeft="5px"
+				i3d:layout_paddingRight="5px">
+				<TextView i3d:id="turnMoneyCounterTextView" i3d:text="Money : 5"
+					i3d:layout_marginBottom="5px" i3d:layout_marginTop="10px"  i3d:font="title-bold@fonts"/>
+				<TextView i3d:id="turnActionCounterTextView" i3d:text="Action : 3"
+					i3d:layout_marginBottom="5px" i3d:layout_marginTop="10px" i3d:font="title-bold@fonts" />
+				<TextView i3d:id="turnBuyCounterTextView" i3d:text="Buy : 1"
+					i3d:layout_marginBottom="5px" i3d:layout_marginTop="10px" i3d:font="title-bold@fonts" />
+			</LinearLayout>
+
+		</LinearLayout>
+
 	</LinearLayout>
 </LinearLayout>

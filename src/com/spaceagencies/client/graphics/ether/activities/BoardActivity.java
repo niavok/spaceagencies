@@ -315,7 +315,7 @@ public class BoardActivity extends Activity {
                     Button button = new Button();
                     button.setIdleStyle(I3dRessourceManager.getInstance().loadStyle("bigButton@styles"));
                     
-                    button.setText("Play all ressources (A)");
+                    button.setText("Play resources");
                     dynamicButtonsZone.addViewInLayout(button);
                     if(TurnHelper.hasMoneyInHand(mTurn)) {
                         button.setEnabled(true);
