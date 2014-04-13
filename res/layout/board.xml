@@ -1,106 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-i3d:id="main"
-    i3d:layout_width="match_parent"
-    i3d:layout_height="match_parent"
->
+<RelativeLayout i3d:id="main" i3d:layout_width="match_parent"
+	i3d:layout_height="match_parent">
 
- <Drawable
- i3d:layout_width="match_parent"
-    i3d:layout_height="match_parent"
-	   	i3d:ref="background@photos"
-	   	 />
+	<Drawable i3d:layout_width="match_parent" i3d:layout_height="match_parent"
+		i3d:ref="background@photos" />
+	<LinearLayout i3d:layout_width="match_parent"
+		i3d:layout_height="match_parent" i3d:orientation="vertical">
 
-<LinearLayout
-    i3d:layout_width="match_parent"
-    i3d:layout_height="match_parent"
-    i3d:orientation="horizontal" >
-    
-    <LinearLayout
-        	i3d:id="leftZone"
-            i3d:layout_width="100%"
-            i3d:layout_height="match_parent"
-            i3d:orientation="vertical" >
-   		<View
-      			i3d:id="supplyZone"
-   				i3d:layout_width="match_parent"
-	   	        i3d:layout_height="wrap_content"
-      			i3d:ref="main@layout/supply_zone" />
-    	
-    	<LinearLayout
-        	i3d:id="playZoneAndDetailZone"
-            i3d:layout_width="match_parent"
-            i3d:layout_height="100%"
-            i3d:orientation="horizontal" >
-            
-            
-            <LinearLayout
-        	i3d:id="playZone"
-            i3d:layout_width="100%"
-            i3d:layout_height="match_parent"
-            i3d:orientation="vertical" >
-    			
-	    			<LinearLayout
-	        	i3d:id="turnZone"
-	            i3d:layout_width="match_parent"
-	            i3d:layout_height="wrap_content"
-	            i3d:orientation="horizontal" >
-	    			<View
-	            i3d:id="deckZone"
-	            i3d:layout_width="wrap_content"
-	                i3d:layout_height="wrap_content"
-	            i3d:ref="main@layout/deck_zone" />
-	               <View
-	            i3d:id="discardPileZone"
-	            i3d:layout_width="wrap_content"
-	                i3d:layout_height="wrap_content"
-	            i3d:ref="main@layout/discard_pile_zone" />
-	            
-	            	<View
-	            i3d:id="turnOrderZone"
-	            i3d:layout_width="wrap_content"
-	                i3d:layout_height="wrap_content"
-	            i3d:ref="main@layout/turn_zone" />
-            
-    			</LinearLayout>
-    			
-    			
-    			
-    			<View
-            i3d:id="handZone"
-            i3d:layout_width="100%"
-                i3d:layout_height="wrap_content"
-            i3d:ref="main@layout/hand_zone" />
- 			</LinearLayout>
-    
-    		<View
-     			i3d:id="detailZone"
-     			i3d:layout_width="275px"
-       			i3d:layout_height="match_parent"
-     			i3d:ref="main@layout/details_zone" />
-    	</LinearLayout>
-    
-    </LinearLayout>
-    <LinearLayout
-        	i3d:id="rightZone"
-            i3d:layout_width="350px"
-            i3d:layout_paddingTop="5px"
-            i3d:layout_height="match_parent"
-            i3d:orientation="vertical" >
-    	
-    	<View
-            i3d:id="objectiveZone"
-            i3d:layout_width="wrap_content"
-                i3d:layout_height="wrap_content"
-            i3d:ref="main@layout/objective_zone" />
-    
-    	<View
-            i3d:id="playedCardZone"
-            i3d:layout_width="wrap_content"
-                i3d:layout_height="wrap_content"
-            i3d:ref="main@layout/played_cards_zone" />
-    
-    </LinearLayout>
-</LinearLayout>
+		<LinearLayout i3d:id="topZone" i3d:layout_width="match_parent"
+			i3d:layout_height="100%" i3d:orientation="horizontal">
 
+
+			<LinearLayout i3d:id="leftZone" i3d:layout_width="wrap_content"
+				i3d:layout_height="match_parent" i3d:orientation="vertical">
+
+				<View i3d:id="deckZone" i3d:layout_width="wrap_content"
+					i3d:layout_height="wrap_content" i3d:ref="main@layout/deck_zone" />
+				<View i3d:id="discardPileZone" i3d:layout_width="wrap_content"
+					i3d:layout_height="wrap_content" i3d:ref="main@layout/discard_pile_zone" />
+
+			</LinearLayout>
+			<LinearLayout i3d:id="centerZone" i3d:layout_width="100%"
+				i3d:layout_height="match_parent" i3d:orientation="vertical">
+				<View i3d:id="supplyZone" i3d:layout_width="match_parent"
+					i3d:layout_height="wrap_content" i3d:ref="main@layout/supply_zone" />
+					
+					<LinearLayout i3d:layout_height="50%"></LinearLayout>
+					
+				<View i3d:id="detailZone" i3d:layout_width="match_parent"
+					i3d:layout_height="350px" i3d:ref="main@layout/details_zone"
+					i3d:layout_marginLeft="30px"
+					i3d:layout_marginRight="30px"
+					 />
+
+					<LinearLayout i3d:layout_height="50%"></LinearLayout>
+
+			</LinearLayout>
+			<View i3d:id="objectiveZone" i3d:layout_paddingTop="5px"
+				i3d:layout_width="wrap_content" i3d:layout_height="match_parent"
+				i3d:ref="main@layout/objective_zone" />
+
+		</LinearLayout>
+
+
+		<LinearLayout i3d:id="bottomZone" i3d:layout_width="match_parent"
+			i3d:layout_height="wrap_content" i3d:orientation="horizontal">
+
+			<View i3d:id="handZone" i3d:layout_width="70%"
+				i3d:layout_height="match_parent" i3d:ref="main@layout/hand_zone" />
+
+			<View i3d:id="turnOrderZone" i3d:layout_width="wrap_content"
+				i3d:layout_height="match_parent" i3d:ref="main@layout/turn_zone" />
+
+
+			<View i3d:id="playedCardZone" i3d:layout_width="30%"
+				i3d:layout_height="wrap_content" i3d:ref="main@layout/played_cards_zone" />
+
+		</LinearLayout>
+	</LinearLayout>
 </RelativeLayout>
