@@ -2,9 +2,10 @@
 <card type="2" cost="4" date="">
     <title>Atmospheric Reentry</title>
     <shortDescription>+2 coins - if you have played 3 or more actions this turn, +1 card +1 action</shortDescription>
-    <longDescription> and further NASAs efforts to partner with industry to   provide a commercial capability for space transportation to the space  station.</longDescription>
+    <longDescription> and further NASA's efforts to partner with industry to   provide a commercial capability for space transportation to the space  station.</longDescription>
     <filename>atmreentry</filename>
     <victoryPoints></victoryPoints>
-<moreCoins count="2" />
-<lotsActions count="1" />
+    <features>
+		<moreCoins count="2" />
+    </features>
 </card>

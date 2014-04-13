@@ -5,6 +5,9 @@
     <longDescription>The first major U.S. Government wind tunnel became operational in 1921 and was located at the Langley Memorial Aeronautical Laboratory of the National Advisory Committee for Aeronautics (NACA), which became NASA Langley Research Center in 1958. This wind tunnel was crude when compared to the tunnels used at NASA Langley today. Like the aircraft tested in them, wind tunnels evolve as researchers discover ways to more accurately duplicate flight conditions.Wind tunnels help researchers understand the forces acting on an object as it moves through the atmosphere. They are also used to measure and minimize the noise produced by aircraft and to optimize engine efficiency. Although primarily used for aircraft, other objects such as spacecraft, automobiles, ships, trucks, andwheelchairs have been tested in Langley wind tunnels.</longDescription>
     <filename>crewselec</filename>
     <victoryPoints></victoryPoints>
+        <features>
+    
 <moreActions count="2" />
 <moreCards count="1" />
+</features>
 </card>

@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.spaceagencies.common.game.CardFeature;
 import com.spaceagencies.common.game.Turn;
 
-@XmlRootElement(name="moreMoney")
+@XmlRootElement(name="moreCoins")
 public class FeatureMoreMoney extends CardFeature {
     
     @XmlAttribute

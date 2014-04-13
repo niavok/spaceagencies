@@ -13,17 +13,25 @@ import java.util.Random;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import com.spaceagencies.common.game.features.FeatureDrawCards;
 import com.spaceagencies.common.game.features.FeatureMoreActions;
+import com.spaceagencies.common.game.features.FeatureMoreBuy;
 import com.spaceagencies.common.game.features.FeatureMoreMoney;
 import com.spaceagencies.server.GameServer;
 
 @XmlRootElement
-@XmlSeeAlso({ CardFeature.class, FeatureMoreActions.class })
+@XmlSeeAlso({ CardFeature.class, FeatureMoreActions.class, FeatureMoreMoney.class, 
+    FeatureDrawCards.class, FeatureMoreBuy.class, FeatureDrawCards.class, FeatureMoreMoney.class})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Card extends GameEntity {
     private static final long serialVersionUID = -1131206989953598577L;
 
@@ -59,7 +67,8 @@ public class Card extends GameEntity {
     @XmlElement()
     protected int victoryPoints;
 
-    @XmlElement()
+    @XmlElementWrapper
+    @XmlAnyElement(lax=true)
     private List<CardFeature> features = new ArrayList<CardFeature>();
 
     @XmlAttribute
@@ -152,11 +161,13 @@ public class Card extends GameEntity {
             if (file.isFile()) {
                 try {
                     if (file.getAbsolutePath().endsWith(".xml")) {
-                        System.out.println(file.getAbsolutePath());
                         Card card = unmarshal(Card.class, new FileInputStream(file));
                         cards.add(card);
                         System.out.println(card.getFilename());
                         namedCards.put(card.getFilename(), card);
+                        for (CardFeature f : card.getFeaturesList()) {
+                            System.out.println("\t -> " + f.getDescription());
+                        }
                     }
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

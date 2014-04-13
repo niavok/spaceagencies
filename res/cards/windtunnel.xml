@@ -5,7 +5,9 @@
     <longDescription></longDescription>
     <filename>windtunnel</filename>
     <victoryPoints>1</victoryPoints>
+        <features>
+    
 <moreActions count="1" />
 <moreCards count="1" />
-<revealTop count="1" />
+</features>
 </card>

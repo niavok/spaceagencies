@@ -5,5 +5,8 @@
     <longDescription>A heat shield is designed to shield a substance from absorbing excessive heat from an outside source by either dissipating, reflecting or simply absorbing the heat.</longDescription>
     <filename>capecan</filename>
     <victoryPoints></victoryPoints>
+        <features>
+    
 <moreCards count="3" />
+</features>
 </card>

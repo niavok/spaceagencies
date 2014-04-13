@@ -5,6 +5,9 @@
     <longDescription>Atmospheric entry is the movement of an object into and through the gases of a planet's atmosphere from outer space. There are two main types of atmospheric entry - uncontrolled entry, such as in the entry of celestial objects, space debris or bolides - and controlled entry, such as the entry (or reentry) of technology  capable of being navigated or following a predetermined course. Animated illustration of different phases as a meteoroid enters the  Earth's atmosphere to become visible as a meteor and land as a meteorite Atmospheric drag and aerodynamic heating can cause atmospheric breakup capable of completely disintegrating smaller objects. These forces may cause objects with lower compressive strength to explode.Practical development of reentry systems began as the range and reentry velocity of ballistic missiles increased. For early short-range missiles, like the V-2, stabilization and aerodynamic stress were important issues (many V-2s  broke apart during reentry), but heating was not a serious problem.  Medium-range missiles like the Soviet R-5,  with a 1200 km range, required ceramic composite heat shielding on  separable reentry vehicles (it was no longer possible for the entire  rocket structure to survive reentry). The first ICBMs, with ranges of 8000 to 12,000 km, were only possible with the  development of modern ablative heat shields and blunt-shaped vehicles.  In the USA, this technology was pioneered by H. Julian Allen at Ames Research Center.</longDescription>
     <filename>satv</filename>
     <victoryPoints></victoryPoints>
+        <features>
+    
 <moreActions count="1" />
 <moreCards count="2" />
+</features>
 </card>
