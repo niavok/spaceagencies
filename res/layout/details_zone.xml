@@ -26,29 +26,35 @@
 	       	i3d:layout_marginLeft="30px"
 	       	i3d:layout_marginRight="30px"
 	       	i3d:layout_width="800px"
+	       	i3d:layout_height="30px"
 	        i3d:font="veryverylargebold@fonts" />
 	        
+	        
+	        	
+			<TextView
+	 		i3d:id="featureTextView"
+	        i3d:text=""
+	        i3d:layout_marginTop="10px"
+	       	i3d:layout_marginLeft="30px"
+	       	i3d:layout_marginRight="30px"
+	       	i3d:layout_width="800px"
+	       	i3d:layout_height="25px"
+	        i3d:font="verylargebold@fonts" />
          	
-	<LinearLayout
-	    i3d:layout_height="wrap_content"
-	    i3d:orientation="horizontal" 
-	    i3d:id="featuresLayout">
-	    
-    </LinearLayout>
 	        <ScrollView
         i3d:id="descriptionScrollView"
         i3d:layout_width="800px"
         i3d:layout_height="100%"
         i3d:scroll_axis="vertical"
         i3d:layout_marginTop="10px"
-        i3d:layout_marginBottom="10px"
+        i3d:layout_marginBottom="30px"
         i3d:layout_marginLeft="10px"
        	i3d:layout_marginRight="10px"
         i3d:scroll_limits="strict" >
 			<TextView
 	 		i3d:id="handDescriptionTextView"
 	        i3d:text=""
-	        i3d:layout_marginBottom="30px"
+	        i3d:layout_marginBottom="10px"
 	        i3d:layout_marginTop="10px"
 	       	i3d:layout_marginLeft="30px"
 	       	i3d:layout_marginRight="30px"

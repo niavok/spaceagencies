@@ -70,7 +70,7 @@ public abstract class View {
         
         
         if(isMouseOver(g.getUiTranslation())) {
-//            g.setColor(Color.randomLightOpaqueColor());
+     //       g.setColor(Color.randomLightOpaqueColor());
 //            g.drawFilledRectangle(mLayoutParams.mLeft, mLayoutParams.mTop, mLayoutParams.getTotalWidth(), mLayoutParams.getTotalHeight());
         }
         

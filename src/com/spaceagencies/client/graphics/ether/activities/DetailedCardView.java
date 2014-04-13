@@ -27,10 +27,6 @@ public class DetailedCardView extends ProxyView {
         titleTextView.setText(card.getTitle());
         descriptionTextView.setText(card.getLongDescription());
 
-        LinearLayout featuresLayout = (LinearLayout) findViewById("featuresLayout@layout/details_zone");
-        RelativeLayout relativeLayout = new RelativeLayout();
-        featuresLayout.addViewInLayout(relativeLayout);
-        
         String msg = "";
         if (card.getCost() >= 0) {
             msg += "Cost: " + String.valueOf(card.getCost()) + ",    ";
@@ -38,15 +34,8 @@ public class DetailedCardView extends ProxyView {
         if (card.getVictoryPoints() > 0) {
             msg += "Mission points: " + String.valueOf(card.getCost()) + ",    ";
         }
-        {
-            TextView textView = new TextView();
-            textView.setText(msg + card.getShortDescription());
-            textView.getLayoutParams().setWidthMeasure(new Measure(800, false, Axis.HORIZONTAL));
-            textView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
-            textView.setFont(I3dRessourceManager.getInstance().loadFont("verylargebold@fonts"));
-            textView.getLayoutParams().setMarginLeftMeasure(new Measure(30, false, Axis.HORIZONTAL));
-            featuresLayout.addViewInLayout(textView);
-        }
+        TextView featureTextView = (TextView) findViewById("featureTextView@layout/details_zone");
+        featureTextView.setText(msg + card.getShortDescription());
 //        for (CardFeature feat : card.getFeaturesList()) {
 //            TextView textView = new TextView();
 //            textView.setText(feat.getDescription());
