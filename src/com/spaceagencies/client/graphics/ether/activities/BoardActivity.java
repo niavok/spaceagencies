@@ -180,6 +180,9 @@ public class BoardActivity extends Activity {
     @Override
     public void onResume() {
         mTurn = mPlayer.getTurn();
+        
+        TextView titleTextView = (TextView) findViewById("titleTextView@layout/details_zone");
+        titleTextView.setText("\n\n\nLear about a race ...\n\n\nLear about History ...\n\n\nLear about conquest ...");
         updateUi();
     }
 

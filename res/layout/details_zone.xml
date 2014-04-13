@@ -11,7 +11,7 @@
          	i3d:layout_marginTop="0px"
          	i3d:layout_marginLeft="0px"
          	i3d:layout_marginRight="20px"
-         	i3d:ref="naca_inset@photos" 
+         	i3d:ref="logo_dark_inset@photos" 
          	i3d:id="imageDrawable" 
          	/>
          	
@@ -28,6 +28,7 @@
 	       	i3d:layout_marginRight="30px"
 	       	i3d:layout_width="800px"
 	        i3d:font="veryverylargebold@fonts" />
+	        
          	
 	<LinearLayout
 	    i3d:layout_height="wrap_content"
@@ -38,7 +39,7 @@
 	        
 			<TextView
 	 		i3d:id="handDescriptionTextView"
-	        i3d:text="Le programme de vaisseau spatial réutilisable soviétique Bourane, Buran dans la translittération anglaise, (« Бура́н » qui signifie « tempête de neige » en russe) a été lancé en 1976 en réponse au programme américain de navettes spatiales. Les dirigeants soviétiques, qui étaient persuadés que ce programme américain serait utilisé à des fins militaires, ont voulu disposer d'un engin équivalent afin de maintenir l’équilibre des puissances durant la guerre froide.\n Ce projet a été le plus important et le plus coûteux de l’histoire de l’exploration spatiale soviétique."
+	        i3d:text=""
 	        i3d:layout_marginBottom="30px"
 	        i3d:layout_marginTop="10px"
 	       	i3d:layout_marginLeft="30px"
