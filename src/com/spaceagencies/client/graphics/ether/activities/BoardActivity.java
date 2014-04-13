@@ -60,6 +60,7 @@ public class BoardActivity extends Activity {
 	private LinearLayout firstColumnLinearLayout;
 	private LinearLayout secondColumnLinearLayout;
     private LinearLayout handLinearLayout;
+	private LinearLayout resourcesLinearLayout;
 	
 
     private static final int UPDATE_UI_WHAT = 1;
@@ -86,6 +87,8 @@ public class BoardActivity extends Activity {
         playedCardsLinearLayout = (LinearLayout) findViewById("playedCardsLinearLayout@layout/played_cards_zone");
         firstLineLinearLayout = (LinearLayout) findViewById("firstLineLinearLayout@layout/supply_zone");
         secondLineLinearLayout = (LinearLayout) findViewById("secondLineLinearLayout@layout/supply_zone");
+        
+        resourcesLinearLayout = (LinearLayout) findViewById("resourcesLinearLayout@layout/board");
         
         
         firstColumnLinearLayout = (LinearLayout) findViewById("firstColumnLinearLayout@layout/objective_zone");
@@ -211,13 +214,13 @@ public class BoardActivity extends Activity {
 //        cardSelectionManager.getSelection();
         
         int deckSize = mTurn.getPlayer().getDeck().getNbCards();
-        deckDescription.setText("Deck: "+deckSize+ " card"+(deckSize > 1 ? "s" : ""));
+        deckDescription.setText("Deck: \n"+deckSize+ " card"+(deckSize > 1 ? "s" : ""));
         
 //        int handSize = mTurn.getHand().getNbCards();
 //        handDescriptionTextView.setText("Hand: "+handSize+ " card"+(handSize > 1 ? "s" : ""));
         
         int discardPileSize = mTurn.getPlayer().getDiscardPile().getNbCards();
-        discardPileTextView.setText("Discard pile: "+discardPileSize+ " card"+(discardPileSize > 1 ? "s" : ""));
+        discardPileTextView.setText("Discard: \n"+discardPileSize+ " card"+(discardPileSize > 1 ? "s" : ""));
         
         turnMoneyCounterTextView.setText("Money count: "+mTurn.getMoneyCount());
         turnActionCounterTextView.setText("Action count: "+mTurn.getActionCount());
@@ -257,6 +260,19 @@ public class BoardActivity extends Activity {
             playedCardsLinearLayout.addViewInLayout(cardView);
         }
         
+        // Resources
+        resourcesLinearLayout.removeAllView();
+        for(final CardPile cardPile : mPlayer.getWorld().getResources()) {
+            if(cardPile.getNbCards() > 0) {
+                CardPileView cardPileView = generateCardPileView(cardPile);
+                
+            	resourcesLinearLayout.addViewInLayout(cardPileView);
+            }
+            i++;
+            
+        }
+        
+        
         // Supply
         firstLineLinearLayout.removeAllView();
         secondLineLinearLayout.removeAllView();
@@ -264,28 +280,15 @@ public class BoardActivity extends Activity {
         i = 0;
         for(final CardPile cardPile : mPlayer.getWorld().getSupply()) {
             if(cardPile.getNbCards() > 0) {
-                CardPileView cardPileView = new CardPileView(cardPile, cardSelectionManager);
+                CardPileView cardPileView = generateCardPileView(cardPile);
                 
-                cardPileView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
-                cardPileView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
-                cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
-                cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
                 if(i %2 == 0) {
                     firstLineLinearLayout.addViewInLayout(cardPileView);
                 } else {
                     secondLineLinearLayout.addViewInLayout(cardPileView);
                 }
                 
-                cardPileView.setOnClickListener(new OnClickListener() {
-                    
-                    @Override
-                    public void onClick(I3dMouseEvent mouseEvent, View view) {
-                        Log.log("Click count "+ mouseEvent.getClickCount());
-                        if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
-                            mGameEngine.buyCard(mTurn, cardPile);
-                        }
-                    }
-                });
+                
             }
             i++;
             
@@ -312,7 +315,7 @@ public class BoardActivity extends Activity {
                     Button button = new Button();
                     button.setIdleStyle(I3dRessourceManager.getInstance().loadStyle("bigButton@styles"));
                     
-                    button.setText("Play all ressources (A)");
+                    button.setText("Play resources");
                     dynamicButtonsZone.addViewInLayout(button);
                     if(TurnHelper.hasMoneyInHand(mTurn)) {
                         button.setEnabled(true);
@@ -402,6 +405,27 @@ public class BoardActivity extends Activity {
         	secondColumnLinearLayout.addViewInLayout(I3dRessourceManager.loadView("main@layout/cardPlaceHolder"));
         }
     }
+
+	private CardPileView generateCardPileView(final CardPile cardPile) {
+		CardPileView cardPileView = new CardPileView(cardPile, cardSelectionManager);
+		
+		cardPileView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
+		cardPileView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
+		cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
+		cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
+		
+		cardPileView.setOnClickListener(new OnClickListener() {
+		    
+		    @Override
+		    public void onClick(I3dMouseEvent mouseEvent, View view) {
+		        Log.log("Click count "+ mouseEvent.getClickCount());
+		        if(mTurn.getTurnState().equals(TurnState.BUY_PHASE)) {
+		            mGameEngine.buyCard(mTurn, cardPile);
+		        }
+		    }
+		});
+		return cardPileView;
+	}
     
     private void placeObjectiveCard(LinearLayout columnLinearLayout, final Card card, boolean bigCard) {
 		// TODO Auto-generated method stub

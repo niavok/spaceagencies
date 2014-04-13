@@ -14,6 +14,10 @@
 			<LinearLayout i3d:id="leftZone" i3d:layout_width="wrap_content"
 				i3d:layout_height="match_parent" i3d:orientation="vertical">
 
+				<LinearLayout i3d:id="resourcesLinearLayout" i3d:layout_width="wrap_content"
+				i3d:layout_height="wrap_content" i3d:orientation="vertical">
+				</LinearLayout>
+
 				<View i3d:id="deckZone" i3d:layout_width="wrap_content"
 					i3d:layout_height="wrap_content" i3d:ref="main@layout/deck_zone" />
 				<View i3d:id="discardPileZone" i3d:layout_width="wrap_content"

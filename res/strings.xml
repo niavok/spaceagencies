@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_first">Space</string>
+    <string name="title_first">Space </string>
     <string name="title_last">Agencies</string>
     <string name="newGameButton">New game</string>
     <string name="continueGameButton">Continue</string>

@@ -13,6 +13,7 @@ import com.spaceagencies.i3d.SelectionManager.OnSelectionChangeListener;
 import com.spaceagencies.i3d.input.I3dMouseEvent;
 import com.spaceagencies.i3d.view.DrawableView;
 import com.spaceagencies.i3d.view.LayoutParams.LayoutMeasure;
+import com.spaceagencies.i3d.view.drawable.InsetDrawable;
 import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.RelativeLayout;
 import com.spaceagencies.i3d.view.TextView;
@@ -105,7 +106,20 @@ public class CardPileView extends ProxyView {
         
         
         
-        
+        if (peekTop.getFilename() != "") {
+            InsetDrawable insetDrawable = new InsetDrawable();
+            insetDrawable.setWidth(150);
+            insetDrawable.setHeight(125);
+            insetDrawable.setInsetTop(0);
+            insetDrawable.setInsetLeft(0);
+            insetDrawable.setDrawableName(peekTop.getFilename() + "@cards");
+            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/card");
+            drawableView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setWidthMeasure(new Measure(150, false, Axis.HORIZONTAL));
+            drawableView.getLayoutParams().setHeightMeasure(new Measure(125, false, Axis.VERTICAL));
+            drawableView.setDrawable(insetDrawable);
+        }
         
         
         super.setOnMouseListener(new OnMouseEventListener() {

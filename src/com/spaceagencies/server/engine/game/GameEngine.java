@@ -34,8 +34,8 @@ public class GameEngine implements Engine {
     public void init() {
         List<Card> cards = Card.getCards();
         Collections.shuffle(cards);
-        cards.add(Card.getArgent(mGame));
         cards.add(Card.getCuivre(mGame));
+        cards.add(Card.getArgent(mGame));
         cards.add(Card.getOr(mGame));
         
         int count = 0;
