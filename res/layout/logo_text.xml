@@ -4,6 +4,18 @@
     i3d:layout_width="wrap_content"
     i3d:layout_height="wrap_content" >
 
+	<Drawable
+         	i3d:layout_width="420px"
+         	i3d:layout_height="350px"
+         	i3d:layout_marginTop="0px"
+         	i3d:layout_marginLeft="0px"
+         	i3d:layout_marginRight="00px"
+         	i3d:ref="logo_light_inset@photos" 
+         	i3d:id="imageDrawable" 
+         	/>
+
+
+
 <!--     <View -->
 <!--         i3d:id="logo" -->
 <!--         i3d:layout_width="83px" -->
@@ -14,11 +26,14 @@
 <!--         i3d:ref="main@layout/logo" /> -->
 
     <TextView
+    
+    i3d:layout_marginTop="60px"
         i3d:text="title_first@strings"
         i3d:color="logoSecondary@color"
         i3d:font="logo@fonts" />
 
     <TextView
+    i3d:layout_marginTop="60px"
         i3d:text="title_last@strings"
         i3d:color="logoPrimary@color"
         i3d:font="logo@fonts" />
