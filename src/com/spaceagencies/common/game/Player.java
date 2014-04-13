@@ -1,7 +1,11 @@
 package com.spaceagencies.common.game;
 
+import com.spaceagencies.server.GameServer;
+
 
 public class Player extends GameEntity {
+
+    private static final long serialVersionUID = -2593919021284765702L;
 
     private String login;
 
@@ -14,13 +18,16 @@ public class Player extends GameEntity {
     private CardPile mDiscardPile;
 
     private Turn mTurn;
+
+//	private Address address;
     
-	public Player(Game game, long id, String login) {
+	public Player(Game game, long id, /*Address addr, */String login) {
 	    super(game, id);
+//		this.address = addr;
         this.login = login;
         
-        mDeck = new NormalCardPile();
-        mDiscardPile = new NormalCardPile();
+        mDeck = new NormalCardPile(game, GameServer.pickNewId());
+        mDiscardPile = new NormalCardPile(game, GameServer.pickNewId());
         
         human = false;
 	}
@@ -59,5 +66,9 @@ public class Player extends GameEntity {
     
     public Turn getTurn() {
         return mTurn;
+    }
+
+    public void setLogin(String name) {
+        this.login = name;
     }
 }

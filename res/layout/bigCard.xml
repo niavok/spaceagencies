@@ -18,7 +18,8 @@
          	i3d:layout_marginTop="9px"
          	i3d:layout_marginLeft="5px"
          	i3d:layout_marginRight="5px"
-         	i3d:ref="naca_inset@photos" 
+         	i3d:ref="naca_inset@photos"
+         	i3d:id="imageDrawable"
          	/>
 	   	 
 	   	 

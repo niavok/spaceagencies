@@ -1,6 +1,8 @@
 package com.spaceagencies.server.engine.game;
 
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 import com.spaceagencies.common.engine.Engine;
 import com.spaceagencies.common.engine.Observable;
@@ -30,69 +32,38 @@ public class GameEngine implements Engine {
     
     @Override
     public void init() {
+        List<Card> cards = Card.getCards();
+        Collections.shuffle(cards);
+        cards.add(Card.getArgent(mGame));
+        cards.add(Card.getCuivre(mGame));
+        cards.add(Card.getOr(mGame));
         
-        // Init mission
-        for(int i = 1; i < 51 ; i++) {
-            mGame.getMissions().addTop(Card.getTestRandomMissionCard(i));
+        int count = 0;
+        for (final Card card : cards) {
+            if ((card.getType() & Card.Type.TECHNOLOGIES.getFlag()) != 0) {
+                if (count <= 10) {
+                    CardPile pile = new NormalCardPile(mGame, GameServer.pickNewId());
+                    for(int i = 0; i < 10 ; i++) {
+                        pile.addTop(card.duplicate());
+                    }
+                    mGame.getSupply().add(pile);
+                    count += 1;
+                }
+            } else if (card.getType()  == Card.Type.RESSOURCES.getFlag()) {
+                InfinitCardPile pile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
+                    @Override
+                    public Card createCard() {
+                        return card.duplicate();
+                    }
+                });
+                mGame.getResources().add(pile);
+            } else {
+                mGame.getMissions().addTop(card.duplicate());
+            }
         }
+        
         mGame.getMissions().shuffle();
-        
         refillObjectives();
-        
-        
-        
-        
-        // Add Cuivre pile
-        InfinitCardPile cuivrePile = new InfinitCardPile(new CardFactory() {
-            
-            @Override
-            public Card createCard() {
-                return Card.getTestCardCuivre();
-            }
-        });
-        mGame.getSupply().add(cuivrePile);
-
-        // Add Argent pile
-        InfinitCardPile argentPile = new InfinitCardPile(new CardFactory() {
-            
-            @Override
-            public Card createCard() {
-                return Card.getTestCardArgent();
-            }
-        });
-        mGame.getSupply().add(argentPile);
-        
-        // Add Or pile
-        InfinitCardPile orPile = new InfinitCardPile(new CardFactory() {
-            
-            @Override
-            public Card createCard() {
-                return Card.getTestCardOr();
-            }
-        });
-        mGame.getSupply().add(orPile);
-        
-        // Add village pile
-        CardPile villagePile = new NormalCardPile();
-        for(int i = 0; i < 12 ; i++) {
-            villagePile.addTop(Card.getTestCardVillage());
-        }
-        mGame.getSupply().add(villagePile);
-        
-        // Add bucheron pile
-        CardPile bucheronPile = new NormalCardPile();
-        for(int i = 0; i < 12 ; i++) {
-            bucheronPile.addTop(Card.getTestCardBucheron());
-        }
-        mGame.getSupply().add(bucheronPile);
-        
-        // Add forgeron pile
-        CardPile forgeronPile = new NormalCardPile();
-        for(int i = 0; i < 12 ; i++) {
-            forgeronPile.addTop(Card.getTestCardForgeron());
-        }
-        mGame.getSupply().add(forgeronPile);
-        
     }
 
     private void refillObjectives() {
@@ -143,11 +114,11 @@ public class GameEngine implements Engine {
         
         
         CardPile deck = newPlayer.getDeck();
-        for(int i = 0; i < 3 ;i++) {
-            deck.addBottom(Card.getTestCardDomaine());
-        }
+        deck.addBottom(Card.pullCardByName("flirtwspace"));
+        deck.addBottom(Card.pullCardByName("soundbarrier"));
+        deck.addBottom(Card.pullCardByName("NACA"));
         for(int i = 0; i < 7 ;i++) {
-            deck.addBottom(Card.getTestCardCuivre());
+            deck.addBottom(Card.getCuivre(mGame));
         }
         
         deck.shuffle();
@@ -175,7 +146,7 @@ public class GameEngine implements Engine {
 
 
     private void newTurn(Player player) {
-        Turn turn = new Turn(mGame, player, player.getDeck());
+        Turn turn = new Turn(mGame, GameServer.pickNewId(), player, player.getDeck());
         player.setTurn(turn);
         
         notifySomethingChanged();
@@ -309,7 +280,9 @@ public class GameEngine implements Engine {
         
         //Remove higther mission
         Card bottom = mGame.getVisibleMissions().takeTop();
-        mGame.getMissions().addBottom(bottom);
+        if (bottom != null) {
+            mGame.getMissions().addBottom(bottom);
+        }
         
         refillObjectives();
         

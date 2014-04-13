@@ -112,7 +112,10 @@ public class CardPileView extends ProxyView {
 			
 			@Override
 			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
-				selectionManager.select(mCardPile.peekTop());
+                if (!TurnHelper.isMoneyCard(mCardPile.peekTop())){
+                    selectionManager.select(mCardPile.peekTop());
+                }
+
 				return false;
 			}
 		});

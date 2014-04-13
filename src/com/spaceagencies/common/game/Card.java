@@ -2,29 +2,31 @@ package com.spaceagencies.common.game;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import com.spaceagencies.common.game.features.FeatureMoreActions;
-import com.spaceagencies.common.game.features.FeatureMoreBuy;
 import com.spaceagencies.common.game.features.FeatureMoreMoney;
-import com.spaceagencies.common.game.features.FeatureDrawCards;
+import com.spaceagencies.server.GameServer;
 
 @XmlRootElement
-@XmlSeeAlso({CardFeature.class, FeatureMoreActions.class})
-public class Card {
+@XmlSeeAlso({ CardFeature.class, FeatureMoreActions.class })
+public class Card extends GameEntity {
+    private static final long serialVersionUID = -1131206989953598577L;
+
     public enum Type {
         RESSOURCES(1 << 0), TECHNOLOGIES(1 << 1), MISSIONS(1 << 2);
         private final long flag;
@@ -37,10 +39,10 @@ public class Card {
             return flag;
         }
     }
-    
+
     @XmlElement
     protected String title;
-    
+
     @XmlElement
     protected String shortDescription;
     @XmlElement
@@ -53,20 +55,23 @@ public class Card {
     protected long type;
     @XmlAttribute
     protected int cost;
-    
-    @XmlElement
+
+    @XmlElement()
     protected int victoryPoints;
 
-    @XmlAnyElement
-    protected List<CardFeature> features = new ArrayList<CardFeature>();
+    @XmlElement()
+    private List<CardFeature> features = new ArrayList<CardFeature>();
 
     @XmlAttribute
     private int date;
-    
+
     public Card() {
-        super();
+        super(null, 0);
     }
-    public Card(String title,
+
+    public Card(Game game,
+                long id,
+                String title,
                 String shortDescription,
                 String longDescription,
                 String filename,
@@ -74,7 +79,7 @@ public class Card {
                 long type,
                 int cost,
                 int victoryPoints) {
-        super();
+        super(game, id);
         this.title = title;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
@@ -117,128 +122,159 @@ public class Card {
     public final int getCost() {
         return cost;
     }
-    
+
     public int getDate() {
         return date;
     }
+
+    public Card duplicate() {
+        Card c = new Card(this.getWorld(),
+                          GameServer.pickNewId(),
+                          title,
+                          shortDescription,
+                          longDescription,
+                          filename,
+                          featureDescription,
+                          type,
+                          cost,
+                          victoryPoints);
+        c.features = features;
+        return c;
+    }
+
+    private static Map<String, Card> namedCards = new HashMap<String, Card>();
+    private static List<Card> cards = loadCards();
+    private static List<Card> loadCards() {
+        ArrayList<Card> cards = new ArrayList<Card>();
+        File directory = new File("res/cards/");
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isFile()) {
+                try {
+                    if (file.getAbsolutePath().endsWith(".xml")) {
+                        Card card = unmarshal(Card.class, new FileInputStream(file));
+                        cards.add(card);
+                        namedCards.put(card.getFilename(), card);
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (JAXBException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return cards;
+    }
     
+    public static Card getCardByName(String name) {
+        Card c;
+        if ((c = namedCards.get(name)) != null) {
+            return c.duplicate();
+        }
+        return null;
+    }
+    public static Card pullCardByName(String name) {
+        Card c;
+        if ((c = namedCards.get(name)) != null) {
+            namedCards.remove(name);
+            return c.duplicate();
+        }
+        return null;
+    }
+
     @SuppressWarnings("unchecked")
-    static public <T> T unmarshal( Class<T> docClass, InputStream inputStream )
-        throws JAXBException {
+    static public <T> T unmarshal(Class<T> docClass, InputStream inputStream) throws JAXBException {
         String packageName = docClass.getPackage().getName();
-        JAXBContext jc = JAXBContext.newInstance( packageName );
+        JAXBContext jc = JAXBContext.newInstance(packageName);
         Unmarshaller u = jc.createUnmarshaller();
         return (T) u.unmarshal(inputStream);
     }
 
-    public static void main(String[] args) throws Exception {
-        try {
-            {
-                JAXBContext context = JAXBContext.newInstance(Card.class);
-                Marshaller m = context.createMarshaller();
-                m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-                Card c = new Card("title", "shortDescription", "longdescription", "filename", "action", 2, 12, 0);
-                c.features.add(new FeatureMoreActions(12));
-                c.features.add(new FeatureMoreActions(13));
-                File f = new File("card.xml");
-                m.marshal(c, f);
-            }
-            {
-                File f = new File("card.xml");
-                Card card = unmarshal(Card.class, new FileInputStream(f));
-                System.out.println(card);
-            }
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-    }
-    
-    public static Card getTestCardCuivre() {
-        Card c = new Card("Cuivre", "shortDescription", "longdescription1", "filename1", "action1", Type.RESSOURCES.getFlag(), 0, 0);
+    public static Card getCuivre(Game game) {
+        Card c = new Card(game,
+                          GameServer.pickNewId(),
+                          "Crew",
+                          "",
+                          "",
+                          "resource1",
+                          "",
+                          Type.RESSOURCES.getFlag(),
+                          0,
+                          0);
         c.features.add(new FeatureMoreMoney(1));
         return c;
     }
-    
-    public static Card getTestCardArgent() {
-        Card c = new Card("Argent", "shortDescription", "longdescription1", "filename1", "action1", Type.RESSOURCES.getFlag(), 3, 0);
+
+    public static Card getArgent(Game game) {
+        Card c = new Card(game,
+                          GameServer.pickNewId(),
+                          "Launcher",
+                          "",
+                          "",
+                          "resource2",
+                          "",
+                          Type.RESSOURCES.getFlag(),
+                          3,
+                          0);
         c.features.add(new FeatureMoreMoney(2));
         return c;
     }
-    
-    public static Card getTestCardOr() {
-        Card c = new Card("Or", "shortDescription", "longdescription1", "filename1", "action1", Type.RESSOURCES.getFlag(), 6, 0);
+
+    public static Card getOr(Game game) {
+        Card c = new Card(game,
+                          GameServer.pickNewId(),
+                          "Spacecraft",
+                          "",
+                          "",
+                          "resource3",
+                          "",
+                          Type.RESSOURCES.getFlag(),
+                          6,
+                          0);
         c.features.add(new FeatureMoreMoney(3));
         return c;
     }
-    
-    public static Card getTestCardVillage() {
-        Card c = new Card("Village", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 3, 0);
-        c.features.add(new FeatureDrawCards(1));
-        c.features.add(new FeatureMoreActions(2));
-        return c;
-    }
-    
-    public static Card getTestCardBucheron() {
-        Card c = new Card("Bucheron", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 3, 0);
-        c.features.add(new FeatureMoreBuy(1));
-        c.features.add(new FeatureMoreMoney(2));
-        return c;
-    }
-    
-    public static Card getTestCardForgeron() {
-        Card c = new Card("Forgeron", "shortDescription2", "longdescription2", "filename2", "action2", Type.TECHNOLOGIES.getFlag(), 4, 0);
-        c.features.add(new FeatureDrawCards(3));
-        return c;
-    }
-    
-    public static Card getTestCardDomaine() {
-        Card c = new Card("Domaine", "shortDescription2", "longdescription2", "filename2", "action2", Type.MISSIONS.getFlag(), 2, 1);
-        return c;
-    }
-    
+
     private static Random random = new Random(42);
-    
+
     public static Card getTestRandomMissionCard(int i) {
-        
-        int victory = random.nextInt(6)+1;
-        int cost =  (int) (victory * 1.5 + ((double) i  * (random.nextDouble() + 0.5) * 5 / 50 ));
-        
-        Card c = new Card("Mission "+i, "shortDescription2", "longdescription2", "filename2", "action2", Type.MISSIONS.getFlag(), cost, victory);
+
+        int victory = random.nextInt(6) + 1;
+        int cost = (int) (victory * 1.5 + ((double) i * (random.nextDouble() + 0.5) * 5 / 50));
+
+        Card c = new Card(null,
+                          GameServer.pickNewId(),
+                          "Mission " + i,
+                          "shortDescription2",
+                          "longdescription2",
+                          "filename2",
+                          "action2",
+                          Type.MISSIONS.getFlag(),
+                          cost,
+                          victory);
         c.date = i;
         return c;
     }
-    
-    
+
     public String getFullDescription() {
         StringBuilder fullDescription = new StringBuilder();
-        
-        for(CardFeature feature: features) {
+
+        for (CardFeature feature : features) {
             fullDescription.append(feature.getDescription());
             fullDescription.append("\n");
         }
         fullDescription.append("\n");
-        
+
         fullDescription.append(shortDescription);
-        
-       
-        
-        fullDescription.append("\n");
-        fullDescription.append("Cost: "+cost);
-        
-        if(victoryPoints > 0) {
-            fullDescription.append("\n");
-            fullDescription.append("Victory: "+victoryPoints);    
-        }
-        
-        for(Type typeValue : Type.values()) {
-            if((type & typeValue.getFlag()) != 0) {
-                fullDescription.append("\n");
-                fullDescription.append(typeValue.toString());
-            }
-        }
-        
+
+
+//        for (Type typeValue : Type.values()) {
+//            if ((type & typeValue.getFlag()) != 0) {
+//                fullDescription.append("\n");
+//                fullDescription.append(typeValue.toString());
+//            }
+//        }
+
         return fullDescription.toString();
     }
     public String getFeaturesDescription() {
@@ -250,5 +286,13 @@ public class Card {
         }
         
         return fullDescription.toString();
+    }
+
+    public static List<Card> getCards() {
+        return cards;
+    }
+
+    public List<CardFeature> getFeaturesList() {
+        return features;
     }
 }

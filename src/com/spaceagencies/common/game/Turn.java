@@ -1,12 +1,15 @@
 package com.spaceagencies.common.game;
 
-public class Turn {
+import com.spaceagencies.server.GameServer;
+
+public class Turn extends GameEntity {
+    private static final long serialVersionUID = 4334603045240900926L;
     private Player player;
     private int actionCount = 1;
     private int buyCount = 1;
     private int moneyCount = 0;
-    private CardPile mHand = new NormalCardPile();
-    private CardPile mPlayedCards = new NormalCardPile();
+    private CardPile mHand;
+    private CardPile mPlayedCards;
     private TurnState mTurnState;
     private Game mGame; 
     
@@ -17,10 +20,12 @@ public class Turn {
         BUY_PHASE,
         END_PHASE,
     }
-    
-    public Turn(Game game, Player player, CardPile deck) {
-        super();
+ 
+    public Turn(Game game, long id, Player player, CardPile deck) {
+        super(game, id);
         mGame = game;
+        mHand = new NormalCardPile(game, GameServer.pickNewId());
+        mPlayedCards = new NormalCardPile(game, GameServer.pickNewId());
         this.player = player;
         mTurnState = TurnState.WAITING_BEGIN;
         
@@ -117,7 +122,7 @@ public class Turn {
         
         mHand.remove(card);
         actionCount -= 1;
-        for(CardFeature feature : card.features) {
+        for(CardFeature feature : card.getFeaturesList()) {
             feature.resolve(this);
         }
         

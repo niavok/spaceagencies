@@ -5,16 +5,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.spaceagencies.server.GameServer;
+
 public class Game {
     private final List<Player> players = new ArrayList<Player>();
     
     private final List<CardPile> supply = new ArrayList<CardPile>();
+    private final List<CardPile> resources = new ArrayList<CardPile>();
     
-    private final CardPile missions = new NormalCardPile();
+    private final CardPile missions = new NormalCardPile(this, GameServer.pickNewId());
     
-    private final CardPile visibleMissions = new NormalCardPile();
+    private final CardPile visibleMissions = new NormalCardPile(this, GameServer.pickNewId());
     
     private final Map<Long, Player> playerIdMap = new HashMap<Long, Player>();
+    
+    private State state = State.WAITING_FOR_PLAYERS;
+    
+    public enum State {
+        WAITING_FOR_PLAYERS,
+        STARTED,
+        FINISHED      
+    }
+    
     
     public void addPlayer(Player player) {
         players.add(player);
@@ -31,5 +43,13 @@ public class Game {
     
     public CardPile getMissions() {
         return missions;
+    }
+    
+    public State getState() {
+        return state;
+    }
+    
+    public List<CardPile> getResources() {
+        return resources;
     }
 }

@@ -13,4 +13,11 @@ public class ClientConfig {
     public static String getSaveDirectoryPath(String file) {
         return System.getProperty("user.home")+"/.local/share/spaceagencies/saves/"+file;
     }
+    
+    public static String getUserName() {
+    	return System.getProperty("user.name", "n/a");
+    }
+    public static String getClusterName() {
+    	return "SpaceAgencyCluster";
+    }
 }

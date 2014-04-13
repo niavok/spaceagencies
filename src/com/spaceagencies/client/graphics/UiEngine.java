@@ -29,7 +29,7 @@ public class UiEngine implements Engine {
 
     private I3dContext context;
     private Surface mMainSurface;
-    private Surface statusSurface;
+//    private Surface statusSurface;
     private Time nextFpsTime;
     private int frameCount;
     private Duration totalDuration;
@@ -54,15 +54,15 @@ public class UiEngine implements Engine {
         //canvas = new V3DCanvas(context, 1664, 936);
         //canvas.setEnabled(true);
         
-        statusSurface = SurfaceFactory.buildAbsoluteHeightRelativeWidthSurface(context, 0, 0, 100, 25);
+//        statusSurface = SurfaceFactory.buildAbsoluteHeightRelativeWidthSurface(context, 0, 0, 100, 25);
         
         
         
-        statusSurface.setBackgroundColor(Color.black);
-        mMainSurface = SurfaceFactory.buildFullscreenSurface(context, 25,0,0,0);
+//        statusSurface.setBackgroundColor(Color.black);
+        mMainSurface = SurfaceFactory.buildFullscreenSurface(context, 0,0,0,0);
         mMainSurface.setBackgroundColor(Color.black);
         context.addSurface(mMainSurface);
-        context.addSurface(statusSurface);
+//        context.addSurface(statusSurface);
         
         
         //fpsIndicator = new GuiFpsIndicator(this);
@@ -121,7 +121,7 @@ public class UiEngine implements Engine {
                     
                 });
                 
-                statusSurface.startActivity(new Intent(StatusActivity.class, statusBundle));                
+//                statusSurface.startActivity(new Intent(StatusActivity.class, statusBundle));                
             }
             
         });

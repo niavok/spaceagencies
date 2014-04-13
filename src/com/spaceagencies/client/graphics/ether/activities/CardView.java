@@ -16,6 +16,7 @@ import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.RelativeLayout;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.View;
+import com.spaceagencies.i3d.view.drawable.InsetDrawable;
 
 public class CardView extends ProxyView {
 
@@ -107,10 +108,27 @@ public class CardView extends ProxyView {
         titleTextView.setText(card.getTitle());
 //        descriptionTextView.setText(card.getFullDescription());
         
+        if (card.getFilename() != "") {
+            InsetDrawable insetDrawable = new InsetDrawable();
+            insetDrawable.setWidth(150);
+            insetDrawable.setHeight(125);
+            insetDrawable.setInsetTop(0);
+            insetDrawable.setInsetLeft(0);
+            insetDrawable.setDrawableName(card.getFilename() + "@cards");
+            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/card");
+            drawableView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setWidthMeasure(new Measure(150, false, Axis.HORIZONTAL));
+            drawableView.getLayoutParams().setHeightMeasure(new Measure(125, false, Axis.VERTICAL));
+            drawableView.setDrawable(insetDrawable);
+        }
+        
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override
 			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
-				selectionManager.select(mCard);
+                if (!TurnHelper.isMoneyCard(mCard)){
+                    selectionManager.select(mCard);
+                }
 				return false;
 			}
 		});
@@ -162,6 +180,21 @@ public class CardView extends ProxyView {
             descriptionTextView.setText(card.getFullDescription());
         }
         
+        if (card.getFilename() != "") {
+            InsetDrawable insetDrawable = new InsetDrawable();
+            insetDrawable.setWidth(150);
+            insetDrawable.setHeight(125);
+            insetDrawable.setInsetTop(0);
+            insetDrawable.setInsetLeft(0);
+            insetDrawable.setDrawableName(card.getFilename() + "@cards");
+            DrawableView drawableView = (DrawableView) findViewById("imageDrawable@layout/"+layout);
+            drawableView.getLayoutParams().setLayoutWidthMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setLayoutHeightMeasure(LayoutMeasure.FIXED);
+            drawableView.getLayoutParams().setWidthMeasure(new Measure(150, false, Axis.HORIZONTAL));
+            drawableView.getLayoutParams().setHeightMeasure(new Measure(125, false, Axis.VERTICAL));
+            drawableView.setDrawable(insetDrawable);
+        }
+        
         
         View cardPvFlagDrawable = findViewById("cardPvFlagDrawable@layout/"+layout);
         TextView pvTextView = (TextView) findViewById("pvTextView@layout/"+layout);
@@ -172,7 +205,9 @@ public class CardView extends ProxyView {
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override
 			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
-				selectionManager.select(mCard);
+			    if (!TurnHelper.isMoneyCard(mCard)){
+			        selectionManager.select(mCard);
+			    }
 				return false;
 			}
 		});

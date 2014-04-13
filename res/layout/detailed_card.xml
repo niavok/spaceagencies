@@ -19,7 +19,8 @@
          	i3d:layout_height="159px"
          	i3d:layout_marginLeft="10px"
          	i3d:layout_marginRight="10px"
-         	i3d:ref="saturn5@photos" 
+         	i3d:ref="saturn5@photos"
+         	i3d:id="imageDrawable" 
          	/>
          	
        	<ScrollView

@@ -1,14 +1,9 @@
 package com.spaceagencies.client.graphics.ether.activities;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.lwjgl.input.Keyboard;
-
-import sun.swing.MenuItemLayoutHelper.ColumnAlignment;
 
 import com.spaceagencies.client.LoginManager;
 import com.spaceagencies.common.game.Card;
@@ -16,15 +11,14 @@ import com.spaceagencies.common.game.Card.Type;
 import com.spaceagencies.common.game.CardPile;
 import com.spaceagencies.common.game.Player;
 import com.spaceagencies.common.game.Turn;
-import com.spaceagencies.common.game.TurnHelper;
 import com.spaceagencies.common.game.Turn.TurnState;
+import com.spaceagencies.common.game.TurnHelper;
 import com.spaceagencies.common.tools.Log;
 import com.spaceagencies.i3d.Bundle;
 import com.spaceagencies.i3d.I3dRessourceManager;
-import com.spaceagencies.i3d.Intent;
 import com.spaceagencies.i3d.Measure;
-import com.spaceagencies.i3d.Message;
 import com.spaceagencies.i3d.Measure.Axis;
+import com.spaceagencies.i3d.Message;
 import com.spaceagencies.i3d.SelectionManager;
 import com.spaceagencies.i3d.SelectionManager.OnSelectionChangeListener;
 import com.spaceagencies.i3d.input.I3dMouseEvent;
@@ -166,7 +160,7 @@ public class BoardActivity extends Activity {
                 return false;
             }});
         
-        mGameEngine.getWorldEnginObservable().register(this, new GameEngineObserver() {
+            mGameEngine.getWorldEnginObservable().register(this, new GameEngineObserver() {
             
             @Override
             public void onPlayerConnected(Player player) {

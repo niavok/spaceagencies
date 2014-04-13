@@ -5,11 +5,12 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NormalCardPile implements CardPile {
+public class NormalCardPile extends GameEntity implements CardPile {
+    private static final long serialVersionUID = -7670662514483741028L;
     private LinkedList<Card> cards = new LinkedList<Card>();
 
-    public NormalCardPile() {
-        super();
+    public NormalCardPile(Game game, long id) {
+        super(game, id);
     }
 
     /* (non-Javadoc)
