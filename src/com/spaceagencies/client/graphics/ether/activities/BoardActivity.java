@@ -61,6 +61,7 @@ public class BoardActivity extends Activity {
 	private LinearLayout secondColumnLinearLayout;
     private LinearLayout handLinearLayout;
 	private LinearLayout resourcesLinearLayout;
+	private TextView phaseTextView;
 	
 
     private static final int UPDATE_UI_WHAT = 1;
@@ -81,6 +82,8 @@ public class BoardActivity extends Activity {
         turnBuyCounterTextView = (TextView) findViewById("turnBuyCounterTextView@layout/turn_zone");
         
         todoTextView = (TextView) findViewById("todoTextView@layout/turn_zone");
+        phaseTextView = (TextView) findViewById("phaseTextView@layout/turn_zone");
+        
         
         handLinearLayout = (LinearLayout) findViewById("handLinearLayout@layout/hand_zone");
         
@@ -306,12 +309,14 @@ public class BoardActivity extends Activity {
                 todoTextView.setText("Wait for turn begining");
                 break;
             case ACTION_PHASE:
+            	phaseTextView.setText("Action phase");
                 todoTextView.setText("Make actions");
                 turnPhaseButton.setText("Skip actions");
                 turnPhaseButton.setVisible(true);
                 break;
             case BUY_PHASE:
                 {
+                	phaseTextView.setText("Buy phase");
                     todoTextView.setText("Buy some card");
                     turnPhaseButton.setText("End turn");
                     turnPhaseButton.setVisible(true);
