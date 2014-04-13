@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="1" date="11/05/1970">
+    <title>Apollo 13</title>
+    <shortDescription>Manage technical issues during flight space</shortDescription>
+    <longDescription> demonstrate crew, space vehicle and mission support  facilities performance during a crewed CSM mission</longDescription>
+    <filename>apollo13</filename>
+    <victoryPoints>1</victoryPoints>
+<moreCards count="2" />
+</card>

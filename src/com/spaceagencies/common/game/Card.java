@@ -63,7 +63,7 @@ public class Card extends GameEntity {
     private List<CardFeature> features = new ArrayList<CardFeature>();
 
     @XmlAttribute
-    private int date;
+    private String date;
 
     public Card() {
         super(null, 0);
@@ -88,7 +88,7 @@ public class Card extends GameEntity {
         this.type = type;
         this.cost = cost;
         this.victoryPoints = victoryPoints;
-        this.date = 0;
+        this.date = "0";
     }
 
     public final int getVictoryPoints() {
@@ -123,7 +123,7 @@ public class Card extends GameEntity {
         return cost;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -152,8 +152,10 @@ public class Card extends GameEntity {
             if (file.isFile()) {
                 try {
                     if (file.getAbsolutePath().endsWith(".xml")) {
+                        System.out.println(file.getAbsolutePath());
                         Card card = unmarshal(Card.class, new FileInputStream(file));
                         cards.add(card);
+                        System.out.println(card.getFilename());
                         namedCards.put(card.getFilename(), card);
                     }
                 } catch (FileNotFoundException e) {
@@ -252,7 +254,7 @@ public class Card extends GameEntity {
                           Type.MISSIONS.getFlag(),
                           cost,
                           victory);
-        c.date = i;
+        c.date = "12";
         return c;
     }
 
@@ -294,5 +296,11 @@ public class Card extends GameEntity {
 
     public List<CardFeature> getFeaturesList() {
         return features;
+    }
+    
+    public static void main(String[] args) {
+        for (Card string : Card.getCards()) {
+            System.out.println(string);
+        }
     }
 }

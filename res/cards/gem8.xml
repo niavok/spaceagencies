@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1966-03-16">
+    <title>Gemini VIII</title>
+    <shortDescription> evaluated guidance and navigation system for future rendezvous missions. Completed 120 orbits.</shortDescription>
+    <longDescription>Mercury-Redstone 3, or Freedom 7 was the first United States human spaceflight, on 5 May 1961, piloted by astronaut Alan Shepard. It was the first manned flight of Project Mercury, the objective of which was to put an astronaut into orbit around the Earth and return him safely. Shepard named his capsule Freedom 7, setting a precedent for the remaining six Mercury astronauts naming  their spacecraft. The number 7 was included in the spacecraft name to  honor the seven members of NASA's Astronaut Group 1, the Mercury 7. Shepard and his colleagues felt the name conveyed a sense of teamwork, instead of an individual achievement.</longDescription>
+    <filename>gem8</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

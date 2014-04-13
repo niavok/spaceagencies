@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="5" date="24/05/1990">
+    <title>Space Shuttle Program  STS-31</title>
+    <shortDescription>Launch Hubble space telescop</shortDescription>
+    <longDescription>Penultimate mission to land on the moon. First mission to land on highland of the moon, to collect geological samples (95.8 kg). Crew : John Young, Charles Duke and Ken Mattingly.</longDescription>
+    <filename>discoverySTS31</filename>
+    <victoryPoints>3</victoryPoints>
+</card>

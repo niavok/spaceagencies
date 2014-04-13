@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="5" date="5/30/1905">
+    <title>Space Shuttle Program ALT</title>
+    <shortDescription>Prototype of Space shuttle - First flights</shortDescription>
+    <longDescription> crew procedures</longDescription>
+    <filename>enterpriseALT</filename>
+    <victoryPoints>3</victoryPoints>
+</card>

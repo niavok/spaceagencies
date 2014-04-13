@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="2" cost="3" date="">
+    <title>Rendezvous in orbit</title>
+    <shortDescription>+2 coins, put your deck into your discard pile</shortDescription>
+    <longDescription> help to build and fly a new NASA   vehicle, the  Orion Multi-Purpose Crew Vehicle (MPCV) designed for human deep space  exploration</longDescription>
+    <filename>rdv</filename>
+    <victoryPoints></victoryPoints>
+<moreCoins count="2" />
+<discardDeck count="1" />
+</card>

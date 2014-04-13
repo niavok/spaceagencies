@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="4" date="3/3/1963">
+    <title>Apollo 9</title>
+    <shortDescription>Test the Lunar Module in low Earth Orbit for futur landing missions on the moon</shortDescription>
+    <longDescription>Apollo's Goals""That's one small step for a man. One giant leap for mankind."" - Neil Armstrong The national effort that enabled Astronaut Neil Armstrong to speak  those words as he stepped onto the lunar surface, fulfilled a dream as old as humanity. Project Apollo's goals went beyond landing Americans on the Moon and returning them safely to Earth. They included: Establishing the technology to meet other national interests in space. Achieving preeminence in space for the United States. Developing man's capability to work in the lunar environment. Rocket and Spacecraft The flight mode, lunar orbit rendezvous, was selected in 1962. The boosters for the program were the Saturn IB for Earth orbit flights and  the Saturn V for lunar flights. Apollo was a three-part spacecraft: the command module (CM), the crew's quarters and flight control section</longDescription>
+    <filename>apollo9</filename>
+    <victoryPoints>2</victoryPoints>
+</card>

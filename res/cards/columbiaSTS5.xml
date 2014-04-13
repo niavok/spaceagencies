@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="5" date="11/11/1982">
+    <title>Space Shuttle Program  STS-5</title>
+    <shortDescription>Carry 4 crews in low Earth orbit and deploy communication satellite into orbit</shortDescription>
+    <longDescription>Dress rehearsal for first lunar landing. Fourth mission of the Apollo Program. The Apollo 10 mission encompassed all aspects of an actual crewed lunar  landing, except the landing. It was the first flight of a complete,  crewed Apollo spacecraft to operate around the moon. Objectives included a scheduled eight-hour lunar orbit of the separated lunar module, or  LM, and descent to about nine miles off the moon's surface before  ascending for rendezvous and docking with the command and service  module, or CSM, in about a 70-mile circular lunar orbit. Pertinent data  to be gathered in this landing rehearsal dealt with the lunar potential, or gravitational effect, to refine the Earth-based crewed spaceflight network tracking techniques, and to check out LM programmed trajectories and radar, and lunar flight control systems. Twelve television  transmissions to Earth were planned. All mission objectives were achieved.</longDescription>
+    <filename>columbiaSTS5</filename>
+    <victoryPoints>3</victoryPoints>
+</card>

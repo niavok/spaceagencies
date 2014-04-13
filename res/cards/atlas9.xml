@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1963-05-15">
+    <title>Atlas 9</title>
+    <shortDescription>First American in space for over a day, Last American solo mission.</shortDescription>
+    <longDescription>STS-51L was the 25th flight of the American Space Shuttle program, using the Space Shuttle Challenger, which lifted-off from Launch Complex 39-B, at the Kennedy Space Center in Florida, on January 28, 1986. The mission ended in catastrophic failure with the destruction of Challenger, starting at 72 seconds after lift-off, and the death of all seven crew members.</longDescription>
+    <filename>atlas9</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

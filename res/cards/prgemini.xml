@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="4" date="">
+    <title>Gemini Program</title>
+    <shortDescription></shortDescription>
+    <longDescription>First ISS mission</longDescription>
+    <filename>prgemini</filename>
+    <victoryPoints></victoryPoints>
+<batchVP count="1" />
+</card>

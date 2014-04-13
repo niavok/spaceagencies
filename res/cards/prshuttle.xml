@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="4" date="">
+    <title>Space Shuttle Program</title>
+    <shortDescription></shortDescription>
+    <longDescription> special tests of  the LM's support systems</longDescription>
+    <filename>prshuttle</filename>
+    <victoryPoints></victoryPoints>
+<batchVP count="1" />
+</card>

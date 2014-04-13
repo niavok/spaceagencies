@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1965-12-04">
+    <title>Gemini VII</title>
+    <shortDescription>First week-long flight</shortDescription>
+    <longDescription>First Nasa space station</longDescription>
+    <filename>gem7</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

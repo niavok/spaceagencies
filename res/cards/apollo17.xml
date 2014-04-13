@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="4" date="12/07/1972">
+    <title>Apollo 17</title>
+    <shortDescription>Confirmation</shortDescription>
+    <longDescription> consumable  assessment</longDescription>
+    <filename>apollo17</filename>
+    <victoryPoints>2</victoryPoints>
+</card>

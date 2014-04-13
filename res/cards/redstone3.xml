@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1961-05-05">
+    <title>Redstone 3</title>
+    <shortDescription>1st american in space</shortDescription>
+    <longDescription>STS-5 was the fifth NASA Space Shuttle mission and the fifth flight of the Space Shuttle Columbia. It launched on November 11, 1982 and landed five days later on November 16. STS-5 was the first shuttle mission to deploy communications satellites into orbit, and the first officially ""operational"" shuttle mission.</longDescription>
+    <filename>redstone3</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

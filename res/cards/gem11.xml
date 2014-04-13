@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1966-09-12">
+    <title>Gemini XI</title>
+    <shortDescription>Accomplished first docking with another space vehicle, an unmanned Agena Target Vehicle. While docked, a Gemini spacecraft thruster malfunction caused near-fatal tumbling of the craft, which, after undocking, Armstrong was able to overcome</shortDescription>
+    <longDescription>Mercury-Atlas 6 (MA-6) was the third human spaceflight for the US and part of Project Mercury. Conducted by NASA on February 20, 1962, the mission was piloted by astronaut John Glenn, who performed three orbits of the Earth, making him the first US-astronaut to orbit the Earth.The Mercury spacecraft, named Friendship 7, was carried to orbit by an Atlas LV-3B launch vehicle lifting off from Launch Complex 14 at Cape Canaveral, Florida. After four hours and 56 minutes in flight the spacecraft re-entered the Earth's atmosphere, splashed down in the Atlantic Ocean and was safely taken aboard the USS Noa.</longDescription>
+    <filename>gem11</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

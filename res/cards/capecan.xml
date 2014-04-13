@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="2" cost="4" date="">
+    <title>Cape Canaveral</title>
+    <shortDescription>+3 cards</shortDescription>
+    <longDescription></longDescription>
+    <filename>capecan</filename>
+    <victoryPoints></victoryPoints>
+<moreCards count="3" />
+</card>

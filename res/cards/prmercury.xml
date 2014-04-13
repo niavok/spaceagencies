@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="4" date="1959-1963">
+    <title>Mercury Program</title>
+    <shortDescription>Worth 1vp for every 10 cards in your deck (rounded down)</shortDescription>
+    <longDescription>STS-1 was the first orbital flight of NASA's Space Shuttle program. The first orbiter, Space Shuttle Columbia, launched on April 12, 1981 and returned to Earth on April 14, having orbited the Earth 37 times during its 54.5-hour mission. Columbia carried a crew of two ' mission commander John W. Young and pilot Robert L. Crippen.</longDescription>
+    <filename>prmercury</filename>
+    <victoryPoints></victoryPoints>
+<batchVP count="1" />
+</card>

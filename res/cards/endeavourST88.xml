@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="5" date="04/12/1998">
+    <title>Space Shuttle Program STS-88</title>
+    <shortDescription>Assemble ISS</shortDescription>
+    <longDescription>Final mission of the Apollo program, sixth and last landing of humans on the Moon. Crew :  Eugene Cernan, Ronald Evans, and Harrison Schmitt. J type mission.</longDescription>
+    <filename>endeavourST88</filename>
+    <victoryPoints>3</victoryPoints>
+</card>

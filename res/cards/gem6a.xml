@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1965-12-15">
+    <title>Gemini VI-A</title>
+    <shortDescription> first use of fuel cells for electrical power</shortDescription>
+    <longDescription>Project Mercury was the first human spaceflight program of the United States led by its newly created space agency NASA. It ran from 1959 through 1963 with the goal of putting a human in orbit around the Earth, and doing it before the Soviet Union, as part of the early space race. It involved seven astronauts flying a total of six solo trips.</longDescription>
+    <filename>gem6a</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

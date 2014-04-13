@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="4" date="31/01/1971">
+    <title>Apollo 14</title>
+    <shortDescription>Moonwalk 3</shortDescription>
+    <longDescription> and demonstrate CSM  rendezvous capability. The command module (CM), a cone-shaped craft about 390 cm in diameter at the large end, served as a command, control, and communications center. Supplemented by the service module (SM), it provided all life support elements for the crew. The CM was capable of attitude control about three axes and some lateral lift translation. It also served as a buoyant vessel at sea. The SM provided the main propulsion and maneuvering capability. It was jettisoned just before CM reentry. The SM was a cylinder 390 cm in diameter and 670 cm long. The spacecraft mass of 14,781 kg is the mass of the CSM including propellants and expendables. There was no lunar module or boilerplate unit on this flight.The Apollo program included a large number of uncrewed test missions and 12 crewed missions: three Earth orbiting missions (Apollo 7, 9 and Apollo-Soyuz), two lunar orbiting missions (Apollo 8 and 10), a lunar swingby (Apollo 13), and six Moon landing missions (Apollo 11, 12, 14, 15, 16, and 17).</longDescription>
+    <filename>apollo14</filename>
+    <victoryPoints>2</victoryPoints>
+</card>

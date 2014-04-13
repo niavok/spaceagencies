@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1965-03-23">
+    <title>Gemini 3</title>
+    <shortDescription>First manned Gemini flight, three orbits.</shortDescription>
+    <longDescription>End of the Space Shuttle Program on the July 21 2011</longDescription>
+    <filename>gem3</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

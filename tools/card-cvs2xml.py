@@ -69,17 +69,15 @@ def parse(inputFile):
         if (l__discardDeck[i].strip() != "") :
             xml_file = xml_file + "\n<discardDeck count=\"%s\" />"%l__discardDeck[i].strip('"')
         if (l__lotsActions[i].strip() != "") :
-            xml_file = xml_file + "\n<lotsActions count=\"%s\">"%l__lotsActions[i]
+            xml_file = xml_file + "\n<lotsActions count=\"%s\" />"%l__lotsActions[i]
         if (l__moreDraw[i].strip() != "") :
-            xml_file = xml_file + "\n<moreDraw count=\"%s\">"%l__moreDraw[i]
+            xml_file = xml_file + "\n<moreDraw count=\"%s\" />"%l__moreDraw[i]
         if (l__batchVP[i].strip() != "") :
             xml_file = xml_file + "\n<batchVP count=\"%s\" />"%l__batchVP[i].strip('"')
 		
         xml_file = xml_file + "\n</card>"
         
-        dirname = os.path.join(os.getcwd(),l__filename[i])
-        if not os.path.isdir(dirname) :
-            os.mkdir(dirname)
+        dirname = os.getcwd()
         filename = os.path.join(dirname, l__filename[i]+".xml")
 
         file = open(filename, "w")

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1966-07-18">
+    <title>Gemini X</title>
+    <shortDescription>First space rendezvous accomplished with Gemini VII, station-keeping for over five hours at distances from 0.3 to 90 m (1 to 300 ft).</shortDescription>
+    <longDescription> the capsule sank into the Atlantic and was not recovered until 1999.</longDescription>
+    <filename>gem10</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

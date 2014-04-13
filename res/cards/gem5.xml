@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1965-08-21">
+    <title>Gemini V</title>
+    <shortDescription> White's ""space walk"" was a 22 minute EVA exercise.</shortDescription>
+    <longDescription>Cooperation space station</longDescription>
+    <filename>gem5</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

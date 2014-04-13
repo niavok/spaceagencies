@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="5" date="30/10/1985">
+    <title>Space Shuttle Program STS-61-A</title>
+    <shortDescription>Carry 8 crews</shortDescription>
+    <longDescription>Thirds mission to land on the moon.Last H missions.Crew : Alan Shepard, Stuart Roosa, and Edgar Mitchell. Eight mission of the Apollo Program</longDescription>
+    <filename>challengerSTS61A</filename>
+    <victoryPoints>3</victoryPoints>
+</card>

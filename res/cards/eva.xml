@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="2" cost="5" date="">
+    <title>Extra-Vehicular Activity</title>
+    <shortDescription>Draw until you have 8 cards in hand</shortDescription>
+    <longDescription>A space rendezvous is an orbital maneuver during which two spacecraft, one of which is often a space station, arrive at the same orbit and approach to a very close distance (e.g. within visual contact). Rendezvous requires a precise match of the orbital velocities of the two spacecraft, allowing them to remain at a constant distance through orbital station-keeping. Rendezvous may or may not be followed by docking or berthing, procedures which bring the spacecraft into physical contact and create a link between them.The first attempt at rendezvous was made on June 3, 1965, when US astronaut Jim McDivitt tried to maneuver his Gemini 4 craft to meet back up with its spent Titan II launch vehicle's upper stage. Rendezvous was first successfully accomplished by US astronaut Wally Schirra on December 15, 1965. Schirra maneuvered the Gemini 6 spacecraft within 1 foot (30'cm) of its sister craft Gemini 7. The spacecraft were not equipped to dock with each other, but maintained station-keeping for more than 20 minutes.The first docking of two spacecraft was achieved on March 16, 1966 when Gemini 8, under the command of Neil Armstrong, rendezvoused and docked with an unmanned Agena Target Vehicle.</longDescription>
+    <filename>eva</filename>
+    <victoryPoints></victoryPoints>
+<moreDraw count="8" />
+</card>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="3" date="1966-06-03">
+    <title>Gemini IX-A</title>
+    <shortDescription>When the original Gemini VI mission was scrubbed because its Agena target for rendezvous and docking failed, Gemini VII was used for the rendezvous instead. Primary objective was to determine whether humans could live in space for 14 days.</shortDescription>
+    <longDescription>Mercury-Redstone 4 was the second United States human spaceflight, on July 21, 1961. The suborbital Project Mercury flight was launched with a Mercury-Redstone Launch Vehicle, MRLV-8. The spacecraft, Mercury capsule #11, was named Liberty Bell 7 and piloted by astronaut Virgil I. ""Gus"" Grissom.The flight lasted 15 minutes 30 seconds, reached an altitude of more than 102.8 nautical miles (190.4'km) and traveled 262.5 nautical miles (486.2'km) downrange, landing in the Atlantic ocean. The flight went as expected until just after splashdown, when the hatch cover, designed to release explosively in the event of an emergency, accidentally blew. Grissom was at risk of drowning but was recovered safely</longDescription>
+    <filename>gem9a</filename>
+    <victoryPoints>1</victoryPoints>
+</card>

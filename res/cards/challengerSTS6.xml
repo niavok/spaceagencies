@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<card type="4" cost="5" date="04/04/1983">
+    <title>Space Shuttle Program STS-6</title>
+    <shortDescription>First spacewalk during a space shuttle mission</shortDescription>
+    <longDescription>Third intended mission to land on the Moon. The lunar landing was aborted after an oxygen tank exploded two days later, crippling the Service Module (SM) upon which the Command Module (CM) depended. The crew returned safely to Earth on April 17 after orbiting moon but without landing on it. Crew : James A. Lovell, John L. ""Jack"" Swigert, Fred W. Haise as Lunar Module Pilot. Seventh mission of the Apollo Program</longDescription>
+    <filename>challengerSTS6</filename>
+    <victoryPoints>3</victoryPoints>
+</card>
