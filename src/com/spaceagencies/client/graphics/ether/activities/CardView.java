@@ -6,18 +6,16 @@ import com.spaceagencies.common.game.Card;
 import com.spaceagencies.common.game.TurnHelper;
 import com.spaceagencies.i3d.I3dRessourceManager;
 import com.spaceagencies.i3d.Measure;
-import com.spaceagencies.i3d.SelectionManager;
 import com.spaceagencies.i3d.Measure.Axis;
+import com.spaceagencies.i3d.SelectionManager;
 import com.spaceagencies.i3d.SelectionManager.OnSelectionChangeListener;
 import com.spaceagencies.i3d.input.I3dMouseEvent;
 import com.spaceagencies.i3d.view.DrawableView;
+import com.spaceagencies.i3d.view.LayoutParams.LayoutMeasure;
 import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.RelativeLayout;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.View;
-import com.spaceagencies.i3d.view.LayoutParams.LayoutMeasure;
-import com.spaceagencies.i3d.view.View.OnMouseEventListener;
-import com.spaceagencies.i3d.view.drawable.Drawable;
 
 public class CardView extends ProxyView {
 
