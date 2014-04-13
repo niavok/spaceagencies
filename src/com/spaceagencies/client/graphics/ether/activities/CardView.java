@@ -7,10 +7,13 @@ import com.spaceagencies.i3d.I3dRessourceManager;
 import com.spaceagencies.i3d.SelectionManager;
 import com.spaceagencies.i3d.SelectionManager.OnSelectionChangeListener;
 import com.spaceagencies.i3d.input.I3dMouseEvent;
+import com.spaceagencies.i3d.view.DrawableView;
 import com.spaceagencies.i3d.view.ProxyView;
 import com.spaceagencies.i3d.view.TextView;
 import com.spaceagencies.i3d.view.View;
 import com.spaceagencies.i3d.view.View.OnMouseEventListener;
+import com.spaceagencies.i3d.view.drawable.Drawable;
+import com.spaceagencies.i3d.view.drawable.InsetDrawable;
 
 public class CardView extends ProxyView {
 
@@ -26,6 +29,18 @@ public class CardView extends ProxyView {
         
         titleTextView.setText(card.getTitle());
 //        descriptionTextView.setText(card.getFullDescription());
+        
+        if (card.getFilename() != "") {
+            InsetDrawable insetDrawable = new InsetDrawable();
+            insetDrawable.setHeight(159);
+            insetDrawable.setWidth(255);
+            insetDrawable.setInsetTop(0);
+            insetDrawable.setInsetLeft(0);
+            insetDrawable.setDrawableName(card.getFilename() + "@cards");
+            DrawableView imageDrawable = (DrawableView) findViewById("imageDrawable@layout/card");
+            imageDrawable.setDrawable(insetDrawable);
+        }
+        
         
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override
