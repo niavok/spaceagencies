@@ -43,7 +43,6 @@ public class CardView extends ProxyView {
             imageDrawable.setDrawable(insetDrawable);
         }
         
-        
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override
 			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
@@ -99,7 +98,16 @@ public class CardView extends ProxyView {
             descriptionTextView.setText(card.getFullDescription());
         }
         
-        
+        if (card.getFilename() != "") {
+            InsetDrawable insetDrawable = new InsetDrawable();
+            insetDrawable.setHeight(159);
+            insetDrawable.setWidth(255);
+            insetDrawable.setInsetTop(0);
+            insetDrawable.setInsetLeft(0);
+            insetDrawable.setDrawableName(card.getFilename() + "@cards");
+            DrawableView imageDrawable = (DrawableView) findViewById("imageDrawable@layout/"+layout);
+            imageDrawable.setDrawable(insetDrawable);
+        }
         
         
         super.setOnMouseListener(new OnMouseEventListener() {

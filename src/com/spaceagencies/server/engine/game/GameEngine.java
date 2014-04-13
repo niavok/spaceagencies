@@ -42,6 +42,7 @@ public class GameEngine implements Engine {
         for (final Card card : cards) {
             if ((card.getType() & Card.Type.MISSIONS.getFlag()) == 0) {
                 if (count <= 10) {
+                    System.out.println("Add Mission: " + card.getTitle());
                     CardPile pile = new NormalCardPile(mGame, GameServer.pickNewId());
                     for(int i = 0; i < 10 ; i++) {
                         pile.addTop(card.duplicate());
@@ -49,7 +50,7 @@ public class GameEngine implements Engine {
                     mGame.getSupply().add(pile);
                     count += 1;
                 }
-            } else if (card.getType()  == Card.Type.MISSIONS.getFlag()) {
+            } else if (card.getType()  == Card.Type.RESSOURCES.getFlag()) {
                 InfinitCardPile pile = new InfinitCardPile(mGame, GameServer.pickNewId(), new CardFactory() {
                     @Override
                     public Card createCard() {
