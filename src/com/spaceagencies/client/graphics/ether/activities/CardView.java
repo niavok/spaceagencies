@@ -126,7 +126,9 @@ public class CardView extends ProxyView {
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override
 			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
-				selectionManager.select(mCard);
+                if (!TurnHelper.isMoneyCard(mCard)){
+                    selectionManager.select(mCard);
+                }
 				return false;
 			}
 		});
@@ -203,7 +205,9 @@ public class CardView extends ProxyView {
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override
 			public boolean onMouseEvent(I3dMouseEvent mouseEvent) {
-				selectionManager.select(mCard);
+			    if (!TurnHelper.isMoneyCard(mCard)){
+			        selectionManager.select(mCard);
+			    }
 				return false;
 			}
 		});
