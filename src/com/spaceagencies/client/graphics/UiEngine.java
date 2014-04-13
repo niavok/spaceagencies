@@ -60,7 +60,7 @@ public class UiEngine implements Engine {
         
         statusSurface.setBackgroundColor(Color.black);
         mMainSurface = SurfaceFactory.buildFullscreenSurface(context, 25,0,0,0);
-        mMainSurface.setBackgroundColor(Color.white);
+        mMainSurface.setBackgroundColor(Color.black);
         context.addSurface(mMainSurface);
         context.addSurface(statusSurface);
         

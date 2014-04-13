@@ -7,6 +7,15 @@
         i3d:insetLeft="0"
         i3d:insetTop="0"
         i3d:width="255" />
+        
+        <inset
+        name="naca_inset"
+        i3d:drawable="naca@photos"
+        i3d:height="125"
+        i3d:insetLeft="0"
+        i3d:insetTop="0"
+        i3d:width="150" />
+        
    <!-- <circle
         name="staters"
         i3d:quality="16"

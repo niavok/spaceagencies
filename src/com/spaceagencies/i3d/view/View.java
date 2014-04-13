@@ -66,10 +66,11 @@ public abstract class View {
 
         GL11.glPushMatrix();
         // GL11.glTranslatef(layout.offset.x, layout.offset.y, 0);
-//        g.setColor(Color.randomLightOpaqueColor());
+//        
         
         
         if(isMouseOver(g.getUiTranslation())) {
+//            g.setColor(Color.randomLightOpaqueColor());
 //            g.drawFilledRectangle(mLayoutParams.mLeft, mLayoutParams.mTop, mLayoutParams.getTotalWidth(), mLayoutParams.getTotalHeight());
         }
         

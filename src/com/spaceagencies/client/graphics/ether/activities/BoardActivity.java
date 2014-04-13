@@ -278,8 +278,11 @@ public class BoardActivity extends Activity {
         for(final CardPile cardPile : mPlayer.getWorld().getSupply()) {
             if(cardPile.getNbCards() > 0) {
                 CardPileView cardPileView = new CardPileView(cardPile, cardSelectionManager);
-                cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(5, false, Axis.HORIZONTAL));
-                cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(5, false, Axis.HORIZONTAL));
+                
+                cardPileView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
+                cardPileView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
+                cardPileView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
+                cardPileView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
                 if(i %2 == 0) {
                     firstLineLinearLayout.addViewInLayout(cardPileView);
                 } else {
@@ -435,12 +438,16 @@ public class BoardActivity extends Activity {
 		CardView cardView = null;
 		if (BigCard) { 
 	    	cardView = new CardView(card, cardSelectionManager,"bigCard");
-	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(5, false, Axis.HORIZONTAL));
-	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(5, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
+            cardView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
 		} else {
 	    	cardView = new CardView(card, cardSelectionManager);
-	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(5, false, Axis.HORIZONTAL));
-	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(5, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginTopMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginBottomMeasure(new Measure(10, false, Axis.HORIZONTAL));
+	        cardView.getLayoutParams().setMarginLeftMeasure(new Measure(10, false, Axis.HORIZONTAL));
+            cardView.getLayoutParams().setMarginRightMeasure(new Measure(10, false, Axis.HORIZONTAL));
 		}
         return cardView;
     }

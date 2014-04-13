@@ -23,6 +23,8 @@ public class CardView extends ProxyView {
         
         TextView titleTextView = (TextView) findViewById("titleTextView@layout/card");
 //        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
+        TextView costTextView = (TextView) findViewById("costTextView@layout/card");
+        costTextView.setText(""+card.getCost());
         
         titleTextView.setText(card.getTitle());
 //        descriptionTextView.setText(card.getFullDescription());
@@ -71,10 +73,19 @@ public class CardView extends ProxyView {
         mCard = card;
         
         TextView titleTextView = (TextView) findViewById("titleTextView@layout/"+layout);
-//        TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/card");
+        TextView costTextView = (TextView) findViewById("costTextView@layout/"+layout);
+        
         
         titleTextView.setText(card.getTitle());
-//        descriptionTextView.setText(card.getFullDescription());
+        costTextView.setText(""+card.getCost());
+        
+        if(layout.equals("bigCard")) {
+            TextView descriptionTextView = (TextView) findViewById("descriptionTextView@layout/"+layout);
+            descriptionTextView.setText(card.getFullDescription());
+        }
+        
+        
+        
         
         super.setOnMouseListener(new OnMouseEventListener() {
 			@Override
