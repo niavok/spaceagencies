@@ -32,7 +32,7 @@ public class MainMenuActivity extends Activity {
         animationMesure = new Measure(0, true, Axis.VERTICAL);
 
         newGameMenu = (Button) findViewById("newGameButton@layout/mainmenu");
-        continueGameButton = (Button) findViewById("continueGameButton@layout/mainmenu");
+//        continueGameButton = (Button) findViewById("continueGameButton@layout/mainmenu");
         
         newGameMenu.setOnClickListener(new OnClickListener() {
             
@@ -42,13 +42,13 @@ public class MainMenuActivity extends Activity {
             }
         });
         
-        continueGameButton.setOnClickListener(new OnClickListener() {
-            
-            @Override
-            public void onClick(I3dMouseEvent mouseEvent, View view) {
-                //startActivity(new Intent(ContinueGameActivity.class));
-            }
-        });
+//        continueGameButton.setOnClickListener(new OnClickListener() {
+//            
+//            @Override
+//            public void onClick(I3dMouseEvent mouseEvent, View view) {
+//                //startActivity(new Intent(ContinueGameActivity.class));
+//            }
+//        });
         
     }
 
@@ -72,12 +72,12 @@ public class MainMenuActivity extends Activity {
     @Override
     protected void onUpdate(Timestamp time) {
         
-        MetaGame activeGame = GameClient.getInstance().getGameManager().getPreviousGame();
-        if(activeGame == null) {
-            continueGameButton.setEnabled(false);
-        } else {
-            continueGameButton.setEnabled(true);
-        }
+//        MetaGame activeGame = GameClient.getInstance().getGameManager().getPreviousGame();
+//        if(activeGame == null) {
+//            continueGameButton.setEnabled(false);
+//        } else {
+//            continueGameButton.setEnabled(true);
+//        }
     }
 
 }

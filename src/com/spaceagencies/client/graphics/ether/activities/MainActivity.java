@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
         //Log.trace("onCreate");
         mListener = (MainActivityListener) bundle.getObject();
         
-        mobileLogoPart = (Triangle) findViewById("logoRedPart@layout/logo");
+//        mobileLogoPart = (Triangle) findViewById("logoRedPart@layout/logo");
         animationMesure = new Measure(0, true, Axis.VERTICAL);
         I3dContext.getInstance().preload();
     }
@@ -64,10 +64,10 @@ public class MainActivity extends Activity {
         // Log.trace("Update animatation after "+duration.getMilliseconds()+" ms ("+(1f/duration.getSeconds())+"fps)");
         //startTime = absTime;
 
-        LayoutParams layout = mobileLogoPart.getLayoutParams();
+//        LayoutParams layout = mobileLogoPart.getLayoutParams();
         animationMesure.setValue((float) (25f / 2.2f * (1 + Math.sin(time.getTime().getSeconds() * 4))));
 
-        float offset = layout.computeMesure(animationMesure);
+//        float offset = layout.computeMesure(animationMesure);
 
         //Log.trace("Offset: "+offset);
         if (axisX) {
@@ -76,13 +76,13 @@ public class MainActivity extends Activity {
             //layout.setOffsetY(offset);
         }
 
-        if ((lastOffset - lastLastOffset) < 0 && (offset - lastOffset > 0)) {
+//        if ((lastOffset - lastLastOffset) < 0 && (offset - lastOffset > 0)) {
             // Cross a minimal
-            axisX = !axisX;
-        }
+//            axisX = !axisX;
+//        }
 
         lastLastOffset = lastOffset;
-        lastOffset = offset;
+//        lastOffset = offset;
 
         // layout.setOffsetY(offset);
         if(duration.getSeconds() > 1) {

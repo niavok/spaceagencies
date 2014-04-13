@@ -4,12 +4,12 @@
     i3d:layout_width="match_parent"
     i3d:layout_height="match_parent" >
 
-    <View
-        i3d:id="logo"
-        i3d:layout_width="100px"
-        i3d:layout_height="100px"
-        i3d:layout_gravity_x="center"
-        i3d:layout_gravity_y="center"
-        i3d:ref="main@layout/logo" />
+<!--     <View -->
+<!--         i3d:id="logo" -->
+<!--         i3d:layout_width="100px" -->
+<!--         i3d:layout_height="100px" -->
+<!--         i3d:layout_gravity_x="center" -->
+<!--         i3d:layout_gravity_y="center" -->
+<!--         i3d:ref="main@layout/logo" /> -->
 
 </RelativeLayout>
