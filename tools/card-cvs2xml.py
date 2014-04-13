@@ -39,7 +39,7 @@ def parse(inputFile):
     l__revealTop = file.readline().split(";")
     l__discardDeck = file.readline().split(";")
     l__lotsActions = file.readline().split(";")
-    l__sevenDraw = file.readline().split(";")
+    l__moreDraw = file.readline().split(";")
     l__batchVP = file.readline().split(";")
     
     # create all files
@@ -70,8 +70,8 @@ def parse(inputFile):
             xml_file = xml_file + "\n<discardDeck count=\"%s\">"%l__discardDeck[i]
         if (l__lotsActions[i].strip() != "") :
             xml_file = xml_file + "\n<lotsActions count=\"%s\">"%l__lotsActions[i]
-        if (l__sevenDraw[i].strip() != "") :
-            xml_file = xml_file + "\n<sevenDraw count=\"%s\">"%l__sevenDraw[i]
+        if (l__moreDraw[i].strip() != "") :
+            xml_file = xml_file + "\n<moreDraw count=\"%s\">"%l__moreDraw[i]
         if (l__batchVP[i].strip() != "") :
             xml_file = xml_file + "\n<batchVP count=\"%s\">"%l__batchVP[i]
 		
